@@ -1,0 +1,37 @@
+{
+  "extends": "next/core-web-vitals",
+  "plugins": ["sort-destructure-keys", "eslint-plugin-react"],
+  "rules": {
+    "import/order": [
+      "error",
+      {
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "sort-destructure-keys/sort-destructure-keys": 2,
+    "linebreak-style": ["error", "unix"],
+    "object-curly-spacing": ["error", "always", { "arraysInObjects": true, "objectsInObjects": true }],
+    "semi": ["error", "always"],
+    "react/jsx-indent": [2, 2, {"checkAttributes": true, "indentLogicalExpressions": false}],
+    "react/jsx-indent-props": [2, 2],
+    "react/jsx-closing-tag-location" : [2, 2],
+    "react/jsx-max-props-per-line": [1, { "maximum": 2 }],
+    "react/jsx-closing-bracket-location": [1, "tag-aligned"],
+    "react/jsx-curly-brace-presence": "error",
+    "react/jsx-no-script-url": "error",
+    "react/jsx-no-useless-fragment": "error",
+    "react/jsx-tag-spacing": "error",
+    "react/no-array-index-key": "error",
+    "react/no-danger": "error",
+    "react/no-set-state": "error",
+    "react/no-unescaped-entities": ["error", { "forbid": [">", "}"] }],
+    "react/no-unsafe": "error",
+    "react/self-closing-comp": "error",
+    "react/static-property-placement": "error",
+    "react/style-prop-object": "error",
+    "react/void-dom-elements-no-children": "error"
+  }
+}

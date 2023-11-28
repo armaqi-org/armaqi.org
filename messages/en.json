@@ -1,0 +1,16 @@
+{
+  "Metadata": {
+    "title": "ArmAQI - Air quality monitoring civil tech network in Armenia. Air Pollution in Yerevan, Gyumri, Vanadzor",
+    "description": "Air Pollution in Yerevan & Armenia Awareness Project",
+    "og:url": "https://www.armaqi.org/en"
+  },
+  "Index": {
+    "title": "Hello world!"
+  },
+  "Navigation": {
+    "map": "Map",
+    "about": "About",
+    "smog": "Smog",
+    "add_sensor": "Add sensor"
+  }
+}
