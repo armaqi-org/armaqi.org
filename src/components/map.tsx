@@ -37,7 +37,7 @@ export default function SensorMap() {
         className="w-full h-full"
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors,  Air Quality Tiles &copy; <a href="https://www.waqi.info/">waqi.info</a>'
+          attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors,  Air Quality Tiles &copy; <a href="https://www.waqi.info/" target="_blank">waqi.info</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           maxZoom={18}
         />

@@ -4,8 +4,21 @@
     "description": "Air Pollution in Yerevan & Armenia Awareness Project",
     "og:url": "https://www.armaqi.org/en"
   },
-  "Index": {
-    "title": "Hello world!"
+  "LandingQuality": {
+    "title": "Air quality on the map in real-time",
+    "scale0": "Good",
+    "scale1": "Moderate",
+    "scale2": "Unhealthy:for sensitive groups",
+    "scale3": "Unhealthy",
+    "scale4": "Very unhealthy",
+    "scale5": "Hazardous",
+    "hint": "The AQI scale used for real-time pollution indexing in the above map is based on the latest US EPA standard, using the Instant Cast formula.",
+    "chartTitle": "Air quality year chart",
+    "chartTitleYerevan": "Air quality - year - Yerevan",
+    "chartTitleTbilisi": "Air quality - year - Tbilisi"
+  },
+  "Landing": {
+    "about": "ArmAQI is a group of enthusiasts who faced the problem of severe air pollution in the cities of Armenia and the lack of up-to-date data. We decided to create an independent air quality measurement system with the help of an open community."
   },
   "Navigation": {
     "map": "Map",
