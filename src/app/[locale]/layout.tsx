@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { Inter } from 'next/font/google';
 import { useLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
@@ -43,7 +44,7 @@ export default function RootLayout({
 
   return (
     <html lang={getLang(locale)}>
-      <body className={inter.className}>{children}</body>
+      <body className={classNames(inter.className, 'text-armaqi-base')}>{children}</body>
     </html>
   );
 }

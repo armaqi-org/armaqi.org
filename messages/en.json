@@ -18,7 +18,34 @@
     "chartTitleTbilisi": "Air quality - year - Tbilisi"
   },
   "Landing": {
-    "about": "ArmAQI is a group of enthusiasts who faced the problem of severe air pollution in the cities of Armenia and the lack of up-to-date data. We decided to create an independent air quality measurement system with the help of an open community."
+    "about": "ArmAQI is a group of enthusiasts who faced the problem of severe air pollution in the cities of Armenia and the lack of up-to-date data. We decided to create an independent air quality measurement system with the help of an open community.",
+    "howTitle": "How it works?",
+    "howText": "Residents install sensors outside their windows that measure the level of air pollution. You can buy them inexpensively or build them yourself. All the sensors are connected in an open network and send data in real time. The more sensors installed in one area, the more accurately they can detect pollution levels.\n\nThe first step to change is to realize what you can't see with the naked eye: the air we breathe every day!",
+    "howAction": "I want this sensor!",
+    "ararat": "Can you see Ararat?"
+  },
+  "LandingSmog": {
+    "title0": "It's not just fog, it's smog, which contains:",
+    "item00title": "Carbon monoxide (CO)",
+    "item00text": " The gas responsible for global warming. Formed during the combustion of all types of fuel. An increased concentration of CO2 can cause weakness, drowsiness, headaches, and problems with concentration.",
+    "item01title": "Formaldehyde (HCHO)",
+    "item01text": " The main source is gas combustion and tobacco smoke. Also found in building and furniture materials such as chipboard. It is included in the list of carcinogenic substances, negatively affects the genetic material, reproductive organs, respiratory tract, eyes, and skin. It has a strong effect on the central nervous system.",
+    "item02title": "Nitrogen dioxide (NO2)",
+    "item02text": " The main source is vehicle emissions, especially diesel engines. Disturbance of the respiratory organs by aggressive effects on mucous membranes, causing bronchitis and emphysema on prolonged exposure. There is also a change in blood composition, hemoglobin content is reduced.",
+    "item03title": "Sulfur dioxide (SO2)",
+    "item03text": " Sulfur dioxide is an aerosol of sulfuric acid in the air. The substance leads to cardiovascular and oncological diseases, causes acid rain, and causes irreparable damage to nature.",
+    "item04title": "Particles PM2.5",
+    "item04text": " Pieces of coal and soot, asphalt and car tires, particles of mineral salts and heavy metal compounds. PM2.5 is almost 1/30 the size of a human hair, so it easily enters the bloodstream when inhaled.",
+
+    "title1": "What is the difference between smog and fog?",
+    "item10title": "Fog",
+    "item10text": " — is a form of cloud on the earth's surface containing tiny water droplets. These water droplets are capable of remaining suspended in the air for hours.",
+    "item11title": "Smog",
+    "item11text": " — is a deadly mixture of smoke and fog. The smoke that would otherwise hang higher in the sky and the dust particles that would fall to the ground remain suspended in the air as they mix with the fog and cause a photochemical reaction.",
+    "item12title": "Fog",
+    "item12text": ": colorless, odorless, 100% humidity, dew is formed",
+    "item13title": "Smog",
+    "item13text": ": has a shade from yellowish to bluish, often has an odor of burning, can be when the air humidity is normal."
   },
   "Navigation": {
     "map": "Map",

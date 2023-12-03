@@ -17,7 +17,7 @@ export const LandingQuality = () => {
   return (
     <>
       <div className="container my-16 mx-auto md:px-6 flex flex-col items-center">
-        <h2 className="mb-16 text-3xl font-bold text-sky-800 text-center">
+        <h2 className="mb-16 text-3xl font-bold text-center">
           {t('title')}
         </h2>
         <div className="flex items-start flex-wrap max-w-screen-md px-4">
@@ -35,11 +35,11 @@ export const LandingQuality = () => {
             </div>
           ))}
         </div>
-        <p className="text-xs text-center text-sky-700 max-w-screen-md font-light mt-8">Шкала AQI, используемая для индексации загрязнения в режиме реального времени на приведенной выше карте, основана на последнем стандарте US EPA, с использованием формулы Instant Cast.</p>
+        <p className="text-xs text-center max-w-screen-md font-light mt-8">Шкала AQI, используемая для индексации загрязнения в режиме реального времени на приведенной выше карте, основана на последнем стандарте US EPA, с использованием формулы Instant Cast.</p>
       </div>
         
       <div className="container my-16 mx-auto md:px-6 flex flex-col items-center">
-        <h2 className="mb-16 text-3xl font-bold text-sky-800 text-center">
+        <h2 className="mb-16 text-3xl font-bold text-center">
           {t('chartTitle')}
         </h2>
 

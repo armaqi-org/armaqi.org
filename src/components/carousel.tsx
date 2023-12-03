@@ -31,7 +31,7 @@ export const Carousel: FC<{ slides: Slide[] }> = ({ slides }) => {
               width={860}
               height={350}
             />
-            <div className="text-center text-sky-800 font-bold">{slides[currentSlide]?.text}</div>
+            <div className="text-center font-bold">{slides[currentSlide]?.text}</div>
           </div>
         </div>
         <button
