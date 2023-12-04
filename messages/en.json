@@ -47,6 +47,36 @@
     "item13title": "Smog",
     "item13text": ": has a shade from yellowish to bluish, often has an odor of burning, can be when the air humidity is normal."
   },
+  "LandingWhyHappening": {
+    "title": "Why is this happening?",
+    "itemCars:title": "Large number of cars",
+    "itemCars:text": "Particles of asphalt, tires, brake pads, and exhaust fumes from old, defective cars enter the air.",
+    "itemHeating:title": "Heating",
+    "itemHeating:text": "Burning garbage, coal, using thin metal stoves in which the fuel does not burn completely. In winter, the air deteriorates by <b>3-5 times</b>!",
+    "itemBurning:title": "Grass and seasoned wood burning",
+    "itemBurning:text": "In the fall and spring, the main air pollutant is the burning of grass and dead wood during harvesting.",
+    "itemGeographic:title": "Geographic features",
+    "itemGeographic:text": "Windless weather, lowlands, surrounded by mountains, urban landscape, tall buildings, and poorly blown streets all trap pollutants suspended in the air.",
+    "itemWildfires:title": "Wildfires",
+    "itemWildfires:text": "Grass burning, haulm burning, and making fires in the wrong place often leads to fires.",
+    "itemMining:title": "Open-pit mining",
+    "itemMining:text": "Insufficient irrigation of mining cuts during blasting or no irrigation.",
+    "itemConstruction:title": "Construction",
+    "itemConstruction:text": "Dust pollution from demolition and construction, as well as exhaust from construction vehicles.",
+    "itemIndustry:title": "Industry",
+    "itemIndustry:text": "Lack of control over industrial emissions."
+  },
+  "LandingConsequences": {
+    "title": "What are the impacts of air pollution?",
+    "description": "The insidious thing about air pollution is that the harm is not immediately noticeable, but harmful substances accumulate in the body, and over time can lead to serious problems.",
+    "source": "Source",
+    "itemHeart:title": "Cardiovascular diseases",
+    "itemHeart:text": "The tiny particles are deposited in the lungs and blood vessels and cause inflammation in them. In response to inflammation, the amount of special signal proteins - cytokines - increases in the blood. They trigger a chain of biochemical reactions that eventually lead to thrombosis and then to coronary heart disease, myocardial infarction and stroke.",
+    "itemOncological:title": "Cancer",
+    "itemOncological:text": "In third place after cardiovascular disease, chronic respiratory disease, PM2.5 particles can cause cancer. A total of 3% of cardiovascular and respiratory deaths and 5% of lung cancer deaths are associated with PM2.5.",
+    "itemBrain:title": "Mental retardation",
+    "itemBrain:text": "There are studies proving that mental abilities are impaired with increased air pollution. In children, it leads to impaired memory performance and behavioral disorders such as the autism spectrum and attention deficit hyperactivity disorder (ADHD)."
+  },
   "Navigation": {
     "map": "Map",
     "about": "About",

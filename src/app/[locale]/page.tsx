@@ -1,9 +1,12 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { FC, Fragment } from "react";
+import { LandingConsequences } from "@/components/landing-consequences";
 import { LandingQuality } from "@/components/landing-quality";
 import { LandingSmog } from "@/components/landing-smog";
+import { LandingWhyHappening } from "@/components/landing-why-happening";
 import { Navigation } from "@/components/navigation";
+import { SectionHeader } from "@/components/section-header";
 import { MapModule } from "@/modules/map";
 import { useLocale } from "@/tools/locale";
 
@@ -23,7 +26,7 @@ const HowItWorks: FCTL = ({ t }) => (
         </div>
 
         <div className="w-full shrink-0 grow-0 basis-auto text-center md:w-6/12 md:pl-6 md:text-left lg:w-6/12">
-          <h2 className="mb-6 text-3xl font-semibold">{t('howTitle')}</h2>
+          <SectionHeader key="how" className="mb-6">{t('howTitle')}</SectionHeader>
           <p className="font-light">
             {t("howText").split('\n').map((item, key) => (
               // eslint-disable-next-line react/no-array-index-key
@@ -60,6 +63,7 @@ export default function HomePage() {
 
     return (
       <>
+        <div className="fixed h-full w-full -z-10 bg-cover" style={{ backgroundImage: 'url(/bg.png)' }} />
         <Navigation locale={locale} />
         <MapModule />
         <LandingQuality />
@@ -67,6 +71,8 @@ export default function HomePage() {
         <HowItWorks t={t} />
         <Yerevan t={t} />
         <LandingSmog />
+        <LandingWhyHappening />
+        <LandingConsequences />
       </>
     );
 }

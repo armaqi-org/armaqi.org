@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Carousel } from "@/components/carousel";
+import { SectionHeader } from "@/components/section-header";
 import { CloudQualitySvg } from "@/images/cloud-quality";
 
 const scales = [
@@ -17,9 +18,9 @@ export const LandingQuality = () => {
   return (
     <>
       <div className="container my-16 mx-auto md:px-6 flex flex-col items-center">
-        <h2 className="mb-16 text-3xl font-bold text-center">
+        <SectionHeader key="quality" className="mb-16">
           {t('title')}
-        </h2>
+        </SectionHeader>
         <div className="flex items-start flex-wrap max-w-screen-md px-4">
           {scales.map(([text, color], index) => (
             <div key={text} className="mb-12 lg:mb-0 mr-4 flex-1">

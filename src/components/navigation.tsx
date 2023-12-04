@@ -42,17 +42,17 @@ export const Navigation: FC<{ locale: Locale }> = ({ locale }) => {
 
           <div className="flex space-x-3 md:space-x-2 rtl:space-x-reverse">
             {locale !== Locale.AM && (
-            <Link href="/" className="ml-2 font-medium">
+            <Link href="/" className="ml-2 font-medium text-black">
               Հայ
             </Link>
             )}
             {locale !== Locale.EN && (
-            <Link href={`/${Locale.EN}`} className="ml-2 font-bold">
+            <Link href={`/${Locale.EN}`} className="ml-2 font-medium text-black">
               ENG
             </Link>
             )}
             {locale !== Locale.RU && (
-            <Link href={`/${Locale.RU}`} className="ml-2 font-medium">
+            <Link href={`/${Locale.RU}`} className="ml-2 font-medium text-black">
               РУС
             </Link>
             )}
