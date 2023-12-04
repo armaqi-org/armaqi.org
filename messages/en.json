@@ -22,7 +22,9 @@
     "howTitle": "How it works?",
     "howText": "Residents install sensors outside their windows that measure the level of air pollution. You can buy them inexpensively or build them yourself. All the sensors are connected in an open network and send data in real time. The more sensors installed in one area, the more accurately they can detect pollution levels.\n\nThe first step to change is to realize what you can't see with the naked eye: the air we breathe every day!",
     "howAction": "I want this sensor!",
-    "ararat": "Can you see Ararat?"
+    "ararat": "Can you see Ararat?",
+    "mimino0": "- In Dilijan, in the kitchen, you open a regular faucet - water flows, second place in the world!",
+    "mimino1": "- And what place does Dilijan have in terms of air quality?"
   },
   "LandingSmog": {
     "title0": "It's not just fog, it's smog, which contains:",

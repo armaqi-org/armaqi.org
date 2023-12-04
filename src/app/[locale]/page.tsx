@@ -7,7 +7,7 @@ import { LandingSmog } from "@/components/landing-smog";
 import { LandingSolution } from "@/components/landing-solution";
 import { LandingWhyHappening } from "@/components/landing-why-happening";
 import { Navigation } from "@/components/navigation";
-import { SectionHeader } from "@/components/section-header";
+import { SectionHeader } from "@/components/section";
 import { MapModule } from "@/modules/map";
 import { useLocale } from "@/tools/locale";
 
@@ -53,8 +53,21 @@ const About: FCTL = ({ t }) => (
 );
 
 const Yerevan: FCTL = ({ t }) => (
-  <div className="w-full h-screen flex items-center justify-center bg-cover" style={{ backgroundImage: "url('/yerevan.jpg')" }}>
+  <div
+    className="w-full h-screen flex items-center justify-center bg-cover"
+    style={{ backgroundImage: "url('/yerevan.jpg')" }}
+  >
     <div className="text-white text-3xl">{t('ararat')}</div>
+  </div>
+);
+
+const Dilijan: FCTL = ({ t }) => (
+  <div
+    className="w-full h-screen flex flex-col items-center justify-center bg-cover"
+    style={{ backgroundImage: "url('/mimino.jpg')" }}
+  >
+    <div className="text-white text-center text-xl max-w-screen-md mb-8">{t('mimino0')}</div>
+    <div className="text-white text-center text-xl max-w-screen-md">{t('mimino1')}</div>
   </div>
 );
 
@@ -75,6 +88,7 @@ export default function HomePage() {
         <LandingWhyHappening />
         <LandingConsequences />
         <LandingSolution />
+        <Dilijan t={t} />
       </>
     );
 }

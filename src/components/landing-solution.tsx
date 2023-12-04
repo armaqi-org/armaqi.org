@@ -1,7 +1,6 @@
-import classNames from "classnames";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { SectionHeader } from "@/components/section-header";
+import { Section } from "@/components/section";
 import { SectionList } from "@/components/section-list";
 
 const sections = [
@@ -16,26 +15,16 @@ export const LandingSolution = () => {
 
   return (
     <>
-      <div className="container my-16 mx-auto md:px-6 max-w-screen-md">
-        <SectionHeader className="mb-8" key="solution"      >
-          {t(`title`)}
-        </SectionHeader>
-
+      <Section className="mb-8" key="solution" title={t(`title`)} thin>
         <SectionList
           t={t}
           len={7}
           tPrefix="item0"
           space=" "
         />
-      </div>
+      </Section>
 
-      <div className="container my-16 mx-auto md:px-6 max-w-screen-lg">
-        <div className="mx-auto text-center">
-          <SectionHeader className="mb-32 mt-32" key="solution-everyone"      >
-            {t(`titleEveryone`)}
-          </SectionHeader>
-        </div>
-
+      <Section className="mb-32 mt-32" key="solution-everyone"  title={t(`titleEveryone`)}    >
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:mt-8">
           {sections.map(([key, src]) => (
             <div key={key} className=" flex flex-col items-center">
@@ -50,20 +39,16 @@ export const LandingSolution = () => {
             </div>
           ))}
         </div>
-      </div>
+      </Section>
 
-      <div className="container my-16 mx-auto md:px-6 max-w-screen-md">
-        <SectionHeader className="mt-16 mb-8" key="solution-protect">
-          {t(`titleProtect`)}
-        </SectionHeader>
-
+      <Section className="mt-16 mb-8" key="solution-protect" title={t(`titleProtect`)} thin>
         <SectionList
           t={t}
           len={7}
           tPrefix="item2"
           space=" "
         />
-      </div>
+      </Section>
     </>
   );
 };

@@ -11,14 +11,15 @@
         }
       }
     ],
+    "max-len": ["error", { "code": 120, "ignoreStrings": true }],
     "sort-destructure-keys/sort-destructure-keys": 2,
     "linebreak-style": ["error", "unix"],
     "object-curly-spacing": ["error", "always", { "arraysInObjects": true, "objectsInObjects": true }],
     "semi": ["error", "always"],
-    "react/jsx-indent": [2, 2, {"checkAttributes": true, "indentLogicalExpressions": false}],
+    "react/jsx-indent": [2, 2, {"checkAttributes": true, "indentLogicalExpressions": false }],
     "react/jsx-indent-props": [2, 2],
     "react/jsx-closing-tag-location" : [2, 2],
-    "react/jsx-max-props-per-line": [1, { "maximum": 2 }],
+    "react/jsx-max-props-per-line": [2, { "maximum": 1, "when": "multiline" }],
     "react/jsx-closing-bracket-location": [1, "tag-aligned"],
     "react/jsx-curly-brace-presence": "error",
     "react/jsx-no-script-url": "error",

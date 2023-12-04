@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Carousel } from "@/components/carousel";
-import { SectionHeader } from "@/components/section-header";
+import { Section } from "@/components/section";
 import { CloudQualitySvg } from "@/images/cloud-quality";
 
 const scales = [
@@ -17,10 +17,12 @@ export const LandingQuality = () => {
 
   return (
     <>
-      <div className="container my-16 mx-auto md:px-6 flex flex-col items-center">
-        <SectionHeader key="quality" className="mb-16">
-          {t('title')}
-        </SectionHeader>
+      <Section
+        key="quality"
+        className="mb-16"
+        title={t('title')}
+        thin
+      >
         <div className="flex items-start flex-wrap max-w-screen-md px-4">
           {scales.map(([text, color], index) => (
             <div key={text} className="mb-12 lg:mb-0 mr-4 flex-1">
@@ -36,20 +38,24 @@ export const LandingQuality = () => {
             </div>
           ))}
         </div>
-        <p className="text-xs text-center max-w-screen-md font-light mt-8">Шкала AQI, используемая для индексации загрязнения в режиме реального времени на приведенной выше карте, основана на последнем стандарте US EPA, с использованием формулы Instant Cast.</p>
-      </div>
-        
-      <div className="container my-16 mx-auto md:px-6 flex flex-col items-center">
-        <h2 className="mb-16 text-3xl font-bold text-center">
-          {t('chartTitle')}
-        </h2>
-
+        <p className="text-xs text-center max-w-screen-md font-light mt-8">
+          Шкала AQI, используемая для индексации загрязнения в режиме реального времени
+          на приведенной выше карте, основана на последнем стандарте US EPA,
+          с использованием формулы Instant Cast.
+        </p>
+      </Section>
+ 
+      <Section key="quality-chart"
+        className="mb-16"
+        title={t('chartTitle')}
+        thin
+      >
         <Carousel slides={[
             { src: './landing-chart-yerevan.svg', text: t('chartTitleYerevan') },
             { src: './landing-chart-tbilisi.svg', text: t('chartTitleTbilisi') },
         ]}
         />
-      </div>
+      </Section>
     </>
     );
 };

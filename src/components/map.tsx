@@ -18,11 +18,12 @@ const CustomMarker: FC<{ station: Station }> = ({ station }) => {
     }, [station.aqi]);
 
     return (
-      <Marker key={station.key} position={station.position}
+      <Marker key={station.key}
+        position={station.position}
         icon={icon}
       >
         <Popup>
-          {station.title}
+          {station.title} 
         </Popup>
       </Marker>
     );
@@ -32,7 +33,8 @@ export default function SensorMap() {
     const stations = useStations();
 
     return (
-      <MapContainer center={[40.188628, 44.512555]} zoom={12}
+      <MapContainer center={[40.188628, 44.512555]}
+        zoom={12}
         scrollWheelZoom
         className="w-full h-full"
       >

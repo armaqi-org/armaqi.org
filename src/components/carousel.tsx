@@ -37,7 +37,7 @@ export const Carousel: FC<{ slides: Slide[] }> = ({ slides }) => {
         <button
           id="data-carousel-prev"
           type="button"
-          className="group absolute -left-8 top-0 z-30 flex h-full cursor-pointer items-center justify-center focus:outline-none"
+          className="group flex h-full cursor-pointer items-center justify-center focus:outline-none absolute -left-8 top-0 z-30"
           onClick={prevSlide}
         >
           <span

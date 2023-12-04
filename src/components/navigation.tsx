@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
@@ -26,7 +27,12 @@ export const Navigation: FC<{ locale: Locale }> = ({ locale }) => {
             className="items-center justify-end hidden w-full md:flex md:w-auto flex-1 pr-5"
             id="navbar-sticky"
           >
-            <ul className="flex flex-col p-4 md:p-0 mt-4 font-normal lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
+            <ul
+              className={classNames(
+                    "flex flex-col p-4 md:p-0 mt-4 font-normal lg   md:flex-row md:mt-0 md:border-0",
+                "md:space-x-8 rtl:space-x-reverse"
+              )}
+            >
               {['map', 'about', 'smog', 'add_sensor'].map(item => (
                 <li key={item}>
                   <a href="#"
