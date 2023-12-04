@@ -2,6 +2,7 @@ import classNames from "classnames";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { SectionHeader } from "@/components/section-header";
+import { SectionList } from "@/components/section-list";
 
 const sections: [string, number][] = [
     ['smog', 5],
@@ -20,15 +21,11 @@ export const LandingSmog = () => {
               {t(`title${indHigh}`)}
             </SectionHeader>
 
-            <ul className="list-disc text-xl">
-              {new Array(len).fill(0).map((_, indLow) => (
-              // eslint-disable-next-line react/no-array-index-key
-                <li key={indLow} className={classNames({ 'mt-8': indLow })}>
-                  <span className="font-semibold">{t(`item${indHigh}${indLow}title`)}</span>
-                  <span className="font-thin">{t(`item${indHigh}${indLow}text`)}</span>
-                </li>
-              ))}
-            </ul>
+            <SectionList
+              t={t}
+              tPrefix={`item${indHigh}`}
+              len={len}
+            />
           </div>
       ))}
       </div>

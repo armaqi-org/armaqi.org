@@ -4,6 +4,7 @@ import { FC, Fragment } from "react";
 import { LandingConsequences } from "@/components/landing-consequences";
 import { LandingQuality } from "@/components/landing-quality";
 import { LandingSmog } from "@/components/landing-smog";
+import { LandingSolution } from "@/components/landing-solution";
 import { LandingWhyHappening } from "@/components/landing-why-happening";
 import { Navigation } from "@/components/navigation";
 import { SectionHeader } from "@/components/section-header";
@@ -73,6 +74,7 @@ export default function HomePage() {
         <LandingSmog />
         <LandingWhyHappening />
         <LandingConsequences />
+        <LandingSolution />
       </>
     );
 }
