@@ -165,6 +165,11 @@
     "marzes": "Marzes",
     "marzesRequired": "of {count}"
   },
+  "LandingFooter": {
+    "title": "Let's make Armenia's air clean!",
+    "text": "Armenia is famous for its clean mountain air, and our cities deserve clean air too!",
+    "source": "Source"
+  },
   "Navigation": {
     "map": "Map",
     "about": "About",

@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl";
 import { FC, Fragment } from "react";
 import { LandingCommunity } from "@/components/landing-community";
 import { LandingConsequences } from "@/components/landing-consequences";
+import { LandingFooter } from "@/components/landing-footer";
 import { LandingQuality } from "@/components/landing-quality";
 import { LandingSensor } from "@/components/landing-sensor";
 import { LandingSmog } from "@/components/landing-smog";
@@ -93,6 +94,7 @@ export default function HomePage() {
         <Dilijan t={t} />
         <LandingSensor />
         <LandingCommunity />
+        <LandingFooter />
       </>
     );
 }
