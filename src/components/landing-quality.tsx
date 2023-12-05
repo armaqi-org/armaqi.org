@@ -18,7 +18,7 @@ export const LandingQuality = () => {
   return (
     <>
       <Section
-        key="quality"
+        id="quality"
         className="mb-16"
         title={t('title')}
         thin
@@ -45,7 +45,7 @@ export const LandingQuality = () => {
         </p>
       </Section>
  
-      <Section key="quality-chart"
+      <Section id="quality-chart"
         className="mb-16"
         title={t('chartTitle')}
         thin

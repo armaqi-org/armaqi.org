@@ -14,7 +14,7 @@ export const LandingConsequences = () => {
   return (
     <Section
       className="mb-16"
-      key="consequences"
+      id="consequences"
       title={t('title')}
     >
       <div className="w-100 flex flex-col items-center">

@@ -15,7 +15,7 @@ export const LandingSolution = () => {
 
   return (
     <>
-      <Section className="mb-8" key="solution" title={t(`title`)} thin>
+      <Section className="mb-8" id="solution" title={t(`title`)} thin>
         <SectionList
           t={t}
           len={7}
@@ -24,7 +24,7 @@ export const LandingSolution = () => {
         />
       </Section>
 
-      <Section className="mb-32 mt-32" key="solution-everyone"  title={t(`titleEveryone`)}    >
+      <Section className="mb-32 mt-32" id="solution-everyone" title={t(`titleEveryone`)}    >
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:mt-8">
           {sections.map(([key, src]) => (
             <div key={key} className=" flex flex-col items-center">
@@ -41,7 +41,7 @@ export const LandingSolution = () => {
         </div>
       </Section>
 
-      <Section className="mt-16 mb-8" key="solution-protect" title={t(`titleProtect`)} thin>
+      <Section className="mt-16 mb-8" id="solution-protect" title={t(`titleProtect`)} thin>
         <SectionList
           t={t}
           len={7}

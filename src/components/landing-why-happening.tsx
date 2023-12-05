@@ -17,7 +17,7 @@ export const LandingWhyHappening = () => {
   const t = useTranslations('LandingWhyHappening');
 
   return (
-    <Section className="mb-16" key="why" title={t('title')}>
+    <Section className="mb-16" id="why" title={t('title')}>
       <div className="grid gap-8 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3 xl:grid-cols-4 xl:gap-16">
         {sections.map(item => (
           <div key={item} className="flex flex-col items-center">

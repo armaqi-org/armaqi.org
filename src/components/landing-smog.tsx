@@ -18,6 +18,7 @@ export const LandingSmog = () => {
         <Section
           className={classNames('mt-8', { 'mt-16': indHigh })}
           key={key}
+          id={key}
           title={t(`title${indHigh}`)}
           thin
         >

@@ -1,8 +1,10 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { FC, Fragment } from "react";
+import { LandingCommunity } from "@/components/landing-community";
 import { LandingConsequences } from "@/components/landing-consequences";
 import { LandingQuality } from "@/components/landing-quality";
+import { LandingSensor } from "@/components/landing-sensor";
 import { LandingSmog } from "@/components/landing-smog";
 import { LandingSolution } from "@/components/landing-solution";
 import { LandingWhyHappening } from "@/components/landing-why-happening";
@@ -27,7 +29,7 @@ const HowItWorks: FCTL = ({ t }) => (
         </div>
 
         <div className="w-full shrink-0 grow-0 basis-auto text-center md:w-6/12 md:pl-6 md:text-left lg:w-6/12">
-          <SectionHeader key="how" className="mb-6">{t('howTitle')}</SectionHeader>
+          <SectionHeader id="how" className="mb-6">{t('howTitle')}</SectionHeader>
           <p className="font-light">
             {t("howText").split('\n').map((item, key) => (
               // eslint-disable-next-line react/no-array-index-key
@@ -89,6 +91,8 @@ export default function HomePage() {
         <LandingConsequences />
         <LandingSolution />
         <Dilijan t={t} />
+        <LandingSensor />
+        <LandingCommunity />
       </>
     );
 }

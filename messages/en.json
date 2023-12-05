@@ -122,6 +122,49 @@
     "item26:title": "Leaving the cities for the winter.",
     "item26:text": "The most dangerous months for health - December and January is better to go out of town. But, you should first check the air quality in the place where you are going to go. In the villages, due to the use of cheap fuel and geographical features, the air can be even more dangerous than in the city."
   },
+  "LandingSensor": {
+    "title": "Install ArmAQI air quality sensor and see how polluted the air outside your window is!",
+    "description": "All you have to do is to stick it behind a window and connect it to your home's always-on WiFi and the air quality data will show up on the map!",
+    "needs": "You will need",
+    "optional": "Optional",
+    "preOrder": "pre-order",
+
+    "standardTitle": "Standard",
+    "standardDescription": "Ready-made sensor in a branded cloud-shaped case with installation kit. Remote configuration of the device.",
+    "standardNeeds0": "Attach to the window on the 2-sided adhesive tape (included)",
+    "standardNeeds1": "Provide Wi-Fi connection.",
+
+    "diyTitle": "DIY Kit",
+    "diyDescription": "You assemble, tune and install the station yourself (according to the instructions on the website). Suitable for you if you are interested in electronics and technology, like to make things yourself or want to learn something new. You do not need to search, order and wait for components, we have everything in stock.",
+    "diyNeeds0": "Plug and cable. Not included, you can buy in any market",
+    "diyNeeds1": "Ensure Wi-Fi connection",
+    "diyOptional0": "Soldering iron suitable for soldering (you can not solder, but it is recommended for reliability)",
+    "diyOptional1": "Solder, flux",
+    "diyOptional2": "3d printer for printing cloud body",
+
+    "order": "I want that sensor!",
+    "orderDescription": "Leave a request and we'll contact you and arrange everything!",
+    "orderFieldEmail": "E-mail",
+    "orderFieldEmailPlaceholder": "mycompany@co.com",
+    "orderFieldName": "Name",
+    "orderFieldNamePlaceholder": "John Doe",
+    "orderFieldContact": "Mobile number or Telegram",
+    "orderFieldContactPlaceholder": "(10) 111-000 или @user",
+    "orderFieldDistrict": "District",
+    "orderFieldDistrictPlaceholder": "Kentron",
+    "orderFieldSensor": "Select sensor",
+    "orderSubmit": "Submit an order",
+    "orderTerms": "By clicking the button, you agree to the terms of personal data"
+  },
+  "LandingCommunity": {
+    "title": "Join the community of people who care!",
+    "stations": "Stations installed",
+    "stationsRequired": "of the {count} required",
+    "cities": "Cities",
+    "citiesRequired": "of {count}",
+    "marzes": "Marzes",
+    "marzesRequired": "of {count}"
+  },
   "Navigation": {
     "map": "Map",
     "about": "About",
