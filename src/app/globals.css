@@ -14,3 +14,15 @@
 
 body {
 }
+
+@layer utilities {
+  @variants responsive {
+    .bottom-unset {
+      bottom: unset;
+    }
+  }
+}
+
+.z-top {
+  z-index: 1001;
+}

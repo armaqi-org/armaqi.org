@@ -38,10 +38,8 @@ export const LandingQuality = () => {
             </div>
           ))}
         </div>
-        <p className="text-xs text-center max-w-screen-md font-light mt-8">
-          Шкала AQI, используемая для индексации загрязнения в режиме реального времени
-          на приведенной выше карте, основана на последнем стандарте US EPA,
-          с использованием формулы Instant Cast.
+        <p className="text-xs text-center max-w-screen-md font-light mt-8 px-4">
+          {t('hint')}
         </p>
       </Section>
  

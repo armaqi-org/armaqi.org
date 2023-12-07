@@ -9,7 +9,7 @@ export const SectionList: FC<{
     space?: string;
 }> = ({ len, space, t, tPrefix = 'item' }) => {
     return (
-      <ul className="list-disc text-xl">
+      <ul className="list-disc text-xl mx-8 md:mx-0">
         {new Array(len).fill(0).map((_, indLow) => (
           // eslint-disable-next-line react/no-array-index-key
           <li key={indLow} className={classNames({ 'mt-8': indLow })}>

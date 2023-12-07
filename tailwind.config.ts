@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import plugin from 'tailwindcss/plugin';
 
 const config: Config = {
   content: [
@@ -18,6 +19,12 @@ const config: Config = {
         'armaqi-base': '#15428A'
       }
     },
-  }
+  },
+  plugins: [
+    plugin(function({ addVariant }) {
+      addVariant("menu-top", ".menu-top &");
+      addVariant("menu-burger", ".menu-burger &");
+    })
+  ]
 };
 export default config;

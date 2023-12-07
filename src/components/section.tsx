@@ -7,7 +7,7 @@ export const SectionHeader: FC<{
     id: string;
 }> = ({ children, className }) => {
     return (
-      <h2 className={classNames("text-3xl font-bold", className)}>
+      <h2 className={classNames("text-3xl font-bold px-4", className)}>
         {children}
       </h2>
     );

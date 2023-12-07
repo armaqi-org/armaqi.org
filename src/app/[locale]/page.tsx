@@ -48,7 +48,7 @@ const HowItWorks: FCTL = ({ t }) => (
 );
 
 const About: FCTL = ({ t }) => (
-  <div className="w-100 my-16 py-16 bg-armaqi-pink flex flex-col items-center">
+  <div className="w-100 py-16 bg-armaqi-pink flex flex-col items-center">
     <div className="max-w-screen-md text-white text-center text-2xl font-light">
       {t('about')}
     </div>
@@ -60,7 +60,7 @@ const Yerevan: FCTL = ({ t }) => (
     className="w-full h-screen flex items-center justify-center bg-cover"
     style={{ backgroundImage: "url('/yerevan.jpg')" }}
   >
-    <div className="text-white text-3xl">{t('ararat')}</div>
+    <div className="text-white text-center px-6 text-3xl">{t('ararat')}</div>
   </div>
 );
 
