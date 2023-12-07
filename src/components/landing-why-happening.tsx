@@ -26,10 +26,10 @@ export const LandingWhyHappening = () => {
               width={80}
               height={80}
             />
-            <h4 className="mx-4 mt-4 mb-4 text-xl text-center font-semibold">
+            <h4 className="mx-4 mt-4 mb-4 md:min-h-[3em] text-xl text-center font-semibold">
               {t(`item${item}:title`)}
             </h4>
-            <p className="ml-4 w-56 font-light">
+            <p className="ml-4 md:w-56 font-light text-center md:text-left">
               {t.rich(`item${item}:text`)}
             </p>
           </div>

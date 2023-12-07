@@ -1,14 +1,15 @@
 import classNames from "classnames";
 import { FC, ReactNode } from "react";
+import { CopyLink } from "@/components/copy-link";
 
 export const SectionHeader: FC<{
     className?: string;
     children: string;
     id: string;
-}> = ({ children, className }) => {
+}> = ({ children, className, id }) => {
     return (
-      <h2 className={classNames("text-3xl font-bold px-4", className)}>
-        {children}
+      <h2 id={id} className={classNames("text-3xl font-bold px-4", className)}>
+        {children} <CopyLink id={id} />
       </h2>
     );
 };

@@ -48,7 +48,7 @@ const HowItWorks: FCTL = ({ t }) => (
 );
 
 const About: FCTL = ({ t }) => (
-  <div className="w-100 py-16 bg-armaqi-pink flex flex-col items-center">
+  <div id="about" className="w-100 py-16 bg-armaqi-pink flex flex-col items-center">
     <div className="max-w-screen-md text-white text-center text-2xl font-light">
       {t('about')}
     </div>

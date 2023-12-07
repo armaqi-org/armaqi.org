@@ -15,10 +15,10 @@ const List: FC<{
   <div className={className}>
     <h4 className="text-lg font-semibold">{t(titleKey)}</h4>
 
-    <ul className="list-disc text-xl">
+    <ul className="list-disc text-xl ml-8 md:ml-0">
       {new Array(len).fill(0).map((_, ind) => (
         // eslint-disable-next-line react/no-array-index-key
-        <li key={ind} className={classNames('font-light text-base')}>
+        <li key={ind} className={classNames('font-light text-base text-left')}>
           {t(`${tPrefix}${ind}`)}
         </li>
       ))}
@@ -35,13 +35,13 @@ export const LandingSensor = () => {
         id="sensor"
         title={t('title')}
       >
-        <div className="flex flex-col items-center">
+        <div className="px-4 flex flex-col items-center">
           <p className="text-xl text-center max-w-lg font-light">
             {t('description')}
           </p>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-20 text-center sm:mx-auto sm:max-w-sm md:mt-20 md:max-w-full md:grid-cols-2 md:text-left">
+        <div className="mt-10 px-4 grid grid-cols-1 gap-20 text-center sm:mx-auto sm:max-w-sm md:mt-20 md:max-w-full md:grid-cols-2 md:text-left">
           <div className="">
             <Image className="mx-auto h-64 object-cover md:order-2 md:ml-0 md:object-left" src="/sensor-standard.jpeg" alt="sensor standard" width={560} height={340} />
             <div className="">

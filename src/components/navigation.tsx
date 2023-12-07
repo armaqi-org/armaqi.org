@@ -56,9 +56,9 @@ export const Navigation: FC<{ locale: Locale }> = ({ locale }) => {
                 "md:space-x-8 rtl:space-x-reverse"
                 )}
               >
-                {['map', 'about', 'smog', 'add_sensor'].map(item => (
+                {['map', 'about', 'smog', 'sensor'].map(item => (
                   <li key={item}>
-                    <a href="#"
+                    <a href={`#${item}`}
                       className="block uppercase py-2 md:px-3 text-sm text-black rounded font-semibold md:bg-transparent md:p-0"
                       aria-current="page"
                     >{tn(item)}

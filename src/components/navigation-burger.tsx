@@ -23,7 +23,7 @@ export const NavigationBurger: FC = () => {
     };
     
     return (
-      <div className="md:hidden menu-burger:hidden fixed top-4 left-4 z-top p-2 rounded bg-white cursor-pointer" onClick={burgerClick as any}>
+      <div className="md:hidden menu-burger:hidden border fixed top-4 left-4 z-top p-2 rounded bg-white cursor-pointer" onClick={burgerClick as any}>
         <svg
           height="32px"
           width="32px"

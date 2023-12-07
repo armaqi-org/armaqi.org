@@ -5,7 +5,7 @@ export const LandingFooter = () => {
 
   return (
     <div
-      className="w-full flex flex-col items-center justify-center  py-40 relative bg-opacity-60 bg-black"
+      className="w-full flex flex-col items-center justify-center py-24 px-4 md:py-40 relative bg-opacity-60 bg-black"
     >
       <div className="absolute -z-10 bg-cover inset-0" style={{ backgroundImage: "url('/mountains.jpg')" }} />
       <div className="text-white text-center font-semibold text-3xl max-w-md mb-12">{t('title')}</div>
@@ -54,9 +54,9 @@ export const LandingFooter = () => {
         </a>
       </div>
 
-      <p className="font-thin text-xs text-white">Armaqi.org is a part of <a href="https://sensor.community" target="_blank">Sensor.Community</a> - a contributor-driven global civic tech network</p>
-      <p className="font-thin text-xs text-white">{t('source')} - <a href="https://www.euro.who.int/__data/assets/pdf_file/0004/274963/Residential-Heating-Wood-Coal-Health-Impacts-ru.pdf" target="_blank">Residential heating with wood and coal: health impacts and policy options</a></p>
-      <p className="font-thin text-xs text-white"><a href="https://www.who.int/data/gho/data/themes/air-pollution" target="_blank">Air pollution data portal</a></p>
+      <p className="text-center md:text-left font-thin text-xs text-white">Armaqi.org is a part of <a href="https://sensor.community" target="_blank">Sensor.Community</a> - a contributor-driven global civic tech network</p>
+      <p className="text-center md:text-left font-thin text-xs text-white">{t('source')} - <a href="https://www.euro.who.int/__data/assets/pdf_file/0004/274963/Residential-Heating-Wood-Coal-Health-Impacts-ru.pdf" target="_blank">Residential heating with wood and coal: health impacts and policy options</a></p>
+      <p className="text-center md:text-left font-thin text-xs text-white"><a href="https://www.who.int/data/gho/data/themes/air-pollution" target="_blank">Air pollution data portal</a></p>
     </div>
     );
 };
