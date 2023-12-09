@@ -1,5 +1,5 @@
 'use client';
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Toast } from "@/components/toast";
 
@@ -8,7 +8,6 @@ export const OrderForm: FC<{
     t: Record<Trans, string>;
     sensors: string[];
 }> = ({  sensors, t }) => {
-    const [csrf, setCsrf] = useState('');
     const [loading, setLoading] = useState(false);
     const [result, setResult] = useState<boolean | undefined>(undefined);
     const [to, setTo] = useState<number | undefined>(undefined);
@@ -34,7 +33,7 @@ export const OrderForm: FC<{
                 'Content-Type': 'application/json'
             },
             method: 'POST',
-            body: JSON.stringify({ ...data, csrf }),
+            body: JSON.stringify({ ...data }),
         })
             .then(res => res.json())
             .then(({ success }) => success)
@@ -55,12 +54,6 @@ export const OrderForm: FC<{
             }, 5000) as any
         );
     };
-
-    useEffect(() => {
-        fetch('/api/auth/csrf')
-            .then(res => res.json())
-            .then(({ csrfToken }) => setCsrf(csrfToken));
-    }, []);
 
     return (
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -125,7 +118,6 @@ export const OrderForm: FC<{
         </div>
 
         <div className="w-full flex flex-col items-center justify-center">
-          <input type="hidden" value={csrf} name="csrf" />
           <button
             className="mt-4 rounded-md bg-blue-800 px-10 py-2 font-semibold text-white"
             disabled={loading}
