@@ -154,7 +154,10 @@
     "orderFieldDistrictPlaceholder": "Kentron",
     "orderFieldSensor": "Select sensor",
     "orderSubmit": "Submit an order",
-    "orderTerms": "By clicking the button, you agree to the terms of personal data"
+    "orderTerms": "By clicking the button, you agree to the terms of personal data",
+
+    "orderSuccess": "Request has been sent. You will be contacted shortly.",
+    "orderError": "Error processing request. Use contacts to get in touch"
   },
   "LandingCommunity": {
     "title": "Join the community of people who care!",

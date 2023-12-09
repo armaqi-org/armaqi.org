@@ -93,6 +93,8 @@ export const LandingSensor = () => {
                     'sensorDiy': t('diyTitle'),
                     'submit': t('orderSubmit'),
                     'terms': t('orderTerms'),
+                    'success': t('orderSuccess'),
+                    'error': t('orderError'),
               }}
             />
           </div>
