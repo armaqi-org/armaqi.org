@@ -13,6 +13,6 @@ export const CopyLink: FC<{ id: string }> = ({ id }) => {
     };
     
     return (
-      <span title="copy link" className="opacity-5 hover:opacity-20 text-black cursor-pointer" onClick={onClick as any}>#</span>
+      <span title="copy link" className="hidden opacity-5 hover:opacity-20 text-black cursor-pointer" onClick={onClick as any}>#</span>
     );
 };

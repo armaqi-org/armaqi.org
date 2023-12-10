@@ -21,23 +21,24 @@ export const LandingQuality = () => {
         id="quality"
         className="mb-16"
         title={t('title')}
-        thin
+        center
       >
         <div className="flex items-start flex-wrap max-w-screen-md px-4">
           {scales.map(([text, color], index) => (
             <div key={text} className="mb-12 lg:mb-0 mr-4 flex-1">
               <CloudQualitySvg color={color} />
-              <div className="text-sm">{text}</div>
+              <div className="text-sm text-black">{text}</div>
               {t(`scale${index}`).split(':').map((tt, index) =>
-                    !index ? (
-                      <div className="font-bold text-sm" key={tt}>{tt}</div>
-                    ) : tt ? (
-                      <div className="text-xs" key={tt}>{tt}</div>
-                    ) : null
-              )}
+                              !index ? (
+                                <div className="font-bold text-sm text-black" key={tt}>{tt}</div>
+                              ) : tt ? (
+                                <div className="text-xs text-black" key={tt}>{tt}</div>
+                              ) : null
+                          )}
             </div>
-          ))}
+                  ))}
         </div>
+
         <p className="text-xs text-center max-w-screen-md font-light mt-8 px-4">
           {t('hint')}
         </p>
@@ -46,7 +47,7 @@ export const LandingQuality = () => {
       <Section id="quality-chart"
         className="mb-16"
         title={t('chartTitle')}
-        thin
+        center
       >
         <Carousel slides={[
             { src: './landing-chart-yerevan.svg', text: t('chartTitleYerevan') },

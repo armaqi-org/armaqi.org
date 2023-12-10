@@ -27,7 +27,6 @@ export const Carousel: FC<{ slides: Slide[] }> = ({ slides }) => {
             <Image
               src={slides[currentSlide]?.src}
               alt="chart"
-              className="dark:invert"
               width={860}
               height={350}
             />
@@ -37,7 +36,7 @@ export const Carousel: FC<{ slides: Slide[] }> = ({ slides }) => {
         <button
           id="data-carousel-prev"
           type="button"
-          className="group flex h-full cursor-pointer items-center justify-center focus:outline-none absolute -left-8 top-0 z-30"
+          className="group hidden md:block flex h-full cursor-pointer items-center justify-center focus:outline-none absolute -left-8 top-0 z-30"
           onClick={prevSlide}
         >
           <span
@@ -64,7 +63,7 @@ export const Carousel: FC<{ slides: Slide[] }> = ({ slides }) => {
         <button
           id="data-carousel-next"
           type="button"
-          className="group absolute -right-8 top-0 z-30 flex h-full cursor-pointer items-center justify-center focus:outline-none"
+          className="group hidden md:block absolute -right-8 top-0 z-30 flex h-full cursor-pointer items-center justify-center focus:outline-none"
           onClick={nextSlide}
         >
           <span

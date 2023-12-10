@@ -62,7 +62,7 @@ export const OrderForm: FC<{
         <label className="block mb-4" htmlFor="email">
           <p className="text-gray-600">{t.email}</p>
           <input
-            className="w-full rounded-md border bg-white px-2 py-2 outline-none ring-blue-600 focus:ring-1"
+            className="w-full border bg-white px-2 py-2 outline-none ring-blue-600 focus:ring-1"
             type="email"
             placeholder={t.emailPlaceholder}
             {...register("email", { required: true })}
@@ -73,7 +73,7 @@ export const OrderForm: FC<{
         <label className="block mb-4" htmlFor="name">
           <p className="text-gray-600">{t.name}</p>
           <input
-            className="w-full rounded-md border bg-white px-2 py-2 outline-none ring-blue-600 focus:ring-1"
+            className="w-full border bg-white px-2 py-2 outline-none ring-blue-600 focus:ring-1"
             type="text"
             placeholder={t.namePlaceholder}
             {...register("name", { required: true })}
@@ -84,7 +84,7 @@ export const OrderForm: FC<{
         <label className="block mb-4" htmlFor="contact">
           <p className="text-gray-600">{t.contact}</p>
           <input
-            className="w-full rounded-md border bg-white px-2 py-2 outline-none ring-blue-600 focus:ring-1"
+            className="w-full border bg-white px-2 py-2 outline-none ring-blue-600 focus:ring-1"
             type="text"
             placeholder={t.contactPlaceholder}
             {...register("contact", { required: true })}
@@ -95,7 +95,7 @@ export const OrderForm: FC<{
         <label className="block mb-4" htmlFor="district">
           <p className="text-gray-600">{t.district}</p>
           <input
-            className="w-full rounded-md border bg-white px-2 py-2 outline-none ring-blue-600 focus:ring-1"
+            className="w-full border bg-white px-2 py-2 outline-none ring-blue-600 focus:ring-1"
             type="text"
             placeholder={t.districtPlaceholder}
             {...register("district", { required: true })}
@@ -107,7 +107,7 @@ export const OrderForm: FC<{
         <div className="flex flex-col sm:col-span-3 w-full mb-4">
           <label className="text-gray-600" htmlFor="sensor">{t.sensor}</label>
           <select
-            className="rounded-lg border px-2 py-2 shadow-sm outline-none focus:ring"
+            className="border px-2 py-2 shadow-sm outline-none focus:ring"
             {...register("sensor", { required: true })}
             disabled={loading}
           >
@@ -119,7 +119,7 @@ export const OrderForm: FC<{
 
         <div className="w-full flex flex-col items-center justify-center">
           <button
-            className="mt-4 rounded-md bg-blue-800 px-10 py-2 font-semibold text-white"
+            className="mt-4 bg-armaqi-base font-semibold py-4 px-16 text-white"
             disabled={loading}
           >
             {t.submit}

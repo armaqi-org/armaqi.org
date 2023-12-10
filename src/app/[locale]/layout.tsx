@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { Inter } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
 import { useLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { ReactNode } from 'react';
@@ -7,7 +7,7 @@ import { Locale } from "@/const";
 
 import '../globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const font = Montserrat({ subsets: ['latin'] });
 
 const locales: Record<Locale, string> = {
   [Locale.EN]: 'en_US',
@@ -44,7 +44,7 @@ export default function RootLayout({
 
   return (
     <html lang={getLang(locale)}>
-      <body className={classNames(inter.className, 'text-armaqi-base menu-top')}>{children}</body>
+      <body className={classNames(font.className, 'text-armaqi-base menu-top')}>{children}</body>
     </html>
   );
 }
