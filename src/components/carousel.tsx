@@ -21,7 +21,7 @@ export const Carousel: FC<{ slides: Slide[] }> = ({ slides }) => {
     return (
       <div className="relative w-full max-w-screen-md">
         <div
-          className="relative h-96 overflow-hidden rounded-lg"
+          className="relative h-auto md:h-96 overflow-hidden rounded-lg"
         >
           <div className={classNames("duration-700 ease-in-out",)}>
             <Image
@@ -40,10 +40,10 @@ export const Carousel: FC<{ slides: Slide[] }> = ({ slides }) => {
           onClick={prevSlide}
         >
           <span
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white group-focus:ring-4 group-focus:ring-white"
           >
             <svg
-              className="h-4 w-4 text-white dark:text-gray-800"
+              className="h-4 w-4 text-white"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="black"
@@ -67,10 +67,10 @@ export const Carousel: FC<{ slides: Slide[] }> = ({ slides }) => {
           onClick={nextSlide}
         >
           <span
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white group-focus:outline-none group-focus:ring-4 group-focus:ring-white"
           >
             <svg
-              className="h-4 w-4 text-white dark:text-gray-800"
+              className="h-4 w-4 text-white"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="black"

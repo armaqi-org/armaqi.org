@@ -23,20 +23,20 @@ export const LandingQuality = () => {
         title={t('title')}
         center
       >
-        <div className="flex items-start flex-wrap max-w-screen-md px-4">
+        <div className="grid grid-cols-3 lg:grid-cols-6 max-w-screen-md px-8">
           {scales.map(([text, color], index) => (
-            <div key={text} className="mb-12 lg:mb-0 mr-4 flex-1">
+            <div key={text} className="mb-12 lg:mb-0 mx-4 ">
               <CloudQualitySvg color={color} />
               <div className="text-sm text-black">{text}</div>
               {t(`scale${index}`).split(':').map((tt, index) =>
-                              !index ? (
-                                <div className="font-bold text-sm text-black" key={tt}>{tt}</div>
-                              ) : tt ? (
-                                <div className="text-xs text-black" key={tt}>{tt}</div>
-                              ) : null
-                          )}
+                  !index ? (
+                    <div className="font-bold text-sm text-black" key={tt}>{tt}</div>
+                  ) : tt ? (
+                    <div className="text-xs text-black" key={tt}>{tt}</div>
+                  ) : null
+              )}
             </div>
-                  ))}
+          ))}
         </div>
 
         <p className="text-xs text-center max-w-screen-md font-light mt-8 px-4">

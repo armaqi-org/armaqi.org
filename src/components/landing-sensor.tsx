@@ -78,7 +78,10 @@ export const LandingSensor = () => {
         <div className="max-w-screen-md mx-auto">
           <div className="space-y-4 px-8 py-10 max-w-screen-md">
             <OrderForm
-              sensors={[t("standardTitle"), t("diyTitle")]}
+              sensors={[
+                  ['standard', t("standardTitle")],
+                  ['diy', t("diyTitle")]
+              ]}
               t={{
                     'email': t('orderFieldEmail'),
                     'emailPlaceholder': t('orderFieldEmailPlaceholder'),

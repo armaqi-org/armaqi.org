@@ -1,81 +1,18 @@
-import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { FC, Fragment } from "react";
+import { LandingAbout } from "@/components/landing-about";
+import { LandingDilijan, LandingYerevan } from "@/components/landing-banners";
 import { LandingCommunity } from "@/components/landing-community";
 import { LandingConsequences } from "@/components/landing-consequences";
 import { LandingFooter } from "@/components/landing-footer";
+import { LandingHowItWorks } from "@/components/landing-how-it-works";
 import { LandingQuality } from "@/components/landing-quality";
 import { LandingSensor } from "@/components/landing-sensor";
 import { LandingSmog } from "@/components/landing-smog";
 import { LandingSolution } from "@/components/landing-solution";
 import { LandingWhyHappening } from "@/components/landing-why-happening";
 import { Navigation } from "@/components/navigation";
-import { SectionHeader } from "@/components/section";
 import { MapModule } from "@/modules/map";
 import { useLocale } from "@/tools/locale";
-
-type FCTL = FC<{ t: ReturnType<typeof useTranslations<'Landing'>>}>;
-
-const HowItWorks: FCTL = ({ t }) => (
-  <div className="container my-24 mx-auto md:px-6 flex flex-col items-center">
-    <section className="max-w-screen-lg">
-      <div className="flex flex-wrap">
-        <div className="w-full shrink-0 grow-0 basis-auto md:w-6/12 lg:w-6/12 overflow-hidden">
-          <Image src="/sensor-window.jpeg"
-            className="mb-6 w-full shadow-lg"
-            alt="sensor"
-            width={747}
-            height={747}
-          />
-        </div>
-
-        <div className="w-full shrink-0 grow-0 basis-auto text-center md:w-6/12 md:pl-12 md:text-left lg:w-6/12">
-          <SectionHeader id="how" className="mb-6 px-0">{t('howTitle')}</SectionHeader>
-          <p className="font-light leading-8">
-            {t("howText").split('\n').map((item, key) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <Fragment key={key}>{item}<br /></Fragment>
-            ))}
-          </p>
-
-          <div className="mt-12">
-            <a className="bg-armaqi-base text-white font-semibold py-4 px-16" href="#sensor" >
-              {t('howAction')}
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-);
-
-const About: FCTL = ({ t }) => (
-  <div id="about" className="w-100 py-16 bg-armaqi-pink flex flex-col items-center">
-    <div className="max-w-screen-md text-white text-left leading-10 text-2xl font-light mx-8 md:mx-0">
-      {t('about')}
-    </div>
-  </div>
-);
-
-const Yerevan: FCTL = ({ t }) => (
-  <div
-    className="w-full h-screen flex items-center justify-center bg-cover"
-    style={{ backgroundImage: "url('/yerevan.jpg')" }}
-  >
-    <div className="text-white font-semibold text-center px-6 text-3xl">{t('ararat')}</div>
-  </div>
-);
-
-const Dilijan: FCTL = ({ t }) => (
-  <div
-    className="w-full h-screen flex flex-col items-center justify-end bg-cover"
-    style={{ backgroundImage: "url('/mimino.jpg')" }}
-  >
-    <div className="text-white text-center text-xl max-w-screen-md mb-8">{t('mimino0')}</div>
-    <div className="text-white text-center text-xl max-w-screen-md">{t('mimino1')}</div>
-    <div className="h-[15%]" />
-  </div>
-);
 
 export default function HomePage() {
     const locale = useLocale();
@@ -87,14 +24,14 @@ export default function HomePage() {
         <Navigation locale={locale} />
         <MapModule />
         <LandingQuality />
-        <About t={t} />
-        <HowItWorks t={t} />
-        <Yerevan t={t} />
+        <LandingAbout t={t} />
+        <LandingHowItWorks t={t} />
+        <LandingYerevan t={t} />
         <LandingSmog />
         <LandingWhyHappening />
         <LandingConsequences />
         <LandingSolution />
-        <Dilijan t={t} />
+        <LandingDilijan t={t} />
         <LandingSensor />
         <LandingCommunity />
         <LandingFooter />

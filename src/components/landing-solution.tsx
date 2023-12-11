@@ -24,7 +24,7 @@ export const LandingSolution = () => {
         />
       </Section>
 
-      <Section className="mb-32 mt-32" id="solution-everyone" title={t(`titleEveryone`)}    >
+      <Section className="mb-32 mt-32" id="solution-everyone" title={t(`titleEveryone`)}>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:mt-8">
           {sections.map(([key, src]) => (
             <div key={key} className=" flex flex-col items-center">
@@ -34,7 +34,7 @@ export const LandingSolution = () => {
                 width={80}
                 height={80}
               />
-              <h3 className="mt-4 text-2xl font-bold leading-none">{t(`item${key}:title`)}</h3>
+              <h3 className="mt-4 text-2xl text-center font-bold leading-none">{t(`item${key}:title`)}</h3>
               <p className="mt-6 text-center md:max-w-xs">{t(`item${key}:text`)}</p>
             </div>
           ))}

@@ -6,7 +6,7 @@ import { Toast } from "@/components/toast";
 type Trans = 'email' | 'emailPlaceholder' | 'name' | 'namePlaceholder' | 'contact' | 'contactPlaceholder' | 'district' | 'districtPlaceholder' | 'sensor' | 'sensorStandard' | 'sensorDiy' | 'submit' | 'terms' | 'success' | 'error';
 export const OrderForm: FC<{
     t: Record<Trans, string>;
-    sensors: string[];
+    sensors: [string, string][];
 }> = ({  sensors, t }) => {
     const [loading, setLoading] = useState(false);
     const [result, setResult] = useState<boolean | undefined>(undefined);
@@ -17,7 +17,7 @@ export const OrderForm: FC<{
             email: '',
             district: '',
             contact: '',
-            sensor: sensors[0]
+            sensor: sensors[0][0]
         }
     });
     const onSubmit = async (data: any) => {
@@ -111,8 +111,8 @@ export const OrderForm: FC<{
             {...register("sensor", { required: true })}
             disabled={loading}
           >
-            {sensors.map(s => (
-              <option key={s} value={s}>{s}</option>
+            {sensors.map(([key, text]) => (
+              <option key={key} value={key}>{text}</option>
             ))}
           </select>
         </div>

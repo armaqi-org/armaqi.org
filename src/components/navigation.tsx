@@ -33,18 +33,21 @@ export const Navigation: FC<{ locale: Locale }> = ({ locale }) => {
                 'flex flex-wrap',
 
                 // mobile (<= md)
-                'max-w-sm bg-white h-screen flex-col items-start pl-4',
+                'w-[75%] max-w-sm bg-white h-screen flex-col items-start pl-4',
 
                 // wide
-                'md:flex-row md:max-w-screen-xl md:h-auto md:bg-transparent md:items-center md:justify-between md:mx-auto md:px-8',
+                'md:flex-row md:max-w-screen-xl md:w-full md:h-auto md:bg-transparent md:items-center md:justify-between md:mx-auto md:px-8',
             )}
           >
-            <a href="/"
-              className="flex flex-col items-center space-x-3 rtl:space-x-reverse py-2"
-            >
-              <CloudQualitySvg color="#77C2EB"  />
-              <p className="text-xs text-black font-semibold">Armenia Air<br />Quality Index</p>
-            </a>
+            <div className="flex flex-row justify-between w-full md:w-auto">
+              <a href="/" className="flex flex-col space-x-3 rtl:space-x-reverse items-center py-2">
+                <CloudQualitySvg color="#77C2EB"  />
+                <p className="text-xs text-black font-semibold">Armenia Air<br />Quality Index</p>
+              </a>
+
+              <div className="md:hidden mr-8 text-2xl text-gray-300 mt-4 cursor-pointer">x</div>
+            </div>
+
 
             <div
               className="items-center justify-end w-full md:flex md:w-auto flex-1 pr-5"
@@ -59,7 +62,7 @@ export const Navigation: FC<{ locale: Locale }> = ({ locale }) => {
                 {['map', 'about', 'smog', 'sensor'].map(item => (
                   <li key={item}>
                     <a href={`#${item}`}
-                      className="block uppercase py-2 md:px-3 text-sm text-black rounded font-semibold md:bg-transparent md:p-0"
+                      className="block uppercase py-2 md:px-3 text-md md:text-sm text-black rounded font-semibold md:bg-transparent md:p-0"
                       aria-current="page"
                     >{tn(item)}
                     </a>

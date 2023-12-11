@@ -11,9 +11,11 @@ export const NavigationBurger: FC = () => {
             }
         };
         document.body.addEventListener('click', listener);
+        window.addEventListener('resize', listener);
 
         return () => {
             document.body.removeEventListener('click', listener);
+            window.removeEventListener('resize', listener);
         };
     }, []);
     const burgerClick = (e: Event) => {

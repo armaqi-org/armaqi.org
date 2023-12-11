@@ -6,12 +6,6 @@
   --foreground-rgb: 0, 0, 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-  }
-}
-
 body {
 }
 
@@ -25,4 +19,8 @@ body {
 
 .z-top {
   z-index: 1001;
+}
+
+.leaflet-control-container {
+  display: none;
 }
