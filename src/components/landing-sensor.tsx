@@ -41,7 +41,7 @@ export const LandingSensor = () => {
           </p>
         </div>
 
-        <div className="mt-10 px-4 grid grid-cols-1 gap-20 text-center sm:mx-auto sm:max-w-sm md:mt-20 md:max-w-full md:grid-cols-2 md:text-left">
+        <div className="mt-10 px-4 grid grid-cols-1 gap-20 sm:mx-auto sm:max-w-sm md:mt-20 md:max-w-full md:grid-cols-2">
           <div className="">
             <Image className="mx-auto h-64 object-cover md:order-2 md:ml-0 md:object-left" src="/sensor-standard.jpeg" alt="sensor standard" width={560} height={340} />
             <div className="">

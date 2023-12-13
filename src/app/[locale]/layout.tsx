@@ -44,7 +44,7 @@ export default function RootLayout({
 
   return (
     <html lang={getLang(locale)}>
-      <body className={classNames(font.className, 'text-armaqi-base menu-top')}>{children}</body>
+      <body className={classNames(font.className, 'text-base text-armaqi-base menu-top')}>{children}</body>
     </html>
   );
 }

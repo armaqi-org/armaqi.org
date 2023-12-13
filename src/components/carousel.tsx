@@ -21,7 +21,7 @@ export const Carousel: FC<{ slides: Slide[] }> = ({ slides }) => {
     return (
       <div className="relative w-full max-w-screen-md">
         <div
-          className="relative h-auto md:h-96 overflow-hidden rounded-lg"
+          className="relative h-auto md:h-96 overflow-hidden rounded-lg mx-8 lg:mx-0"
         >
           <div className={classNames("duration-700 ease-in-out",)}>
             <Image
@@ -36,7 +36,10 @@ export const Carousel: FC<{ slides: Slide[] }> = ({ slides }) => {
         <button
           id="data-carousel-prev"
           type="button"
-          className="group hidden md:block flex h-full cursor-pointer items-center justify-center focus:outline-none absolute -left-8 top-0 z-30"
+          className={classNames(
+              'absolute top-0 z-30 group flex h-full cursor-pointer items-center justify-center focus:outline-none ',
+              '-left-4 lg:-left-8'
+          )}
           onClick={prevSlide}
         >
           <span
@@ -63,7 +66,10 @@ export const Carousel: FC<{ slides: Slide[] }> = ({ slides }) => {
         <button
           id="data-carousel-next"
           type="button"
-          className="group hidden md:block absolute -right-8 top-0 z-30 flex h-full cursor-pointer items-center justify-center focus:outline-none"
+          className={classNames(
+              'absolute top-0 z-30 group flex h-full cursor-pointer items-center justify-center focus:outline-none ',
+              '-right-4 lg:-right-8'
+          )}
           onClick={nextSlide}
         >
           <span

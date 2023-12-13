@@ -19,6 +19,16 @@ const config: Config = {
         'armaqi-base': '#15428A'
       }
     },
+    fontSize: {
+      xs: ['12px', '20px'],
+      sm: ['14px', '24px'],
+      base: ['16px', '28px'],
+      lg: ['18px', '32px'],
+      xl: ['20px', '32px'],
+      '2xl': ['24px', '36px'],
+      '3xl': ['30px', '40px'],
+      '4xl': ['36px', '44px'],
+    },
   },
   plugins: [
     plugin(function({ addVariant }) {
