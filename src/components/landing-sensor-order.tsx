@@ -9,7 +9,7 @@ export const OrderForm: FC<{
     sensors: [string, string][];
 }> = ({  sensors, t }) => {
     const [loading, setLoading] = useState(false);
-    const [result, setResult] = useState<boolean | undefined>(true);
+    const [result, setResult] = useState<boolean | undefined>(undefined);
     const [to, setTo] = useState<number | undefined>(undefined);
     const { formState: { errors }, handleSubmit, register, reset } = useForm({
         defaultValues: {
