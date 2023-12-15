@@ -3,6 +3,7 @@ import { Montserrat } from 'next/font/google';
 import { useLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { ReactNode } from 'react';
+import { YandexMetrika } from "@/components/ym";
 import { Locale } from "@/const";
 
 import '../globals.css';
@@ -44,6 +45,7 @@ export default function RootLayout({
 
   return (
     <html lang={getLang(locale)}>
+      <head><YandexMetrika /></head>
       <body className={classNames(font.className, 'text-base text-armaqi-base menu-top')}>{children}</body>
     </html>
   );
