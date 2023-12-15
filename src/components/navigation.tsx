@@ -42,7 +42,7 @@ export const Navigation: FC<{ locale: Locale }> = ({ locale }) => {
             <div className="flex flex-row justify-between w-full md:w-auto">
               <a href="/" className="flex flex-col space-x-3 rtl:space-x-reverse items-center py-2">
                 <CloudQualitySvg color="#77C2EB"  />
-                <p className="text-xs text-black font-semibold">Armenia Air<br />Quality Index</p>
+                <p className="text-xs text-black font-semibold leading-4">Armenia Air<br />Quality Index</p>
               </a>
 
               <div className="md:hidden mr-8 text-2xl text-gray-300 mt-4 cursor-pointer">x</div>

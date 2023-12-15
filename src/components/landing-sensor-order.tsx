@@ -9,16 +9,16 @@ export const OrderForm: FC<{
     sensors: [string, string][];
 }> = ({  sensors, t }) => {
     const [loading, setLoading] = useState(false);
-    const [result, setResult] = useState<boolean | undefined>(undefined);
+    const [result, setResult] = useState<boolean | undefined>(true);
     const [to, setTo] = useState<number | undefined>(undefined);
-    const { handleSubmit, register, reset } = useForm({
+    const { formState: { errors }, handleSubmit, register, reset } = useForm({
         defaultValues: {
             name: '',
             email: '',
             district: '',
             contact: '',
             sensor: sensors[0][0]
-        }
+        },
     });
     const onSubmit = async (data: any) => {
         setLoading(true);
@@ -45,88 +45,90 @@ export const OrderForm: FC<{
 
         if (success) {
             reset();
+        } else {
+            setTo(
+                setTimeout(() => {
+                    setResult(undefined);
+                    setTo(undefined);
+                }, 5000) as any
+            );
         }
-
-        setTo(
-            setTimeout(() => {
-                setResult(undefined);
-                setTo(undefined);
-            }, 5000) as any
-        );
     };
 
-    return (
-      <form onSubmit={handleSubmit(onSubmit)}>
-        {result !== undefined ? <Toast status={result ? "success" : 'error'} text={result ? t.success : t.error} /> : null}
+    return result ? (
+      <p className="text-white text-center text-lg bg-green-500 w-full py-4 ">{t.success}</p>
+        ) : (
+          <form onSubmit={handleSubmit(onSubmit)}>
+            {result === false ? <Toast status="error" text={t.error} /> : null}
           
-        <label className="block mb-4" htmlFor="email">
-          <p className="text-gray-600">{t.email}</p>
-          <input
-            className="w-full border bg-white px-2 py-2 outline-none ring-blue-600 focus:ring-1"
-            type="email"
-            placeholder={t.emailPlaceholder}
-            {...register("email", { required: true })}
-            disabled={loading}
-            required
-          />
-        </label>
-        <label className="block mb-4" htmlFor="name">
-          <p className="text-gray-600">{t.name}</p>
-          <input
-            className="w-full border bg-white px-2 py-2 outline-none ring-blue-600 focus:ring-1"
-            type="text"
-            placeholder={t.namePlaceholder}
-            {...register("name", { required: true })}
-            disabled={loading}
-            required
-          />
-        </label>
-        <label className="block mb-4" htmlFor="contact">
-          <p className="text-gray-600">{t.contact}</p>
-          <input
-            className="w-full border bg-white px-2 py-2 outline-none ring-blue-600 focus:ring-1"
-            type="text"
-            placeholder={t.contactPlaceholder}
-            {...register("contact", { required: true })}
-            disabled={loading}
-            required
-          />
-        </label>
-        <label className="block mb-4" htmlFor="district">
-          <p className="text-gray-600">{t.district}</p>
-          <input
-            className="w-full border bg-white px-2 py-2 outline-none ring-blue-600 focus:ring-1"
-            type="text"
-            placeholder={t.districtPlaceholder}
-            {...register("district", { required: true })}
-            disabled={loading}
-            required
-          />
-        </label>
+            <label className="block mb-4" htmlFor="email">
+              <p className="text-gray-600">{t.email}</p>
+              <input
+                className="w-full border bg-white px-2 py-2 outline-none ring-blue-600 focus:ring-1"
+                type="email"
+                placeholder={t.emailPlaceholder}
+                {...register("email", { required: true })}
+                disabled={loading}
+                required
+              />
+            </label>
+            <label className="block mb-4" htmlFor="name">
+              <p className="text-gray-600">{t.name}</p>
+              <input
+                className="w-full border bg-white px-2 py-2 outline-none ring-blue-600 focus:ring-1"
+                type="text"
+                placeholder={t.namePlaceholder}
+                {...register("name", { required: true })}
+                disabled={loading}
+                required
+              />
+            </label>
+            <label className="block mb-4" htmlFor="contact">
+              <p className="text-gray-600">{t.contact}</p>
+              <input
+                className="w-full border bg-white px-2 py-2 outline-none ring-blue-600 focus:ring-1"
+                type="text"
+                placeholder={t.contactPlaceholder}
+                {...register("contact", { required: true })}
+                disabled={loading}
+                required
+              />
+            </label>
+            <label className="block mb-4" htmlFor="district">
+              <p className="text-gray-600">{t.district}</p>
+              <input
+                className="w-full border bg-white px-2 py-2 outline-none ring-blue-600 focus:ring-1"
+                type="text"
+                placeholder={t.districtPlaceholder}
+                {...register("district", { required: true })}
+                disabled={loading}
+                required
+              />
+            </label>
 
-        <div className="flex flex-col sm:col-span-3 w-full mb-4">
-          <label className="text-gray-600" htmlFor="sensor">{t.sensor}</label>
-          <select
-            className="border px-2 py-2 shadow-sm outline-none focus:ring"
-            {...register("sensor", { required: true })}
-            disabled={loading}
-          >
-            {sensors.map(([key, text]) => (
-              <option key={key} value={key}>{text}</option>
+            <div className="flex flex-col sm:col-span-3 w-full mb-4">
+              <label className="text-gray-600" htmlFor="sensor">{t.sensor}</label>
+              <select
+                className="border px-2 py-2 shadow-sm outline-none focus:ring"
+                {...register("sensor", { required: true })}
+                disabled={loading}
+              >
+                {sensors.map(([key, text]) => (
+                  <option key={key} value={key}>{text}</option>
             ))}
-          </select>
-        </div>
+              </select>
+            </div>
 
-        <div className="w-full flex flex-col items-center justify-center">
-          <button
-            className="mt-4 bg-armaqi-base font-semibold py-4 px-16 text-white"
-            disabled={loading}
-          >
-            {t.submit}
-          </button>
-
-          <p className="font-light mt-8">{t.terms}</p>
-        </div>
-      </form>
+            <div className="w-full flex flex-col items-center justify-center">
+              <button
+                className="mt-4 bg-armaqi-base font-semibold py-4 px-16 text-white"
+                disabled={loading}
+              >
+                {t.submit}
+              </button>
+            
+              <p className="font-light mt-8">{t.terms}</p>
+            </div>
+          </form>
     );
 };
