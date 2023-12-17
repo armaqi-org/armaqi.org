@@ -26,7 +26,6 @@ export const Navigation: FC<{ locale: Locale }> = ({ locale }) => {
           'md:block md:w-full md:border-b md:right-0 md:left-0 md:bottom-unset md:bg-white md:menu-top:bg-transparent md:menu-top:border-0',
           )}
         >
-
           <div
             className={classNames(
                 // all
@@ -48,15 +47,13 @@ export const Navigation: FC<{ locale: Locale }> = ({ locale }) => {
               <div className="md:hidden mr-8 text-2xl text-gray-300 mt-4 cursor-pointer">x</div>
             </div>
 
-
             <div
-              className="items-center justify-end w-full md:flex md:w-auto flex-1 pr-5"
-              id="navbar-sticky"
+              className="items-center justify-end w-full md:flex md:w-auto md:flex-1 mb-2 md:mb-0 pr-5"
             >
               <ul
                 className={classNames(
-                    "flex flex-col p-4 md:p-0 mt-4 font-normal lg   md:flex-row md:mt-0 md:border-0",
-                "md:space-x-8 rtl:space-x-reverse"
+                    "flex flex-col p-4 md:p-0 mt-4 font-normal lg md:flex-row md:mt-0 md:border-0",
+                    "md:space-x-8 rtl:space-x-reverse"
                 )}
               >
                 {['map', 'about', 'smog', 'sensor'].map(item => (
@@ -77,21 +74,20 @@ export const Navigation: FC<{ locale: Locale }> = ({ locale }) => {
                 <Link href="/" className="ml-2 font-medium text-black">
                   Հայ
                 </Link>
-            )}
+              )}
               {locale !== Locale.EN && (
                 <Link href={`/${Locale.EN}`} className="ml-2 font-medium text-black">
                   ENG
                 </Link>
-            )}
+              )}
               {locale !== Locale.RU && (
                 <Link href={`/${Locale.RU}`} className="ml-2 font-medium text-black">
                   РУС
                 </Link>
-            )}
+              )}
             </div>
           </div>
         </nav>
       </>
-
     );
 };
