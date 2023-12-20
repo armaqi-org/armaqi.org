@@ -8,12 +8,12 @@ export default function SetupInstructions() {
     const t = useTranslations('Setup');
 
     const docs = {
-        'am': '1A1RMsw4UdQsOVQSItaB908AHb5naNpaYeydx2dK6JaM',
-        'en': '151QvOqCHNDS3GUpoInlhAsCqQdBBlqdwKfF2dGBVJok',
-        'ru': '1A1RMsw4UdQsOVQSItaB908AHb5naNpaYeydx2dK6JaM',
+        'am': '2PACX-1vRN3hyamaQtoLk5ZyQzMnLNYNlC07VXOV0n9tW91NlCL2OVzzmzdwo-lnqP6YDKbZ7qLgrMynhLePeR',
+        'en': '2PACX-1vS-LREGZ9Pm-0SrL7NPitMgg7ECZREDDi6gpQvTjuNLi77_P2S3qxkXag2ixjD8pJcMOQSRxwyyh-ym',
+        'ru': '2PACX-1vRN3hyamaQtoLk5ZyQzMnLNYNlC07VXOV0n9tW91NlCL2OVzzmzdwo-lnqP6YDKbZ7qLgrMynhLePeR',
     };
 
-    const docHref = `https://docs.google.com/document/d/${docs[locale] ?? docs.ru}/view`;
+    const docHref = `https://docs.google.com/document/d/e/${docs[locale] ?? docs.ru}/pub`;
 
     return (
       <>
