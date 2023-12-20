@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import { Background } from "@/components/bg";
 import { LandingAbout } from "@/components/landing-about";
 import { LandingDilijan, LandingYerevan } from "@/components/landing-banners";
 import { LandingCommunity } from "@/components/landing-community";
@@ -20,8 +21,8 @@ export default function HomePage() {
 
     return (
       <>
-        <div className="fixed h-full w-full -z-10 bg-cover" style={{ backgroundImage: 'url(/bg.png)' }} />
-        <Navigation locale={locale} />
+        <Background />
+        <Navigation locale={locale} links={['map', 'about', 'smog', 'sensor'].map(it => ({ href: `#${it}`, title: t(`nav-${it}`) }))} />
         <MapModule />
         <LandingQuality />
         <LandingAbout t={t} />

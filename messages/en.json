@@ -24,7 +24,12 @@
     "howAction": "I want this sensor!",
     "ararat": "Can you see Ararat?",
     "mimino0": "- In Dilijan, in the kitchen, you open a regular faucet - water flows, second place in the world!",
-    "mimino1": "- And what place does Dilijan have in terms of air quality?"
+    "mimino1": "- And what place does Dilijan have in terms of air quality?",
+
+    "nav-map": "Map",
+    "nav-about": "About",
+    "nav-smog": "Smog",
+    "nav-sensor": "Add sensor"
   },
   "LandingSmog": {
     "title0": "It's not just fog, it's smog, which contains:",
@@ -173,10 +178,9 @@
     "text": "Armenia is famous for its clean mountain air, and our cities deserve clean air too!",
     "source": "Source"
   },
-  "Navigation": {
-    "map": "Map",
-    "about": "About",
-    "smog": "Smog",
-    "sensor": "Add sensor"
+  "Setup": {
+    "text": "The page is in under construction! For now, please use the following instruction:",
+    "instruction": "Open installation guide",
+    "nav-main": "back to main"
   }
 }

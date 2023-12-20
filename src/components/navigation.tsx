@@ -1,15 +1,18 @@
 import classNames from "classnames";
-import Link from "next/link";
-import { useTranslations } from "next-intl";
 import { FC } from "react";
+import { Link } from "@/components/link";
+import { LinkLocale } from "@/components/link-locale";
 import { NavigationBurger } from "@/components/navigation-burger";
 import { NavigationScroll } from "@/components/navigation-scroll";
 import { Locale } from "@/const";
 import { CloudQualitySvg } from "@/images/cloud-quality";
 
-export const Navigation: FC<{ locale: Locale }> = ({ locale }) => {
-    const tn = useTranslations('Navigation');
+export interface NavigationLink {
+    href: string;
+    title: string;
+}
 
+export const Navigation: FC<{ locale: Locale, links: NavigationLink[] }> = ({ links, locale }) => {
     return (
       <>
         <NavigationBurger />
@@ -56,34 +59,34 @@ export const Navigation: FC<{ locale: Locale }> = ({ locale }) => {
                     "md:space-x-8 rtl:space-x-reverse"
                 )}
               >
-                {['map', 'about', 'smog', 'sensor'].map(item => (
-                  <li key={item}>
-                    <a href={`#${item}`}
+                {links.map(item => (
+                  <li key={item.href}>
+                    <Link href={item.href}
+                      locale="ru"
                       className="block uppercase py-2 md:px-3 text-md md:text-sm text-black rounded font-semibold md:bg-transparent md:p-0"
                       aria-current="page"
-                    >{tn(item)}
-                    </a>
+                    >{item.title}
+                    </Link>
                   </li>
-              ))}
-
+                ))}
               </ul>
             </div>
 
             <div className="flex space-x-3 md:space-x-2 rtl:space-x-reverse py-8 md:p-0">
               {locale !== Locale.AM && (
-                <Link href="/" className="ml-2 font-medium text-black">
+                <LinkLocale locale={Locale.AM} className="ml-2 font-medium text-black">
                   Հայ
-                </Link>
+                </LinkLocale>
               )}
               {locale !== Locale.EN && (
-                <Link href={`/${Locale.EN}`} className="ml-2 font-medium text-black">
+                <LinkLocale locale={Locale.EN} className="ml-2 font-medium text-black">
                   ENG
-                </Link>
+                </LinkLocale>
               )}
               {locale !== Locale.RU && (
-                <Link href={`/${Locale.RU}`} className="ml-2 font-medium text-black">
+                <LinkLocale locale={Locale.RU} className="ml-2 font-medium text-black">
                   РУС
-                </Link>
+                </LinkLocale>
               )}
             </div>
           </div>
