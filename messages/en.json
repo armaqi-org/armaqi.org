@@ -146,6 +146,10 @@
     "diyOptional0": "Soldering iron suitable for soldering (you can not solder, but it is recommended for reliability)",
     "diyOptional1": "Solder, flux",
     "diyOptional2": "3d printer for printing cloud body",
+    "diyLite": "DIY Lite",
+    "diyFull": "DIY Full",
+    "diyLite0": "Components only + box 3D-print file (or you can creat your own)",
+    "diyFull0": "All components, all wires and box - you need only to assemble",
 
     "order": "I want that sensor!",
     "orderDescription": "Leave a request and we'll contact you and arrange everything!",

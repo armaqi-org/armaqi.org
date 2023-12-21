@@ -8,12 +8,16 @@ import { Section } from "@/components/section";
 const List: FC<{
     className?: string;
     titleKey: string;
+    title2?: string;
     tPrefix: string;
     len: number;
     t: (key: string) => string;
-}> = ({ className, len, t, tPrefix, titleKey }) => (
+}> = ({ className, len, t, tPrefix, title2, titleKey }) => (
   <div className={className}>
-    <h4 className="text-lg font-semibold">{t(titleKey)}</h4>
+    <div className="flex justify-between">
+      <h4 className="text-lg font-semibold">{t(titleKey)}</h4>
+      {!!title2 && <h5 className="text-lg font-semibold">{title2}</h5>}
+    </div>
 
     <ul className="list-disc text-xl ml-8 md:ml-0">
       {new Array(len).fill(0).map((_, ind) => (
@@ -45,7 +49,13 @@ export const LandingSensor = () => {
           <div className="">
             <Image className="mx-auto h-64 object-cover md:order-2 md:ml-0 md:object-left" src="/sensor-standard.jpeg" alt="sensor standard" width={560} height={340} />
             <div className="">
-              <h3 className="text-2xl font-semibold mt-8">{t("standardTitle")} - <span className="text-red-600">{t("preOrder")}</span></h3>
+              <div className="flex justify-between mt-8">
+                <h3 className="text-2xl font-semibold">
+                  {t("standardTitle")} - <span className="text-red-600">{t("preOrder")}</span>
+                </h3>
+                <p className="font-semibold text-xl mt-2">35000 AMD</p>
+              </div>
+
               <p className="mt-6 text-base font-light">{t("standardDescription")}</p>
             </div>
 
@@ -59,8 +69,8 @@ export const LandingSensor = () => {
               <p className="mt-6 text-base font-light">{t("diyDescription")}</p>
             </div>
 
-            <List className="mt-4" titleKey="needs" tPrefix="diyNeeds" len={2} t={t} />
-            <List className="mt-4" titleKey="optional" tPrefix="diyOptional" len={3} t={t} />
+            <List className="mt-4" title2="15000 AMD" titleKey="diyLite" tPrefix="diyLite" len={1} t={t} />
+            <List className="mt-4" title2="30000 AMD" titleKey="diyFull" tPrefix="diyFull" len={1} t={t} />
           </div>
         </div>
       </Section>
@@ -80,7 +90,8 @@ export const LandingSensor = () => {
             <OrderForm
               sensors={[
                   ['standard', t("standardTitle")],
-                  ['diy', t("diyTitle")]
+                  ['diyLite', t("diyLite")],
+                  ['diyFull', t("diyFull")]
               ]}
               t={{
                     'email': t('orderFieldEmail'),

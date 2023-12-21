@@ -22,9 +22,12 @@ export default function SetupInstructions() {
         <div className="pt-[96px] min-h-screen container flex flex-col items-center px-4">
           <div className="h-[20%]" />
           <p className="w-full text-center text-semibold mb-4 text-xl">{t('text')}</p>
-          <p className="w-full text-center mb-4"><a href={docHref} target="_blank">{t('instruction')}</a></p>
+          <p className="w-full text-center mb-4 "><a className="underline" href={docHref} target="_blank">{t('instruction')}</a></p>
 
-          <iframe className="w-full flex-1" src={`${docHref}?embedded=true`} />
+          <div className="w-full flex-1 flex flex-col">
+            <iframe style={{ maxWidth: '580pt' }} className="flex-1 w-full mx-auto" src={`${docHref}?embedded=true`} />
+          </div>
+
         </div>
       </>
     );
