@@ -3,7 +3,7 @@ import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Toast } from "@/components/toast";
 
-type Trans = 'email' | 'emailPlaceholder' | 'name' | 'namePlaceholder' | 'contact' | 'contactPlaceholder' | 'district' | 'districtPlaceholder' | 'sensor' | 'sensorStandard' | 'sensorDiy' | 'submit' | 'terms' | 'success' | 'error';
+type Trans = 'email' | 'emailPlaceholder' | 'name' | 'namePlaceholder' | 'contact' | 'contactPlaceholder' | 'district' | 'districtPlaceholder' | 'sensor' | 'sensorStandard' | 'sensorDiy' | 'submit' | 'terms' | 'hint' | 'success' | 'error';
 export const OrderForm: FC<{
     t: Record<Trans, string>;
     sensors: [string, string][];
@@ -120,6 +120,7 @@ export const OrderForm: FC<{
             </div>
 
             <div className="w-full flex flex-col items-center justify-center">
+              <div className="bg-green-300 bg-opacity-50 px-8 py-4 text-center">{t.hint}</div>
               <button
                 className="mt-4 bg-armaqi-base font-semibold py-4 px-16 text-white"
                 disabled={loading}

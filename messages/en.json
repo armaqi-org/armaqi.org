@@ -164,6 +164,7 @@
     "orderFieldSensor": "Select sensor",
     "orderSubmit": "Submit an order",
     "orderTerms": "By clicking the button, you agree to the terms of personal data",
+    "orderHint": "We produce sensors in accordance with received requests approximately once every 2-3 weeks. We will contact you about payment and delivery as soon as it is ready!",
 
     "orderSuccess": "Thank you! Your request has been successfully sent.",
     "orderError": "Error processing request. Use contacts to get in touch"

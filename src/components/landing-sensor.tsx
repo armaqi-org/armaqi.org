@@ -14,7 +14,7 @@ const List: FC<{
     t: (key: string) => string;
 }> = ({ className, len, t, tPrefix, title2, titleKey }) => (
   <div className={className}>
-    <div className="flex justify-between">
+    <div className="flex justify-between items-center">
       <h4 className="text-lg font-semibold">{t(titleKey)}</h4>
       {!!title2 && <h5 className="text-lg font-semibold">{title2}</h5>}
     </div>
@@ -47,11 +47,11 @@ export const LandingSensor = () => {
 
         <div className="mt-10 px-4 grid grid-cols-1 gap-20 sm:mx-auto sm:max-w-sm md:mt-20 md:max-w-full md:grid-cols-2">
           <div className="">
-            <Image className="mx-auto h-64 object-cover md:order-2 md:ml-0 md:object-left" src="/sensor-standard.jpeg" alt="sensor standard" width={560} height={340} />
+            <Image className="mx-auto h-96 w-auto object-cover md:order-2 md:object-center" src="/sensor-standard.jpeg" alt="sensor standard" width={560} height={340} />
             <div className="">
-              <div className="flex justify-between mt-8">
+              <div className="flex justify-between items-center mt-8">
                 <h3 className="text-2xl font-semibold">
-                  {t("standardTitle")} - <span className="text-red-600">{t("preOrder")}</span>
+                  {t("standardTitle")}
                 </h3>
                 <p className="font-semibold text-xl mt-2">35000 AMD</p>
               </div>
@@ -63,9 +63,9 @@ export const LandingSensor = () => {
           </div>
 
           <div className="">
-            <Image className="mx-auto h-64 object-cover md:order-2 md:ml-0 md:object-left" src="/sensor-diy.png" alt="sensor diy" width={560} height={340} />
+            <Image className="mx-auto h-96 w-auto object-cover md:order-2 md:object-center" src="/sensor-diy.png" alt="sensor diy" width={560} height={340} />
             <div className="">
-              <h3 className="text-2xl font-semibold mt-8">{t("diyTitle")} - <span className="text-red-600">{t("preOrder")}</span></h3>
+              <h3 className="text-2xl font-semibold mt-8">{t("diyTitle")}</h3>
               <p className="mt-6 text-base font-light">{t("diyDescription")}</p>
             </div>
 
@@ -107,6 +107,7 @@ export const LandingSensor = () => {
                     'sensorDiy': t('diyTitle'),
                     'submit': t('orderSubmit'),
                     'terms': t('orderTerms'),
+                    'hint': t('orderHint'),
                     'success': t('orderSuccess'),
                     'error': t('orderError'),
               }}
