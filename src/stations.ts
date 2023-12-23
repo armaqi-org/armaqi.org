@@ -125,6 +125,8 @@ const stations = [
         title: '',
         disabled: false,
     },
+    { key: 'A464509' },
+    { key: 'A464116' },
 ];
 
 export default stations;
