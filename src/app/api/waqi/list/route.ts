@@ -10,7 +10,7 @@ export async function GET(request: Request) {
     const stations = await waqiLoadBounds(ab);
     const out: StationListResponse = {
         stations:
-            stations.map(st => ({
+            stations?.map(st => ({
                 id: Math.abs(st.uid),
                 title: st.station.name,
                 position: {
@@ -18,8 +18,10 @@ export async function GET(request: Request) {
                     lng: st.lon,
                 },
                 aqi: Number(st.aqi),
-            })),
+            })) ?? [],
     };
 
     return Response.json(out);
 }
+
+export const dynamic = "force-dynamic";

@@ -1,8 +1,7 @@
-import { NextApiRequest } from "next";
 import { StationInfoResponse } from "@/tools-api/interface";
 import { waqiLoadInfo } from "@/tools-api/waqi";
 
-export async function GET(request: NextApiRequest) {
+export async function GET(request: Request) {
     const url = new URL(request.url ?? '');
     const itemId = url.searchParams.get('id');
 
@@ -26,3 +25,5 @@ export async function GET(request: NextApiRequest) {
 
     return Response.json(out);
 }
+
+export const dynamic = "force-dynamic";
