@@ -2,15 +2,7 @@ import { useTranslations } from "next-intl";
 import { Carousel } from "@/components/carousel";
 import { Section } from "@/components/section";
 import { CloudQualitySvg } from "@/images/cloud-quality";
-
-const scales = [
-    ['0-50', '#009966'],
-    ['51-100', '#FFDE33'],
-    ['101-150', '#FF9933'],
-    ['151-200', '#CC0033'],
-    ['201-300', '#660099'],
-    ['300+', '#7E0023'],
-];
+import { qualityScales } from "@/tools/quality-scale";
 
 export const LandingQuality = () => {
   const t = useTranslations('LandingQuality');
@@ -24,10 +16,10 @@ export const LandingQuality = () => {
         center
       >
         <div className="grid grid-cols-3 lg:grid-cols-6 max-w-screen-md px-8">
-          {scales.map(([text, color], index) => (
-            <div key={text} className="mb-12 lg:mb-0 mx-4 ">
+          {qualityScales.map(([from, to, color], index) => (
+            <div key={color} className="mb-12 lg:mb-0 mx-4 ">
               <CloudQualitySvg color={color} />
-              <div className="text-sm text-black">{text}</div>
+              <div className="text-sm text-black">{from}{to ? `-${to}` : '+'}</div>
               {t(`scale${index}`).split(':').map((tt, index) =>
                   !index ? (
                     <div className="font-bold text-sm text-black" key={tt}>{tt}</div>
