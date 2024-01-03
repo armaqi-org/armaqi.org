@@ -19,6 +19,6 @@ export class AirtableApi {
             headers: { Authorization: `Bearer ${apiKey}` },
             next: { revalidate },
         }).then(response => response.json())
-            .then((data: any) => data.records?.map((r: any) => r.fields) ?? []);
+            .then((data: any) => data.records?.map((r: any) => r.fields ?? {}) ?? []);
     }
 }
