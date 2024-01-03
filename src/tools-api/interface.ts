@@ -21,6 +21,7 @@ export interface StationInfo {
     };
     pm25: number | undefined;
     pm10: number | undefined;
+    lastUpdated?: string;
 }
 
 export interface StationInfoResponse {

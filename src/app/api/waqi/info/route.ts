@@ -20,6 +20,7 @@ export async function GET(request: Request) {
             },
             pm25: data.iaqi?.pm25?.v,
             pm10: data.iaqi?.pm10?.v,
+            lastUpdated: data.time?.iso,
         } : undefined
     };
 

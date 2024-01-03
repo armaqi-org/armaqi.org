@@ -22,26 +22,28 @@ export interface WaqiStationInfo {
         pm10: { v: number };
         pm25: { v: 96 };
     };
+    "time": {
+        "iso": string;
+    };
 }
 
-const token = '64d4711d9af20e78493bc2c6d6d76bccf9fc0d26';
+const token = process.env.WAQI_TOKEN ?? '';
 
 export const waqiLoadBounds = async (bounds: string[][]): Promise<WaqiStationItem[]> => {
     const q = new URLSearchParams({
         latlng: `${bounds[0][0]},${bounds[0][1]},${bounds[1][0]},${bounds[1][1]}`,
         networks: 'all',
-        nc: Date.now().toString(),
-        token
+        token,
     });
 
-    const response = await fetch(`https://api.waqi.info/v2/map/bounds?${q.toString()}`);
+    const response = await fetch(`https://api.waqi.info/v2/map/bounds?${q.toString()}`, { next: { revalidate: 60 } });
     const result = await response.json();
 
     return result.data;
 };
 
 export const waqiLoadInfo = (id: string): Promise<WaqiStationInfo | undefined> => {
-    return fetch(`https://api.waqi.info/feed/A${id}/?token=${token}`)
+    return fetch(`https://api.waqi.info/feed/A${id}/?token=${token}`, { next: { revalidate: 60 } })
         .then(response => response.json())
         .then(({ data }: { data: WaqiStationInfo}) => data)
         .catch(() => undefined);

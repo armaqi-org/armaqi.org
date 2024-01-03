@@ -2,7 +2,14 @@
   "Metadata": {
     "title": "ArmAQI - Общественный мониторинг качества воздуха в Армении. Загрязнение воздуха в Ереване, Гюмри, Ванадзоре и других городах",
     "description": "ArmAQI - загрязнение воздуха в Ереване и Армении в реальном времени",
-    "og:url": "https://www.armaqi.org/ru"
+    "og:url": "https://armaqi.org/ru"
+  },
+  "Map": {
+    "lastUpdated": "Обновлено",
+    "ago_m": "{counter} мин. назад",
+    "ago_h": "{counter} ч. назад",
+    "ago_d": "{counter} дн. назад",
+    "ago_o": "Более 2х дней назад"
   },
   "LandingQuality": {
     "title": "Качество воздуха на карте в режиме real-time",

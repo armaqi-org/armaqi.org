@@ -2,7 +2,14 @@
   "Metadata": {
     "title": "ArmAQI - Air quality monitoring civil tech network in Armenia. Air Pollution in Yerevan, Gyumri, Vanadzor",
     "description": "Air Pollution in Yerevan & Armenia Awareness Project",
-    "og:url": "https://www.armaqi.org/en"
+    "og:url": "https://armaqi.org/en"
+  },
+  "Map": {
+    "lastUpdated": "Updated",
+    "ago_m": "{counter} min. ago",
+    "ago_h": "{counter} h. ago",
+    "ago_d": "{counter} d. ago",
+    "ago_o": "More than 2 days ago"
   },
   "LandingQuality": {
     "title": "Air quality on the map in real-time",

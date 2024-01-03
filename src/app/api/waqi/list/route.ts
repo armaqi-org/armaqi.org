@@ -1,6 +1,8 @@
 import { StationListResponse } from "@/tools-api/interface";
 import { waqiLoadBounds } from "@/tools-api/waqi";
 
+const countryIso = require('country-iso');
+
 const ab = [
     ['41.335628', '43.445744'],
     ['38.803376', '46.532515'],
@@ -18,7 +20,9 @@ export async function GET(request: Request) {
                     lng: st.lon,
                 },
                 aqi: Number(st.aqi),
-            })) ?? [],
+            })).filter(st => {
+                return countryIso.get(st.position.lat, st.position.lng).includes('ARM');
+            }) ?? [],
     };
 
     return Response.json(out);

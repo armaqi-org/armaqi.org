@@ -2,7 +2,14 @@
   "Metadata": {
     "title": "ArmAQI - Մթնոլորտային օդի որակը Երևանում և Հայաստանում. Մշուշ Երևանում ",
     "description": "ArmAQI - Օդի աղտոտվածությունը Երևանում և Հայաստանում իրական ժամանակում. Մշուշ Երևանում",
-    "og:url": "https://www.armaqi.org"
+    "og:url": "https://armaqi.org"
+  },
+  "Map": {
+    "lastUpdated": "Թարմացվել է",
+    "ago_m": "{counter} րոպե առաջ",
+    "ago_h": "{counter} ժամ առաջ",
+    "ago_d": "{counter} օր առաջ",
+    "ago_o": "Ավելի քան 2 օր առաջ"
   },
   "LandingQuality": {
     "title": "Օդի որակը քարտեզի վրա իրական ժամանակում",
