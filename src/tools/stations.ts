@@ -1,18 +1,64 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { StationItem, StationInfo, stationsApi } from "@/tools/stations-api";
 
 export type { StationItem, StationInfo };
 
-export const useStationsList = (): StationItem[] | undefined => {
-    const [markers, setMarkers] = useState<StationItem[] | undefined>(undefined);
+export const useStationsList = (): {
+    loading: boolean;
+    error: boolean;
+    paused: boolean;
+    stations: StationItem[];
+    refresh(): void;
+} => {
+    const [stations, setStations] = useState<StationItem[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [paused, setPaused] = useState(false);
+    const [tick, setTick] = useState(0);
 
-    useEffect(() => {
-        stationsApi.loadList(setMarkers);
-
-        return () => stationsApi.unloadList(setMarkers);
+    const refresh = useCallback(() => {
+        setLoading(true);
+        setPaused(false);
+        setTick(Date.now());
     }, []);
 
-    return markers;
+    useEffect(() => {
+        const cb = (stations: StationItem[] | undefined) => {
+            setStations(stations ?? []);
+            setLoading(false);
+        };
+
+        stationsApi.loadList(cb);
+
+        return () => stationsApi.unloadList(cb);
+    }, [tick]);
+
+    useEffect(() => {
+        if (paused) {
+            return;
+        }
+
+        const interval = setInterval(() => {
+            if (paused) {
+                return;
+            }
+
+            if (!document.hasFocus()) {
+                setPaused(true);
+            } else {
+                refresh();
+            }
+        }, 4 * 60000);
+
+        return () => clearInterval(interval);
+    }, [refresh, paused]);
+
+    return {
+        loading,
+        error: false,
+        paused,
+        stations,
+        refresh,
+    };
 };
 
 export const useStation = (id: number): StationInfo | undefined => {

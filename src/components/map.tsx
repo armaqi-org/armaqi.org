@@ -1,9 +1,10 @@
 'use client';
 import L from 'leaflet';
-import { useMessages, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { FC, useCallback, useMemo, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
+import { Spinner } from "@/components/spinner";
 import { getScaleColor } from "@/tools/quality-scale";
 import { useStationsList, StationItem, useStation } from "@/tools/stations";
 import { getTimeAgo } from "@/tools/time-ago";
@@ -96,23 +97,53 @@ const CustomMarker: FC<{ station: StationItem }> = ({ station }) => {
 };
 
 export default function SensorMap() {
-    const stations = useStationsList();
+    const {
+        loading,
+        paused,
+        refresh,
+        stations,
+    } = useStationsList();
 
     return (
-      <MapContainer center={[40.188628, 44.512555]}
-        zoom={12}
-        scrollWheelZoom
-        className="w-full h-full"
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors,  Air Quality Tiles &copy; <a href="https://www.waqi.info/" target="_blank">waqi.info</a>'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          maxZoom={18}
-        />
+      <div className="relative w-full h-full">
 
-        {stations?.map(st => (
-          <CustomMarker key={st.id} station={st} />
+        <MapContainer center={[40.188628, 44.512555]}
+          zoom={12}
+          scrollWheelZoom
+          className="w-full h-full"
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors,  Air Quality Tiles &copy; <a href="https://www.waqi.info/" target="_blank">waqi.info</a>'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            maxZoom={18}
+          />
+
+          {stations?.map(st => (
+            <CustomMarker key={st.id} station={st} />
         ))}
-      </MapContainer>
+        </MapContainer>
+
+        {(loading || paused) && (
+          <div className="absolute inset-0 flex justify-center items-center z-top bg-white bg-opacity-25">
+              {loading ? <Spinner /> : (
+                <button
+                  className="flex items-center px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-neutral-400 rounded-lg hover:bg-neutral-300 focus:outline-none focus:ring focus:ring-neutral-300 focus:ring-opacity-80"
+                  onClick={refresh}
+                >
+                  <svg className="w-5 h-5 mx-1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path fillRule="evenodd"
+                      d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </button>
+              )}
+          </div>
+        )}
+      </div>
     );
 };
