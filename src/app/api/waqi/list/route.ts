@@ -10,7 +10,7 @@ const ab = [
 ];
 
 interface StationConfig {
-    id: string;
+    id?: string;
     title?: string;
     disabled?: boolean;
 }
@@ -23,7 +23,7 @@ export async function GET(request: Request) {
         stations:
             stations?.map(st => {
                 let id = Math.abs(st.uid);
-                const cst = configStations.find(cs => cs.id.trim() === id.toString());
+                const cst = configStations.find(cs => cs.id?.trim() === id.toString());
 
                 if (cst?.disabled || !countryIso.get(st.lat, st.lon).includes('ARM')) {
                     id = 0;

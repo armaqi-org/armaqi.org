@@ -47,7 +47,7 @@ export const useStationsList = (): {
             } else {
                 refresh();
             }
-        }, 5000);
+        }, 4 * 60000);
 
         return () => clearInterval(interval);
     }, [refresh, paused]);
