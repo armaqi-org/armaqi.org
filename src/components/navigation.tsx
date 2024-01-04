@@ -3,7 +3,6 @@ import { FC } from "react";
 import { Link } from "@/components/link";
 import { LinkLocale } from "@/components/link-locale";
 import { NavigationBurger } from "@/components/navigation-burger";
-import { NavigationScroll } from "@/components/navigation-scroll";
 import { Locale } from "@/const";
 import { CloudQualitySvg } from "@/images/cloud-quality";
 
@@ -16,17 +15,16 @@ export const Navigation: FC<{ locale: Locale, links: NavigationLink[] }> = ({ li
     return (
       <>
         <NavigationBurger />
-        <NavigationScroll />
         <nav
           className={classNames(
           // all
-          'fixed top-0 transition-colors z-top',
+          'sticky top-0 transition-colors z-top',
 
           // mobile (<= md)
           'menu-burger:right-0 menu-burger:left-0 -left-full bottom-0 menu-burger:bg-transparent',
 
           // wide
-          'md:block md:w-full md:border-b md:right-0 md:left-0 md:bottom-unset md:bg-white md:menu-top:bg-transparent md:menu-top:border-0',
+          'md:block md:w-full md:border-b md:right-0 md:left-0 md:bottom-unset md:bg-white',
           )}
         >
           <div

@@ -1,37 +1,88 @@
-import { useEffect, useState } from "react";
-import stationsData from "@/stations";
+import { useCallback, useEffect, useState } from "react";
+import { StationItem, StationInfo, stationsApi } from "@/tools/stations-api";
 
-export interface Station {
-    key: string;
-    title: string;
-    position: {
-        lat: number;
-        lng: number;
-    };
-    aqi: number;
-}
+export type { StationItem, StationInfo };
 
-export const useStations = (): Station[] => {
-    const [markers, setMarkers] = useState<Station[]>([]);
+export const useStationsList = (): {
+    loading: boolean;
+    error: boolean;
+    paused: boolean;
+    stations: StationItem[];
+    refresh(): void;
+} => {
+    const [stations, setStations] = useState<StationItem[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [paused, setPaused] = useState(false);
+    const [tick, setTick] = useState(0);
+
+    const refresh = useCallback(() => {
+        setLoading(true);
+        setPaused(false);
+        setTick(Date.now());
+    }, []);
 
     useEffect(() => {
-        Promise.all(stationsData.filter(m => !m.disabled).map(m =>
-            fetch(`https://api.waqi.info/feed/${m.key}/?token=64d4711d9af20e78493bc2c6d6d76bccf9fc0d26`)
-                .then(response => response.json())
-                .then(data => ({
-                    key: m.key,
-                    title: m.title || data.data.city.name,
-                    position: {
-                        lat: data.data.city.geo[0] as any,
-                        lng: data.data.city.geo[1],
-                    },
-                    aqi: data.data.aqi
-                }))
-                .catch(() => undefined)
-        ))
-            .then(items => items.filter(Boolean).map(i => i!))
-            .then(items => setMarkers(items));
-    }, []);
-    
-    return markers;
+        const cb = (stations: StationItem[] | undefined) => {
+            setStations(stations ?? []);
+            setLoading(false);
+        };
+
+        stationsApi.loadList(cb);
+
+        return () => stationsApi.unloadList(cb);
+    }, [tick]);
+
+    useEffect(() => {
+        if (paused) {
+            return;
+        }
+
+        const interval = setInterval(() => {
+            if (paused) {
+                return;
+            }
+
+            if (!document.hasFocus()) {
+                setPaused(true);
+            } else {
+                refresh();
+            }
+        }, 4 * 60000);
+
+        return () => clearInterval(interval);
+    }, [refresh, paused]);
+
+    useEffect(() => {
+        const cb = () => {
+            if (paused) {
+                refresh();
+            }
+        };
+
+        window.addEventListener('focus', cb);
+
+        return () => {
+            window.removeEventListener('focus', cb);
+        };
+    }, [paused, refresh]);
+
+    return {
+        loading,
+        error: false,
+        paused,
+        stations,
+        refresh,
+    };
+};
+
+export const useStation = (id: number): StationInfo | undefined => {
+    const [info, setInfo] = useState<StationInfo | undefined>(undefined);
+
+    useEffect(() => {
+        stationsApi.loadInfo(id, setInfo);
+
+        return () => stationsApi.unloadInfo(id, setInfo);
+    }, [id]);
+
+    return info;
 };
