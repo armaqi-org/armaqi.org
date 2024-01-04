@@ -18,7 +18,7 @@ interface StationConfig {
 export async function GET() {
     const stations = await waqiLoadBounds(ab);
     let error = '';
-    const configStations = await AirtableApi.listTableFields<StationConfig>(AirtableApi.stationsTable, 0)
+    const configStations = await AirtableApi.listTableFields<StationConfig>(AirtableApi.stationsTable, 300)
         .catch((e: Error) => {
             error = e.message;
             return [];
