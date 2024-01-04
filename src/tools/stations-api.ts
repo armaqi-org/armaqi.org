@@ -146,12 +146,12 @@ class StationsApi {
     }
 
     private async loadStations() {
-        return fetchApi<StationListResponse>(`/api/waqi/list?nc=${Date.now()}`, { next: { revalidate: 60 } })
+        return fetchApi<StationListResponse>(`/api/waqi/list?nc=${Date.now()}`, { next: { revalidate: 0 } })
             .then((data) => data.stations);
     }
 
     private async loadStationInfo(id: number) {
-        return fetchApi<StationInfoResponse>(`/api/waqi/info?id=${id}&nc=${Date.now()}`, { next: { revalidate: 60 } })
+        return fetchApi<StationInfoResponse>(`/api/waqi/info?id=${id}&nc=${Date.now()}`, { next: { revalidate: 0 } })
             .then(data => data.station);
     }
 }

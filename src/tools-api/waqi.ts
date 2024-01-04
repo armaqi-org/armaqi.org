@@ -36,15 +36,18 @@ export const waqiLoadBounds = async (bounds: string[][]): Promise<WaqiStationIte
         token,
     });
 
-    const response = await fetch(`https://api.waqi.info/v2/map/bounds?${q.toString()}`, { next: { revalidate: 60 } });
+    const response = await fetch(`https://api.waqi.info/v2/map/bounds?${q.toString()}`, { next: { revalidate: 0 } });
     const result = await response.json();
 
     return result.data;
 };
 
 export const waqiLoadInfo = (id: string): Promise<WaqiStationInfo | undefined> => {
-    return fetch(`https://api.waqi.info/feed/A${id}/?token=${token}`, { next: { revalidate: 60 } })
+    return fetch(`https://api.waqi.info/feed/A${id}/?token=${token}`, { next: { revalidate: 0 } })
         .then(response => response.json())
         .then(({ data }: { data: WaqiStationInfo}) => data)
-        .catch(() => undefined);
+        .catch((e) => {
+            console.error(e);
+            return undefined;
+        });
 };

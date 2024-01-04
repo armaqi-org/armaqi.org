@@ -32,7 +32,6 @@ const config: Config = {
   },
   plugins: [
     plugin(function({ addVariant }) {
-      addVariant("menu-top", ".menu-top &");
       addVariant("menu-burger", ".menu-burger &");
     })
   ]
