@@ -47,10 +47,24 @@ export const useStationsList = (): {
             } else {
                 refresh();
             }
-        }, 4 * 60000);
+        }, 5000);
 
         return () => clearInterval(interval);
     }, [refresh, paused]);
+
+    useEffect(() => {
+        const cb = () => {
+            if (paused) {
+                refresh();
+            }
+        };
+
+        window.addEventListener('focus', cb);
+
+        return () => {
+            window.removeEventListener('focus', cb);
+        };
+    }, [paused, refresh]);
 
     return {
         loading,
