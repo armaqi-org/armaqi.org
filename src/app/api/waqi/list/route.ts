@@ -17,8 +17,12 @@ interface StationConfig {
 
 export async function GET(request: Request) {
     const stations = await waqiLoadBounds(ab);
-    const configStations = await AirtableApi.listTableFields<StationConfig>(AirtableApi.stationsTable, 300)
-        .catch(() => []);
+    let error = '';
+    const configStations = await AirtableApi.listTableFields<StationConfig>(AirtableApi.stationsTable, 0)
+        .catch((e: Error) => {
+            error = e.message;
+            return [];
+        });
     const out: StationListResponse & any = {
         stations:
             stations?.map(st => {
@@ -40,6 +44,7 @@ export async function GET(request: Request) {
                 });
             }).filter(st => st.id) ?? [],
         configStations,
+        error,
     };
 
     return Response.json(out);
