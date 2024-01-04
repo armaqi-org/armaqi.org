@@ -23,11 +23,6 @@ export async function GET(request: Request) {
             error = e.message;
             return [];
         });
-    const configStations2 = await AirtableApi.listTableFields2<StationConfig>(AirtableApi.stationsTable)
-        .catch((e: Error) => {
-            error = e.message;
-            return [];
-        });
     const out: StationListResponse & any = {
         stations:
             stations?.map(st => {
@@ -49,7 +44,6 @@ export async function GET(request: Request) {
                 });
             }).filter(st => st.id) ?? [],
         configStations,
-        configStations2,
         error,
     };
 
