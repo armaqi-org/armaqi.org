@@ -19,7 +19,7 @@ export async function GET(request: Request) {
     const stations = await waqiLoadBounds(ab);
     const configStations = await AirtableApi.listTableFields<StationConfig>(AirtableApi.stationsTable, 300)
         .catch(() => []);
-    const out: StationListResponse = {
+    const out: StationListResponse & any = {
         stations:
             stations?.map(st => {
                 let id = Math.abs(st.uid);
@@ -39,6 +39,7 @@ export async function GET(request: Request) {
                     aqi: Number(st.aqi),
                 });
             }).filter(st => st.id) ?? [],
+        configStations,
     };
 
     return Response.json(out);
