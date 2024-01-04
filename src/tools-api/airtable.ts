@@ -25,4 +25,11 @@ export class AirtableApi {
                 throw e;
             });
     }
+    static async listTableFields2<T = any>(table: string): Promise<T[]> {
+        const airtable = new Airtable({ apiKey });
+
+        const result = await airtable.base(baseId).table(table).select().all();
+
+        return result.map(item => item.fields as T);
+    }
 }
