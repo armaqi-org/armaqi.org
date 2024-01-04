@@ -46,7 +46,7 @@ export default function RootLayout({
   return (
     <html lang={getLang(locale)}>
       <head><YandexMetrika /></head>
-      <body className={classNames(font.className, 'text-base text-armaqi-base menu-top')}>{children}</body>
+      <body className={classNames(font.className, 'text-base text-armaqi-base')}>{children}</body>
     </html>
   );
 }

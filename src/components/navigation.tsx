@@ -18,7 +18,7 @@ export const Navigation: FC<{ locale: Locale, links: NavigationLink[] }> = ({ li
         <nav
           className={classNames(
           // all
-          'sticky top-0 transition-colors z-top',
+          'fixed md:sticky top-0 transition-colors z-top',
 
           // mobile (<= md)
           'menu-burger:right-0 menu-burger:left-0 -left-full bottom-0 menu-burger:bg-transparent',
