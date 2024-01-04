@@ -15,7 +15,7 @@ interface StationConfig {
     disabled?: boolean;
 }
 
-export async function GET(request: Request) {
+export async function GET() {
     const stations = await waqiLoadBounds(ab);
     let error = '';
     const configStations = await AirtableApi.listTableFields<StationConfig>(AirtableApi.stationsTable, 0)
@@ -23,7 +23,7 @@ export async function GET(request: Request) {
             error = e.message;
             return [];
         });
-    const out: StationListResponse & any = {
+    const out: StationListResponse = {
         stations:
             stations?.map(st => {
                 let id = Math.abs(st.uid);
@@ -43,7 +43,6 @@ export async function GET(request: Request) {
                     aqi: Number(st.aqi),
                 });
             }).filter(st => st.id) ?? [],
-        configStations,
         error,
     };
 

@@ -10,6 +10,7 @@ export interface StationItem {
 
 export interface StationListResponse {
     stations: StationItem[];
+    error: string;
 }
 
 export interface StationInfo {
