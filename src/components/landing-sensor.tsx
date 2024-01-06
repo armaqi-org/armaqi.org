@@ -86,7 +86,7 @@ export const LandingSensor = () => {
         </div>
 
         <div className="max-w-screen-md mx-auto">
-          <div className="space-y-4 px-8 py-10 max-w-screen-md">
+          <div className="space-y-4 px-2 md:px-8 py-10 max-w-screen-md">
             <OrderForm
               sensors={[
                   ['standard', t("standardTitle")],

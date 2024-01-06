@@ -28,7 +28,7 @@ export const LandingHowItWorks: FCTL = ({ t }) => (
             </p>
 
             <div className="mt-12">
-              <a className="bg-armaqi-base text-white font-semibold py-4 px-16" href="#sensor" >
+              <a className="bg-armaqi-base text-white font-semibold py-4 px-4 md:px-16" href="#sensor" >
                 {t('howAction')}
               </a>
             </div>

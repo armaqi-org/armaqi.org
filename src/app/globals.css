@@ -17,8 +17,12 @@ body {
   }
 }
 
-.z-top {
+.z-nav {
   z-index: 1001;
+}
+
+.z-top {
+  z-index: 1000;
 }
 
 .leaflet-control-container {
