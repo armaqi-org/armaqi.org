@@ -28,3 +28,9 @@ export interface StationInfo {
 export interface StationInfoResponse {
     station?: StationInfo;
 }
+
+export enum StationDataType {
+    Waqi = 'waqi',
+    WaqiFiltered = 'waqi_filtered',
+    Config = 'config',
+}

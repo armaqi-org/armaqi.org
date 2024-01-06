@@ -28,3 +28,14 @@ body {
 .leaflet-control-container {
   display: none;
 }
+
+.table-default td {
+  padding-left: 8px;
+  padding-right: 4px;
+}
+
+.table-default th {
+  padding-left: 8px;
+  padding-right: 4px;
+  text-align: left;
+}
