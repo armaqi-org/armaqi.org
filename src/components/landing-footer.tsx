@@ -64,7 +64,7 @@ const IconEmail: FC<{ className?: string }> = ({ className }) => (
 const links: [string, string, FC<{ className?: string }>][] = [
     ['facebook', 'https://www.facebook.com/armaqiorg/', IconFacebook],
     ['instagram', 'https://instagram.com/arm.aqi', IconInstagram],
-    ['telegram', 'https://t.me/arm.qai', IconTelegram],
+    ['telegram', 'https://t.me/arm.aqi', IconTelegram],
     ['E-mail', 'mailto:armaqi.org@gmail.com?subject=armaqi.org', IconEmail],
 ];
 
