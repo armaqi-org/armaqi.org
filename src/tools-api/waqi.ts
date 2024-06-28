@@ -39,7 +39,7 @@ export const waqiLoadBounds = async (bounds: string[][]): Promise<WaqiStationIte
     const response = await fetch(`https://api.waqi.info/v2/map/bounds?${q.toString()}`, { next: { revalidate: 0 } });
     const result = await response.json();
 
-    return result.data;
+    return Array.isArray(result.data) ? result.data : [];
 };
 
 export const waqiLoadInfo = (id: string): Promise<WaqiStationInfo | undefined> => {

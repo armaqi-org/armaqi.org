@@ -5,12 +5,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
         {
             url: 'https://armaqi.org',
             lastModified: new Date(),
-            alternates: {
-                languages: {
-                    ru: 'https://armaqi.org/ru',
-                    en: 'https://armaqi.org/en',
-                },
-            },
+        },
+        {
+            url: 'https://armaqi.org/ru',
+            lastModified: new Date(),
+        },
+        {
+            url: 'https://armaqi.org/en',
+            lastModified: new Date(),
         },
     ];
 }

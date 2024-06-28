@@ -23,7 +23,7 @@ const getStations = async (type: string | null): Promise<StationListResponse> =>
 
     const waqiStations = await waqiLoadBounds(ab);
 
-    out.stations = waqiStations.map(st => ({
+    out.stations = waqiStations?.map(st => ({
         id: Math.abs(st.uid),
         title: st.station.name,
         position: {
@@ -31,7 +31,7 @@ const getStations = async (type: string | null): Promise<StationListResponse> =>
             lng: st.lon,
         },
         aqi: Number(st.aqi),
-    })).sort((a, b) => a.id > b.id ? 1 : -1);
+    })).sort((a, b) => a.id > b.id ? 1 : -1) ?? [];
 
     if (type === StationDataType.Waqi) {
         return out;
