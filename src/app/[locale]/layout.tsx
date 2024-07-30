@@ -3,6 +3,7 @@ import { Montserrat } from 'next/font/google';
 import { useLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { ReactNode } from 'react';
+import { GoogleTag } from "@/components/gtag";
 import { YandexMetrika } from "@/components/ym";
 import { Locale } from "@/const";
 
@@ -13,7 +14,7 @@ const font = Montserrat({ subsets: ['latin'] });
 const locales: Record<Locale, string> = {
   [Locale.EN]: 'en_US',
   [Locale.RU]: 'ru_RU',
-  [Locale.AM]: 'am',
+  [Locale.AM]: 'hy_AM',
 };
 
 const getLang = (locale: string) => (locales as any)[locale] ?? locales[Locale.AM];
@@ -46,7 +47,10 @@ export default function RootLayout({
 
   return (
     <html lang={getLang(locale)}>
-      <head><YandexMetrika /></head>
+      <head>
+        <YandexMetrika />
+        <GoogleTag />
+      </head>
       <body className={classNames(font.className, 'text-base text-armaqi-base')}>{children}</body>
     </html>
   );
