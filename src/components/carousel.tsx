@@ -35,6 +35,7 @@ export const Carousel: FC<{ slides: Slide[] }> = ({ slides }) => {
         </div>
         <button
           id="data-carousel-prev"
+          aria-label="Previous Slide"
           type="button"
           className={classNames(
               'absolute top-0 z-30 group flex h-full cursor-pointer items-center justify-center focus:outline-none ',
@@ -65,6 +66,7 @@ export const Carousel: FC<{ slides: Slide[] }> = ({ slides }) => {
         </button>
         <button
           id="data-carousel-next"
+          aria-label="Next Slide"
           type="button"
           className={classNames(
               'absolute top-0 z-30 group flex h-full cursor-pointer items-center justify-center focus:outline-none ',

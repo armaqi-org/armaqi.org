@@ -107,8 +107,9 @@ export const OrderForm: FC<{
             </label>
 
             <div className="flex flex-col sm:col-span-3 w-full mb-4">
-              <label className="text-gray-600" htmlFor="sensor">{t.sensor}</label>
+              <label className="text-gray-600" htmlFor="sensor-select">{t.sensor}</label>
               <select
+                id="sensor-select"
                 className="border px-2 py-2 shadow-sm outline-none focus:ring"
                 {...register("sensor", { required: true })}
                 disabled={loading}
@@ -124,6 +125,7 @@ export const OrderForm: FC<{
               <button
                 className="mt-4 bg-armaqi-base font-semibold py-4 px-16 text-white"
                 disabled={loading}
+                aria-label={t.submit}
               >
                 {t.submit}
               </button>

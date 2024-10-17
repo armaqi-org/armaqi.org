@@ -14,6 +14,7 @@ export const LandingQuality = () => {
         className="mb-16"
         title={t('title')}
         center
+        primary
       >
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 max-w-screen-md px-4 md:px-8">
           {qualityScales.map(([from, to, color], index) => (

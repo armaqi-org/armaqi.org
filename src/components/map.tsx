@@ -129,6 +129,7 @@ export default function SensorMap() {
                 <button
                   className="flex items-center px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-neutral-400 rounded-lg hover:bg-neutral-300 focus:outline-none focus:ring focus:ring-neutral-300 focus:ring-opacity-80"
                   onClick={refresh}
+                  aria-label="Refresh"
                 >
                   <svg className="w-5 h-5 mx-1"
                     xmlns="http://www.w3.org/2000/svg"

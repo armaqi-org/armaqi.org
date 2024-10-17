@@ -17,7 +17,14 @@ const locales: Record<Locale, string> = {
   [Locale.AM]: 'hy_AM',
 };
 
-const getLang = (locale: string) => (locales as any)[locale] ?? locales[Locale.AM];
+const langs: Record<Locale, string> = {
+  [Locale.EN]: 'en-US',
+  [Locale.RU]: 'ru-RU',
+  [Locale.AM]: 'hy-AM',
+};
+
+const getLocale = (locale: string) => (locales as any)[locale] ?? locales[Locale.AM];
+const getLang = (locale: string) => (langs as any)[locale] ?? langs[Locale.AM];
 
 export async function generateMetadata({ params: { locale } }: any) {
   const t = await getTranslations({ locale, namespace: 'Metadata' });
@@ -34,7 +41,7 @@ export async function generateMetadata({ params: { locale } }: any) {
       images: [
         { url: 'https://static.tildacdn.com/tild6238-3035-4937-b666-646563643063/logo-black.svg' },
       ],
-      locale: getLang(locale),
+      locale: getLocale(locale),
       type: 'website',
     },
   };
