@@ -24,10 +24,10 @@ export const SectionHeader: FC<{
             : <h2 className={className}>{children}</h2>;
 
     return (
-        <HeaderComponent className={classNames("text-3xl md:text-4xl font-bold relative", className)}>
-            {children} <CopyLink id={id} />
-            <div id={id} className="absolute top-0 md:top-[95px]" />
-        </HeaderComponent>
+      <HeaderComponent className={classNames("text-3xl md:text-4xl font-bold relative", className)}>
+        {children} <CopyLink id={id} />
+        <div id={id} className="absolute top-0 md:top-[95px]" />
+      </HeaderComponent>
     );
 };
 
