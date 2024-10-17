@@ -5,26 +5,16 @@ import { getTranslations } from "next-intl/server";
 import { ReactNode } from 'react';
 import { GoogleTag } from "@/components/gtag";
 import { YandexMetrika } from "@/components/ym";
-import { Locale } from "@/const";
+import { Locale, locales } from "@/const";
+import { localeLangs, localeLocales, localeUrls } from "@/seo";
 
 import '../globals.css';
 
 const font = Montserrat({ subsets: ['latin'] });
 
-const locales: Record<Locale, string> = {
-  [Locale.EN]: 'en_US',
-  [Locale.RU]: 'ru_RU',
-  [Locale.AM]: 'hy_AM',
-};
 
-const langs: Record<Locale, string> = {
-  [Locale.EN]: 'en-US',
-  [Locale.RU]: 'ru-RU',
-  [Locale.AM]: 'hy-AM',
-};
-
-const getLocale = (locale: string) => (locales as any)[locale] ?? locales[Locale.AM];
-const getLang = (locale: string) => (langs as any)[locale] ?? langs[Locale.AM];
+const getLocale = (locale: string) => (localeLocales as any)[locale] ?? localeLocales[Locale.AM];
+const getLang = (locale: string) => (localeLangs as any)[locale] ?? localeLangs[Locale.AM];
 
 export async function generateMetadata({ params: { locale } }: any) {
   const t = await getTranslations({ locale, namespace: 'Metadata' });
@@ -33,6 +23,7 @@ export async function generateMetadata({ params: { locale } }: any) {
     title: t('title'),
     description: t('description'),
     keywords: t('keywords'),
+
 
     openGraph: {
       title: t('title'),
@@ -57,6 +48,9 @@ export default function RootLayout({
       <head>
         <YandexMetrika />
         <GoogleTag />
+
+        {locales.map(locale => <link key={locale} rel="alternate" hrefLang={localeLangs[locale]} href={localeUrls[locale]} />)}
+
       </head>
       <body className={classNames(font.className, 'text-base text-armaqi-base')}>{children}</body>
     </html>

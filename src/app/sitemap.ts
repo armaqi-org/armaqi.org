@@ -1,26 +1,26 @@
 import { MetadataRoute } from 'next';
-import { Languages } from "next/dist/lib/metadata/types/alternative-urls-types";
-
-const indexAlternates: Languages<string> = {
-    "hy-AM": 'https://armaqi.org',
-    "en-US": "https://armaqi.org/en",
-    "ru-RU": "https://armaqi.org/ru",
-};
+import { Locale, locales } from "@/const";
+import { localeLangs, localeUrls } from "@/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+    const indexAlternates = locales.reduce((out, locale) => ({
+        ...out,
+        [localeLangs[locale]]: localeUrls[locale],
+    }), {} as any);
+
     return [
         {
-            url: 'https://armaqi.org',
+            url: localeUrls[Locale.AM],
             lastModified: new Date(),
             alternates: { languages: indexAlternates },
         },
         {
-            url: 'https://armaqi.org/ru',
+            url: localeUrls[Locale.RU],
             lastModified: new Date(),
             alternates: { languages: indexAlternates },
         },
         {
-            url: 'https://armaqi.org/en',
+            url: localeUrls[Locale.EN],
             lastModified: new Date(),
             alternates: { languages: indexAlternates },
         },
