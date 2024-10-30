@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import { FC, ReactNode } from "react";
-import { CopyLink } from "@/components/copy-link";
 
 export const SectionAnchor: FC<{
     id: string;
@@ -17,7 +16,7 @@ export const SectionHeader: FC<{
     children: string;
     id: string;
     primary?: boolean;
-}> = ({ children, className, id, primary }) => {
+}> = ({ children, className, primary }) => {
     const HeaderComponent: FC<{ className: string; children: ReactNode }> = ({ children, className }) =>
         primary
             ? <h1 className={className}>{children}</h1>
@@ -25,8 +24,7 @@ export const SectionHeader: FC<{
 
     return (
       <HeaderComponent className={classNames("text-3xl md:text-4xl font-bold relative", className)}>
-        {children} <CopyLink id={id} />
-        <div id={id} className="absolute top-0 md:top-[95px]" />
+        {children}
       </HeaderComponent>
     );
 };
@@ -43,7 +41,7 @@ export const Section: FC<{
 }> = ({ center, children, className, contentClassName, id, primary, thin, title }) => {
     return (
       <>
-        <SectionAnchor id={id} />
+        {/*<SectionAnchor id={id} />*/}
 
         <div className={classNames("container my-12 md:my-24 mx-auto px-4 md:px-6", thin ? 'max-w-screen-md' : 'max-w-screen-xl', className)}>
           <SectionHeader className="mb-16 text-center" id={id} primary={primary}>
