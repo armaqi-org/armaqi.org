@@ -1,5 +1,10 @@
 import { fetchApi } from "@/tools/api";
-import { StationInfo, StationItem, StationListResponse, StationInfoResponse } from "@/tools-api/interface";
+import {
+    StationInfo,
+    StationItem,
+    StationListResponse,
+    StationInfoResponse,
+} from "@/tools-api/interface";
 
 
 type StationItemCB = (stations?: StationItem[]) => void;
@@ -128,31 +133,12 @@ class StationsApi {
         this.kv.removeListener(listKey, cb);
     }
 
-    loadInfo(id: number, cb: StationInfoCB) {
-        if (!this.kv.hasKey(infoKey(id))) {
-            this.kv.addKey(infoKey(id), () => this.loadStationInfo(id), 1000 * 60);
-            this.kv.addListener(infoKey(id), (info: StationInfo) => {
-                const stations = this.kv.getValue<StationItem[]>(listKey);
-
-                this.kv.setValue(listKey, stations?.map(st => st.id === id ? { ...st, aqi: info.pm25 } : st));
-            });
-        }
-
-        this.kv.addListener(infoKey(id), cb);
-    }
-
     unloadInfo(id: number, cb: StationInfoCB) {
         this.kv.removeListener(infoKey(id), cb);
     }
 
-    private async loadStations() {
-        return fetchApi<StationListResponse>(`/api/waqi/list?nc=${Date.now()}`, { next: { revalidate: 0 } })
-            .then((data) => data.stations);
-    }
-
-    private async loadStationInfo(id: number) {
-        return fetchApi<StationInfoResponse>(`/api/waqi/info?id=${id}&nc=${Date.now()}`, { next: { revalidate: 0 } })
-            .then(data => data.station);
+    private async loadStations(): Promise<StationItem[]> {
+         return fetchApi<StationItem[]>('https://api.beta.armaqi.org/api/public/stations');
     }
 }
 

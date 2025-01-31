@@ -6,7 +6,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 import { Spinner } from "@/components/spinner";
 import { getScaleColor } from "@/tools/quality-scale";
-import { useStationsList, StationItem, useStation } from "@/tools/stations";
+import { useStationsList, StationItem } from "@/tools/stations";
 import { getTimeAgo } from "@/tools/time-ago";
 
 /* eslint-disable max-len */
@@ -31,7 +31,6 @@ const cloudMarkerSvg = (value: number) => {
 /* eslint-enable max-len */
 
 const CustomMarkerPopupContent: FC<{ station: StationItem }> = ({ station }) => {
-    const info = useStation(station.id);
     const t = useTranslations('Map');
     const [showId, setShowId] = useState(false);
     const getTimeAgoString = useCallback((dt: Date) => {
@@ -41,11 +40,11 @@ const CustomMarkerPopupContent: FC<{ station: StationItem }> = ({ station }) => 
     }, [t]);
     const data = useMemo(() => ({
         title: station.title,
-        loading: !info,
-        pm25: info ? info?.pm25 ?? station.aqi : '',
-        pm10: info ? info?.pm10 ?? '-' : '',
-        updated: info ? (info.lastUpdated ? getTimeAgoString(new Date(info.lastUpdated)) : '-') : '',
-    }), [station, info, getTimeAgoString]);
+        loading: false,
+        pm25: Math.ceil(station.data.pm2),
+        pm10: Math.ceil(station.data.pm10),
+        updated: true ? '' : getTimeAgoString(new Date(station.data.timestamp)),
+    }), [station, getTimeAgoString]);
 
     const skeletonClasses = data.loading ? 'bg-gray-200 h-[10px] rounded-full w-12 inline-block animate-pulse' : undefined;
 
@@ -62,7 +61,7 @@ const CustomMarkerPopupContent: FC<{ station: StationItem }> = ({ station }) => 
 
         <div className="mt-2 pb-0.5 text-xs"><b>PM2.5</b>: <span className={skeletonClasses}>{data.pm25}</span></div>
         <div className="pb-0.5 text-xs"><b>PM 10</b>: <span className={skeletonClasses}>{data.pm10}</span></div>
-        <div className="pb-0.5 text-xs"><b>{t('lastUpdated')}</b>: <span className={skeletonClasses}>{data.updated}</span></div>
+        {!!data.updated && <div className="pb-0.5 text-xs"><b>{t('lastUpdated')}</b>: <span className={skeletonClasses}>{data.updated}</span></div>}
       </div>
     );
 };
@@ -76,16 +75,21 @@ const CustomMarker: FC<{ station: StationItem }> = ({ station }) => {
     }), []);
 
     const svgIcon = useMemo(() => L.divIcon({
-        html: cloudMarkerSvg(station.aqi),
+        html: cloudMarkerSvg(station.data.aqi),
         className: "svg-icon",
         iconSize: [30, 42],
         iconAnchor: [12, 40]
-    }), [station.aqi]);
+    }), [station.data.aqi]);
+
+    const position = useMemo(() => ({
+        lat: station.lat,
+        lng: station.lon
+    }), [station.lon, station.lat]);
 
     return (
       <Marker
         key={station.id}
-        position={station.position}
+        position={position}
         icon={svgIcon}
         eventHandlers={eventHandlers}
       >

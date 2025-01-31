@@ -23,7 +23,7 @@ export const useStationsList = (): {
 
     useEffect(() => {
         const cb = (stations: StationItem[] | undefined) => {
-            setStations(stations ?? []);
+            setStations(stations?.filter(st => st.data.aqi > 3) ?? []);
             setLoading(false);
         };
 
@@ -73,16 +73,4 @@ export const useStationsList = (): {
         stations,
         refresh,
     };
-};
-
-export const useStation = (id: number): StationInfo | undefined => {
-    const [info, setInfo] = useState<StationInfo | undefined>(undefined);
-
-    useEffect(() => {
-        stationsApi.loadInfo(id, setInfo);
-
-        return () => stationsApi.unloadInfo(id, setInfo);
-    }, [id]);
-
-    return info;
 };

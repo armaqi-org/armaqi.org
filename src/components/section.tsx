@@ -41,7 +41,7 @@ export const Section: FC<{
 }> = ({ center, children, className, contentClassName, id, primary, thin, title }) => {
     return (
       <>
-        {/*<SectionAnchor id={id} />*/}
+        <SectionAnchor id={id} />
 
         <div className={classNames("container my-12 md:my-24 mx-auto px-4 md:px-6", thin ? 'max-w-screen-md' : 'max-w-screen-xl', className)}>
           <SectionHeader className="mb-16 text-center" id={id} primary={primary}>
