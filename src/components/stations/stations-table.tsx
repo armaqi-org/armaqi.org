@@ -31,8 +31,8 @@ export const StationsTable: FC<{ type: StationDataType }> = ({ type }) => {
               <tr key={station.id}>
                 <td>{station.id}</td>
                 <td>{station.title}</td>
-                <td>{station.position.lat}, {station.position.lng}</td>
-                <td>{station.aqi}</td>
+                <td>{station.lat}, {station.lon}</td>
+                <td>{station.data.aqi}</td>
                 <td />
               </tr>
             ))}
