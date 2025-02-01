@@ -23,7 +23,7 @@ export const useStationsList = (): {
 
     useEffect(() => {
         const cb = (stations: StationItem[] | undefined) => {
-            setStations(stations?.filter(st => st.data.aqi > 3) ?? []);
+            setStations(stations? ?? []);
             setLoading(false);
         };
 
