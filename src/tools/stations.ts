@@ -23,7 +23,7 @@ export const useStationsList = (): {
 
     useEffect(() => {
         const cb = (stations: StationItem[] | undefined) => {
-            setStations(stations? ?? []);
+            setStations(stations);
             setLoading(false);
         };
 
