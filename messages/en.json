@@ -37,7 +37,7 @@
     "nav-map": "Map",
     "nav-about": "About",
     "nav-smog": "Smog",
-    "nav-sensor": "Add sensor"
+    "nav-sensor": "Sensor"
   },
   "LandingSmog": {
     "title0": "It's not just fog, it's smog, which contains:",

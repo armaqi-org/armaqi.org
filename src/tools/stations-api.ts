@@ -1,16 +1,27 @@
 import { fetchApi } from "@/tools/api";
 import {
     StationInfo,
-    StationItem,
-    StationListResponse,
-    StationInfoResponse,
+    ApiStationItem,
 } from "@/tools-api/interface";
 
 
 type StationItemCB = (stations?: StationItem[]) => void;
 type StationInfoCB = (info?: StationInfo) => void;
 
-export type { StationInfo, StationItem };
+export enum StationSource {
+    Unknown = 'Unknown',
+    Yerevan = 'Yerevan.am',
+    Armaqi = 'Armaqi',
+}
+
+export interface StationItem extends Omit<ApiStationItem, 'data'> {
+    source: StationSource;
+    data: ApiStationItem['data'] & {
+        aqi: number;
+    }
+}
+
+export type { StationInfo };
 
 class KeyValueStorage {
     private kv: Record<string, {
@@ -118,7 +129,7 @@ const listKey = 'list';
 const infoKey = (id: number) => id.toString();
 
 // Don't want to bring any dependency like mobx for now
-class StationsApi {
+export class StationsApi {
     private kv = new KeyValueStorage();
 
     loadList(cb: StationItemCB) {
@@ -137,9 +148,30 @@ class StationsApi {
         this.kv.removeListener(infoKey(id), cb);
     }
 
-    private async loadStations(): Promise<StationItem[]> {
-         return fetchApi<StationItem[]>('https://api.beta.armaqi.org/api/public/stations');
+    async loadStations(): Promise<StationItem[]> {
+         const items = await fetchApi<ApiStationItem[]>('https://api.beta.armaqi.org/api/public/stations');
+
+         return items.map(item => ({
+            ...item,
+             data: {
+                ...item.data,
+                 aqi: Math.floor(item.data.aqi ?? 0),
+             },
+             source: mapSource(item.type),
+         })).filter(item => item.data.aqi > 0);
     }
 }
 
+const mapSource = (type: string): StationSource => {
+    if (type === 'data.sensor.community') {
+        return StationSource.Armaqi;
+    }
+    if (type === 'armaqi') {
+        return StationSource.Armaqi;
+    }
+    if (type === 'gis.yerevan.am') {
+        return StationSource.Yerevan;
+    }
+    return StationSource.Unknown;
+};
 export const stationsApi = new StationsApi();

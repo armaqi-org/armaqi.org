@@ -1,17 +1,17 @@
 import { FC, useEffect, useState } from "react";
 import { Spinner } from "@/components/spinner";
-import { fetchApi } from "@/tools/api";
-import { StationDataType, StationItem, StationListResponse } from "@/tools-api/interface";
+import { StationsApi, StationItem } from "@/tools/stations-api";
+import { StationDataType } from "@/tools-api/interface";
 
 export const StationsTable: FC<{ type: StationDataType }> = ({ type }) => {
     const [stations, setStations] = useState<StationItem[] | undefined>(undefined);
     const loading = stations === undefined;
     
     useEffect(() => {
-        fetchApi<StationListResponse>('/api/waqi/list?type=' + type, { next: { revalidate: 0 } })
-            .then(response => {
-                setStations(response.stations ?? []);
-            });
+        const api = new StationsApi();
+        api.loadStations().then(stations => {
+            setStations(stations);
+        });
     }, [type]);
 
     return (

@@ -1,4 +1,4 @@
-export interface StationItem {
+export interface ApiStationItem {
     id: number;
     title: string;
     type: string;
@@ -7,14 +7,16 @@ export interface StationItem {
     place_id: number;
     data: {
         timestamp: string;
-        pm2: number;
-        pm10: number;
-        aqi: number;
+        temperature: number | null;
+        humidity: number | null;
+        pm2: number | null;
+        pm10: number | null;
+        aqi: number | null;
     }
 }
 
-export interface StationListResponse {
-    stations: StationItem[];
+export interface ApiStationListResponse {
+    stations: ApiStationItem[];
     error: string;
 }
 

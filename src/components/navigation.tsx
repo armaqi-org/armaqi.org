@@ -40,9 +40,9 @@ export const Navigation: FC<{ locale: Locale, links: NavigationLink[] }> = ({ li
             )}
           >
             <div className="flex flex-row justify-between w-full md:w-auto">
-              <a href="/" className="flex flex-col space-x-3 rtl:space-x-reverse items-center py-2">
+              <a href="/" className="flex flex-row space-x-3 rtl:space-x-reverse items-center py-2">
                 <CloudQualitySvg color="#77C2EB"  />
-                <p className="text-xs text-black font-semibold leading-4">Armenia Air<br />Quality Index</p>
+                <p className="text-xs text-armaqi-base font-semibold leading-4">Armenia Air<br />Quality Index</p>
               </a>
 
               <div className="md:hidden mr-8 text-2xl text-gray-300 mt-4 cursor-pointer">x</div>
@@ -53,7 +53,7 @@ export const Navigation: FC<{ locale: Locale, links: NavigationLink[] }> = ({ li
             >
               <ul
                 className={classNames(
-                    "flex flex-col p-4 md:p-0 mt-4 font-normal lg md:flex-row md:mt-0 md:border-0",
+                    "flex flex-col p-4 md:p-0 mt-4 font-normal lg md:flex-row md:items-center md:mt-0 md:border-0",
                     "md:space-x-8 rtl:space-x-reverse"
                 )}
               >
@@ -61,7 +61,7 @@ export const Navigation: FC<{ locale: Locale, links: NavigationLink[] }> = ({ li
                   <li key={item.href}>
                     <Link href={item.href}
                       locale="ru"
-                      className="block uppercase py-2 md:px-3 text-md md:text-sm text-black rounded font-semibold md:bg-transparent md:p-0"
+                      className="block uppercase py-2 md:px-3 text-md md:text-sm text-armaqi-base rounded font-semibold md:bg-transparent md:p-0 md:text-center"
                       aria-current="page"
                     >{item.title}
                     </Link>
@@ -72,17 +72,17 @@ export const Navigation: FC<{ locale: Locale, links: NavigationLink[] }> = ({ li
 
             <div className="flex space-x-3 md:space-x-2 rtl:space-x-reverse py-8 md:p-0">
               {locale !== Locale.AM && (
-                <LinkLocale locale={Locale.AM} className="ml-2 font-medium text-black">
+                <LinkLocale locale={Locale.AM} className="ml-2 font-medium text-armaqi-base">
                   Հայ
                 </LinkLocale>
               )}
               {locale !== Locale.EN && (
-                <LinkLocale locale={Locale.EN} className="ml-2 font-medium text-black">
+                <LinkLocale locale={Locale.EN} className="ml-2 font-medium text-armaqi-base">
                   ENG
                 </LinkLocale>
               )}
               {locale !== Locale.RU && (
-                <LinkLocale locale={Locale.RU} className="ml-2 font-medium text-black">
+                <LinkLocale locale={Locale.RU} className="ml-2 font-medium text-armaqi-base">
                   РУС
                 </LinkLocale>
               )}

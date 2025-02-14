@@ -22,7 +22,7 @@ export default function HomePage() {
     return (
       <>
         <Background />
-        <Navigation locale={locale} links={['map', 'about', 'smog', 'sensor'].map(it => ({ href: `#${it}`, title: t(`nav-${it}`) }))} />
+        <Navigation locale={locale} links={['map', 'smog', 'sensor', 'about'].map(it => ({ href: `#${it}`, title: t(`nav-${it}`) }))} />
         <MapModule />
         <LandingQuality />
         <LandingAbout t={t} />
