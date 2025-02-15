@@ -25,7 +25,8 @@ body {
   z-index: 1000;
 }
 
-.leaflet-control-zoom {
+.leaflet-control-zoom,
+.leaflet-control-attribution {
   display: none;
 }
 

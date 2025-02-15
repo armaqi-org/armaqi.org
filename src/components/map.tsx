@@ -1,7 +1,9 @@
 'use client';
+import classNames from "classnames";
 import L from 'leaflet';
+import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { FC, ReactElement, useCallback, useMemo, useState } from "react";
+import { FC, Fragment, ReactElement, useCallback, useMemo, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 import { AqiCloud, getAqiCloudSvg } from "@/components/clouds/aqi-cloud";
@@ -22,6 +24,18 @@ const sourceLogos: Record<StationSource, ReactElement> = {
 const formatTemperature = (val: number | null) => val ? `${val > 0 ? '+' : ''}${Math.round(val)} C` : '';
 const formatHumidity = (val: number | null) => val ? `${Math.round(val)}%` : '';
 
+const DataIcon: FC<{
+    className?: string;
+    icon: ReactElement;
+    data: string | number | null | undefined;
+}> = ({ className, data, icon }) => {
+    const isEmpty = !data && typeof data !== "number";
+    return isEmpty ? null : (
+      <div className={classNames(className, "flex flex-row items-center justify-start")}>
+        {icon}<span className="ml-2">{data}</span>
+      </div>
+    );
+};
 const CustomMarkerPopupContent: FC<{ station: StationItem }> = ({ station }) => {
     const t = useTranslations('Map');
     const [showId, setShowId] = useState(false);
@@ -39,8 +53,6 @@ const CustomMarkerPopupContent: FC<{ station: StationItem }> = ({ station }) => 
         humidity: formatHumidity(station.data.humidity),
         updated: getTimeAgoString(new Date(station.data.timestamp)),
     }), [station, getTimeAgoString]);
-
-    const skeletonClasses = data.loading ? 'bg-gray-200 h-[10px] rounded-full w-12 inline-block animate-pulse' : undefined;
 
     return (
       <div>
@@ -71,12 +83,24 @@ const CustomMarkerPopupContent: FC<{ station: StationItem }> = ({ station }) => 
           </div>
         </div>
 
-        <div className="grid grid-cols-3 grid-rows-2 gap-1 text-armaqi-base w-100">
-          <div className="row-span-2"><AqiCloud aqi={station.data.aqi} /></div>
-          <div><span className="font-bold">PM2.5</span>: <span className={skeletonClasses}>{data.pm25}</span></div>
-          <div className="col-start-2 row-start-2"><b>PM10</b>: <span className={skeletonClasses}>{data.pm10}</span></div>
-          <div className="col-start-3 row-start-1 text-center">{data.temperature}</div>
-          <div className="col-start-3 row-start-2 text-center">{data.humidity}</div>
+        <div className=" text-armaqi-base w-100 flex flex-row">
+          <div className="mr-4"><AqiCloud aqi={station.data.aqi} /></div>
+
+          <div className="grid grid-cols-2 grid-rows-2 gap-2 flex-1">
+            <div><span className="font-bold">PM2.5</span>: {data.pm25 ? data.pm25 + ' µg/m³' : '-'}</div>
+            <div className="row-start-2"><b>PM10</b>: {data.pm10 ? data.pm10 + ' µg/m³' : '-'}</div>
+            <DataIcon
+              className="ml-5 col-start-2 row-start-1"
+              icon={<Image width={7} height={15} src="/icons/temperature.svg" alt="temperature" />}
+              data={data.temperature}
+            />
+            <DataIcon
+              className="ml-5 col-start-2 row-start-2"
+              icon={<Image width={8} height={15} src="/icons/humidity.svg" alt="humidity" />}
+              data={data.humidity}
+            />
+          </div>
+
         </div>
 
         <div className="mt-2 pb-0.5 text-xs" />
@@ -129,7 +153,7 @@ export default function SensorMap() {
 
     return (
       <div className="relative w-full h-full">
-
+        <Image className="absolute top-2 right-2 z-top" width={89} height={34} src="/icons/live.svg" alt="live" />
         <MapContainer center={[40.188628, 44.512555]}
           zoom={12}
           scrollWheelZoom
@@ -168,6 +192,8 @@ export default function SensorMap() {
               )}
           </div>
         )}
+
+        <div className="absolute bottom-0 z-top left-auto right-auto">test</div>
       </div>
     );
 };
