@@ -27,7 +27,7 @@ export default async function IndexPage(props: {
     return (
       <>
         <Background />
-        <Navigation locale={lang} links={['map', 'smog', 'sensor', 'about'].map(it => ({ href: `#${it}`, title: (dict as any)[`nav-${it}`] }))} />
+        <Navigation locale={lang} links={['map', 'smog', 'sensor', 'about'].map(it => ({ href: `#${it}`, title: (dict.Landing as any)[`nav-${it}`] }))} />
 
         <DictionaryProvider dictionary={dictClient}>
           <MapModule />
