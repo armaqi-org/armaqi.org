@@ -4,7 +4,7 @@ import { FC } from "react";
 import { Link } from "@/components/link";
 import { LinkLocale } from "@/components/link-locale";
 import { NavigationBurger } from "@/components/navigation-burger";
-import { Locale } from "@/i18n";
+import { Locale } from "@/i18n-config";
 import { CloudQualitySvg } from "@/images/cloud-quality";
 
 export interface NavigationLink {

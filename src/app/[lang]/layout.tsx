@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 import { GoogleTag } from "@/components/gtag";
 import { YandexMetrika } from "@/components/ym";
 import { getDictionary } from "@/dictionaries";
-import { i18n, type Locale } from "@/i18n";
+import { i18n, type Locale } from "@/i18n-config";
 import { localeLangs, localeLocales, localeUrls } from "@/seo";
 
 import '../globals.css';

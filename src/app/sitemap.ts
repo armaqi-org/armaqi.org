@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { i18n } from "@/i18n";
+import { i18n } from "@/i18n-config";
 import { localeLangs, localeUrls } from "@/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {

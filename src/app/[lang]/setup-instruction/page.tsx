@@ -1,7 +1,7 @@
 import { Background } from "@/components/bg";
 import { Navigation } from "@/components/navigation";
 import { getDictionary } from "@/dictionaries";
-import { Locale } from "@/i18n";
+import { Locale } from "@/i18n-config";
 
 export default async function SetupInstructions(props: {
     params: Promise<{ lang: Locale }>;

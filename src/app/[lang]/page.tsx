@@ -12,7 +12,7 @@ import { LandingSolution } from "@/components/landing-solution";
 import { LandingWhyHappening } from "@/components/landing-why-happening";
 import { Navigation } from "@/components/navigation";
 import { getDictionary, getDictionaryClient } from "@/dictionaries";
-import { Locale } from "@/i18n";
+import { Locale } from "@/i18n-config";
 import { MapModule } from "@/modules/map";
 import DictionaryProvider from "@/providers/dictionary-provider";
 

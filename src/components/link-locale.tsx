@@ -2,7 +2,7 @@
 import BaseLink from "next/link";
 import { usePathname } from "next/navigation";
 import { FC } from "react";
-import { i18n, Locale } from "@/i18n";
+import { i18n, Locale } from "@/i18n-config";
 
 export const LinkLocale: FC<{
     children: string;

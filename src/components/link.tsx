@@ -1,6 +1,6 @@
 import BaseLink from "next/link";
 import { FC } from "react";
-import { Locale, i18n } from "@/i18n";
+import { Locale, i18n } from "@/i18n-config";
 
 // not sure why Link doesn't automatically prepends locale to links. temp fix
 export const Link: FC<{

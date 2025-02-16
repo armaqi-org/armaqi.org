@@ -1,5 +1,5 @@
 import { Languages } from "next/dist/lib/metadata/types/alternative-urls-types";
-import { Locale } from "@/i18n";
+import { Locale } from "@/i18n-config";
 
 export const localeLangs: Record<Locale, string> = {
     en: 'en-US',
