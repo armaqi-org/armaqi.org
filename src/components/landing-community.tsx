@@ -1,6 +1,6 @@
-import { useTranslations } from "next-intl";
 import { FC } from "react";
 import { Section } from "@/components/section";
+import { FCTL } from "@/tools/types";
 
 const sections = [
     { key: 'stations', installed: 15, required: 100 },
@@ -68,21 +68,20 @@ const DonutChart: FC<{
     );
 };
 
-export const LandingCommunity = () => {
-  const t = useTranslations('LandingCommunity');
+export const LandingCommunity: FCTL = ({ dict }) => {
 
   return (
     <Section
       id="community"
-      title={t('title')}
+      title={dict.LandingCommunity.title}
     >
 
       <div className="mt-10 grid grid-cols-1 gap-20 text-center sm:mx-auto sm:max-w-sm md:mt-20 md:max-w-full md:grid-cols-3 md:text-left">
         {sections.map(({ installed, key, required }) => (
           <div key={key} className="flex flex-col items-center">
             <DonutChart done={installed} required={required} />
-            <h5 className="font-semibold text-xl mt-4">{t(key)}</h5>
-            <p className="font-light">{t(`${key}Required`, { count: required })}</p>
+            <h5 className="font-semibold text-xl mt-4">{(dict.LandingCommunity as any)[key]}</h5>
+            <p className="font-light">{(dict.LandingCommunity as any)[`${key}Required`]?.replace('{count}', required)}</p>
           </div>
         ))}
       </div>

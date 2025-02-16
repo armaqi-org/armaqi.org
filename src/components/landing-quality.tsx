@@ -1,18 +1,16 @@
-import { useTranslations } from "next-intl";
 import { Carousel } from "@/components/carousel";
 import { Section } from "@/components/section";
 import { CloudQualitySvg } from "@/images/cloud-quality";
 import { qualityScales } from "@/tools/quality-scale";
+import { FCTL } from "@/tools/types";
 
-export const LandingQuality = () => {
-  const t = useTranslations('LandingQuality');
-
+export const LandingQuality: FCTL = ({ dict }) => {
   return (
     <>
       <Section
         id="quality"
         className="mb-16"
-        title={t('title')}
+        title={dict.LandingQuality.title}
         center
         primary
       >
@@ -21,7 +19,7 @@ export const LandingQuality = () => {
             <div key={color} className="mb-12 lg:mb-0 mx-4 ">
               <CloudQualitySvg color={color} />
               <div className="text-sm text-black">{from}{to ? `-${to}` : '+'}</div>
-              {t(`scale${index}`).split(':').map((tt, index) =>
+              {((dict.LandingQuality as any)[`scale${index}`] as string)?.split(':').map((tt, index) =>
                   !index ? (
                     <div className="font-bold text-sm text-black" key={tt}>{tt}</div>
                   ) : tt ? (
@@ -33,18 +31,18 @@ export const LandingQuality = () => {
         </div>
 
         <p className="text-xs text-center max-w-screen-md font-light mt-8 px-4">
-          {t('hint')}
+          {dict.LandingQuality.hint}
         </p>
       </Section>
  
       <Section id="quality-chart"
         className="mb-16"
-        title={t('chartTitle')}
+        title={dict.LandingQuality.chartTitle}
         center
       >
         <Carousel slides={[
-            { src: './landing-chart-yerevan.svg', text: t('chartTitleYerevan') },
-            { src: './landing-chart-tbilisi.svg', text: t('chartTitleTbilisi') },
+            { src: './landing-chart-yerevan.svg', text: dict.LandingQuality.chartTitleYerevan },
+            { src: './landing-chart-tbilisi.svg', text: dict.LandingQuality.chartTitleTbilisi },
         ]}
         />
       </Section>

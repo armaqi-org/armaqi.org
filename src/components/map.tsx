@@ -2,8 +2,7 @@
 import classNames from "classnames";
 import L from 'leaflet';
 import Image from "next/image";
-import { useTranslations } from "next-intl";
-import { FC, Fragment, ReactElement, useCallback, useMemo, useState } from "react";
+import { FC, ReactElement, useCallback, useMemo, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 import { AqiCloud, getAqiCloudSvg } from "@/components/clouds/aqi-cloud";
@@ -11,11 +10,12 @@ import { SourceArmaqi } from "@/components/sources/armaqi";
 import { SourceUnknown } from "@/components/sources/unknown";
 import { SourceYerevan } from "@/components/sources/yerevan";
 import { Spinner } from "@/components/spinner";
+import { useDictionary } from "@/providers/dictionary-provider";
 import { useStationsList, StationItem } from "@/tools/stations";
 import { StationSource } from "@/tools/stations-api";
 import { getTimeAgo } from "@/tools/time-ago";
 
-const sourceLogos: Record<StationSource, ReactElement> = {
+const sourceLogos: Record<StationSource, ReactElement<any>> = {
     [StationSource.Unknown]: <SourceUnknown />,
     [StationSource.Yerevan]: <SourceYerevan />,
     [StationSource.Armaqi]: <SourceArmaqi />,
@@ -26,7 +26,7 @@ const formatHumidity = (val: number | null) => val ? `${Math.round(val)}%` : '';
 
 const DataIcon: FC<{
     className?: string;
-    icon: ReactElement;
+    icon: ReactElement<any>;
     data: string | number | null | undefined;
 }> = ({ className, data, icon }) => {
     const isEmpty = !data && typeof data !== "number";
@@ -36,14 +36,13 @@ const DataIcon: FC<{
       </div>
     );
 };
-const CustomMarkerPopupContent: FC<{ station: StationItem }> = ({ station }) => {
-    const t = useTranslations('Map');
+const CustomMarkerPopupContent: FC<{ station: StationItem; dict: Record<string, string> }> = ({ dict, station }) => {
     const [showId, setShowId] = useState(false);
     const getTimeAgoString = useCallback((dt: Date) => {
         const [counter, mode] = getTimeAgo(dt, new Date());
 
-        return t('ago_' + mode, { counter });
-    }, [t]);
+        return ((dict as any)['ago_' + mode] as string)?.replace('{counter}', counter.toString());
+    }, [dict]);
     const data = useMemo(() => ({
         title: station.title,
         loading: false,
@@ -69,7 +68,7 @@ const CustomMarkerPopupContent: FC<{ station: StationItem }> = ({ station }) => 
               <div className="flex flex-row justify-between mr-2">
                 {!!data.updated && (
                 <div className="pb-0.5 text-xs text-armaqi-base">
-                  <span className="mr-2">{t('lastUpdated')}:</span>
+                  <span className="mr-2">{dict.lastUpdated}:</span>
                   <span className="decoration-dotted underline mr-2 font-bold">{data.updated}&nbsp;</span>
                 </div>
                 )}
@@ -109,7 +108,7 @@ const CustomMarkerPopupContent: FC<{ station: StationItem }> = ({ station }) => 
     );
 };
 
-const CustomMarker: FC<{ station: StationItem }> = ({ station }) => {
+const CustomMarker: FC<{ station: StationItem; dict: Record<string, string> }> = ({ dict, station }) => {
     const [key, setKey] = useState<string | undefined>(undefined);
 
     const eventHandlers = useMemo(() => ({
@@ -137,19 +136,20 @@ const CustomMarker: FC<{ station: StationItem }> = ({ station }) => {
         eventHandlers={eventHandlers}
       >
         <Popup>
-          {!!key && <CustomMarkerPopupContent key={key} station={station} />}
+          {!!key && <CustomMarkerPopupContent key={key} dict={dict} station={station} />}
         </Popup>
       </Marker>
     );
 };
 
-export default function SensorMap() {
+export default function SensorMap () {
     const {
         loading,
         paused,
         refresh,
         stations,
     } = useStationsList();
+    const dict = useDictionary().Map;
 
     return (
       <div className="relative w-full h-full">
@@ -166,7 +166,7 @@ export default function SensorMap() {
           />
 
           {stations?.map(st => (
-            <CustomMarker key={st.id} station={st} />
+            <CustomMarker key={st.id} station={st} dict={dict} />
         ))}
         </MapContainer>
 

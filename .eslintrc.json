@@ -19,7 +19,7 @@
     "semi": ["error", "always"],
     "react/jsx-indent": [2, 2, {"checkAttributes": true, "indentLogicalExpressions": false }],
     "react/jsx-indent-props": [2, 2],
-    "react/jsx-closing-tag-location" : [2, 2],
+    "react/jsx-closing-tag-location" : [2, { "location": "tag-aligned" }],
     "react/jsx-max-props-per-line": [2, { "maximum": 1, "when": "multiline" }],
     "react/jsx-closing-bracket-location": [1, "tag-aligned"],
     "react/jsx-curly-brace-presence": "error",

@@ -3,7 +3,7 @@ import { Fragment } from "react";
 import { SectionAnchor, SectionHeader } from "@/components/section";
 import { FCTL } from "@/tools/types";
 
-export const LandingHowItWorks: FCTL = ({ t }) => (
+export const LandingHowItWorks: FCTL = ({ dict }) => (
   <>
     <SectionAnchor id="how" />
     <div className="container my-24 mx-auto px-6 flex flex-col items-center">
@@ -19,9 +19,9 @@ export const LandingHowItWorks: FCTL = ({ t }) => (
           </div>
 
           <div className="w-full shrink-0 grow-0 basis-auto text-left md:w-6/12 md:pl-12 lg:w-6/12">
-            <SectionHeader id="how" className="mb-6 px-0">{t('howTitle')}</SectionHeader>
+            <SectionHeader id="how" className="mb-6 px-0">{dict.Landing.howTitle}</SectionHeader>
             <p className="font-light">
-              {t("howText").split('\n').map((item, key) => (
+              {dict.Landing.howText.split('\n').map((item, key) => (
                   // eslint-disable-next-line react/no-array-index-key
                 <Fragment key={key}>{item}<br /></Fragment>
               ))}
@@ -29,7 +29,7 @@ export const LandingHowItWorks: FCTL = ({ t }) => (
 
             <div className="mt-12">
               <a className="bg-armaqi-base text-white font-semibold py-4 px-4 md:px-16" href="#sensor" >
-                {t('howAction')}
+                {dict.Landing.howAction}
               </a>
             </div>
           </div>

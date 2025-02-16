@@ -1,10 +1,8 @@
-import { getRequestConfig } from 'next-intl/server';
-import { createElement } from "react";
+export const i18n = {
+    defaultLocale: "am",
+    locales: ["am", "en", "ru"],
+} as const;
 
-export default getRequestConfig(async ({ locale }) => ({
-    messages: (await import(`../messages/${locale}.json`)).default,
-    defaultTranslationValues: {
-        b: chunks => createElement('span', { className: 'font-bold' }, chunks)
-    }
-}));
- 
+export type Locale = (typeof i18n)["locales"][number];
+
+export default i18n;

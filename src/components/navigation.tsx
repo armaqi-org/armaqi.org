@@ -1,9 +1,10 @@
 import classNames from "classnames";
+import BaseLink from "next/link";
 import { FC } from "react";
 import { Link } from "@/components/link";
 import { LinkLocale } from "@/components/link-locale";
 import { NavigationBurger } from "@/components/navigation-burger";
-import { Locale } from "@/const";
+import { Locale } from "@/i18n";
 import { CloudQualitySvg } from "@/images/cloud-quality";
 
 export interface NavigationLink {
@@ -40,10 +41,10 @@ export const Navigation: FC<{ locale: Locale, links: NavigationLink[] }> = ({ li
             )}
           >
             <div className="flex flex-row justify-between w-full md:w-auto">
-              <a href="/" className="flex flex-row space-x-3 rtl:space-x-reverse items-center py-2">
+              <BaseLink href="/" className="flex flex-row space-x-3 rtl:space-x-reverse items-center py-2">
                 <CloudQualitySvg color="#77C2EB"  />
                 <p className="text-xs text-armaqi-base font-semibold leading-4">Armenia Air<br />Quality Index</p>
-              </a>
+              </BaseLink>
 
               <div className="md:hidden mr-8 text-2xl text-gray-300 mt-4 cursor-pointer">x</div>
             </div>
@@ -71,18 +72,18 @@ export const Navigation: FC<{ locale: Locale, links: NavigationLink[] }> = ({ li
             </div>
 
             <div className="flex space-x-3 md:space-x-2 rtl:space-x-reverse py-8 md:p-0">
-              {locale !== Locale.AM && (
-                <LinkLocale locale={Locale.AM} className="ml-2 font-medium text-armaqi-base">
+              {locale !== 'am' && (
+                <LinkLocale locale="am" className="ml-2 font-medium text-armaqi-base">
                   Հայ
                 </LinkLocale>
               )}
-              {locale !== Locale.EN && (
-                <LinkLocale locale={Locale.EN} className="ml-2 font-medium text-armaqi-base">
+              {locale !== 'en' && (
+                <LinkLocale locale="en" className="ml-2 font-medium text-armaqi-base">
                   ENG
                 </LinkLocale>
               )}
-              {locale !== Locale.RU && (
-                <LinkLocale locale={Locale.RU} className="ml-2 font-medium text-armaqi-base">
+              {locale !== 'ru' && (
+                <LinkLocale locale="ru" className="ml-2 font-medium text-armaqi-base">
                   РУС
                 </LinkLocale>
               )}

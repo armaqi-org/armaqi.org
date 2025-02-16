@@ -5,13 +5,6 @@
     "keywords": "օդ, Երևան, Հայաստան, աղտոտվածություն, օդի որակ",
     "og:url": "https://armaqi.org"
   },
-  "Map": {
-    "lastUpdated": "Թարմացվել է",
-    "ago_m": "{counter} րոպե առաջ",
-    "ago_h": "{counter} ժամ առաջ",
-    "ago_d": "{counter} օր առաջ",
-    "ago_o": "Ավելի քան 2 օր առաջ"
-  },
   "LandingQuality": {
     "title": "Օդի որակը Երևանում քարտեզի",
     "scale0": "Լավ",

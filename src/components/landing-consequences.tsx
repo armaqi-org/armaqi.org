@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { useTranslations } from "next-intl";
 import { Section } from "@/components/section";
+import { FCTL } from "@/tools/types";
 
 const sections = [
     ['Heart'],
@@ -8,18 +8,18 @@ const sections = [
     ['Brain', 'https://www.pnas.org/doi/full/10.1073/pnas.1809474115'],
 ];
 
-export const LandingConsequences = () => {
-  const t = useTranslations('LandingConsequences');
+export const LandingConsequences: FCTL = ({ dict }) => {
+  const d = dict.LandingConsequences;
 
   return (
     <Section
       className="mb-16"
       id="consequences"
-      title={t('title')}
+      title={d.title}
     >
       <div className="w-100 flex flex-col items-center">
         <p className="max-w-screen-md text-xl font-light text-center">
-          {t('description')}
+          {d.description}
         </p>
       </div>
 
@@ -36,16 +36,16 @@ export const LandingConsequences = () => {
               /> 
             </div>
             <div className="py-4 sm:py-8">
-              <p className="mb-6 block text-2xl font-semibold">{t(`item${key}:title`)}</p>
+              <p className="mb-6 block text-2xl font-semibold">{(d as any)[`item${key}:title`]}</p>
               <p className="mb-6 font-light">
-                {t(`item${key}:text`)}
+                {(d as any)[`item${key}:text`]}
                 {!!source && (
                   <a
                     href={source}
                     target="_blank"
                     className="font-light ml-2"
                   >
-                    [{t('source')}]
+                    [{d.source}]
                   </a>
                 )}
               </p>

@@ -1,11 +1,13 @@
-import { useTranslations } from "next-intl";
 import { Background } from "@/components/bg";
 import { Navigation } from "@/components/navigation";
-import { useLocale } from "@/tools/locale";
+import { getDictionary } from "@/dictionaries";
+import { Locale } from "@/i18n";
 
-export default function SetupInstructions() {
-    const locale = useLocale();
-    const t = useTranslations('Setup');
+export default async function SetupInstructions(props: {
+    params: Promise<{ lang: Locale }>;
+}) {
+    const { lang } = await props.params;
+    const dict = (await getDictionary(lang)).Setup;
 
     const docs = {
         'am': '2PACX-1vRN3hyamaQtoLk5ZyQzMnLNYNlC07VXOV0n9tW91NlCL2OVzzmzdwo-lnqP6YDKbZ7qLgrMynhLePeR',
@@ -13,16 +15,16 @@ export default function SetupInstructions() {
         'ru': '2PACX-1vRN3hyamaQtoLk5ZyQzMnLNYNlC07VXOV0n9tW91NlCL2OVzzmzdwo-lnqP6YDKbZ7qLgrMynhLePeR',
     };
 
-    const docHref = `https://docs.google.com/document/d/e/${docs[locale] ?? docs.ru}/pub`;
+    const docHref = `https://docs.google.com/document/d/e/${docs[lang] ?? docs.ru}/pub`;
 
     return (
       <>
         <Background />
-        <Navigation locale={locale} links={[{ href: '/', title: t('nav-main') }]} />
+        <Navigation locale={lang} links={[{ href: '/', title: dict["nav-main"] }]} />
         <div className="pt-[96px] min-h-screen container flex flex-col items-center px-4">
           <div className="h-[20%]" />
-          <p className="w-full text-center text-semibold mb-4 text-xl">{t('text')}</p>
-          <p className="w-full text-center mb-4 "><a className="underline" href={docHref} target="_blank">{t('instruction')}</a></p>
+          <p className="w-full text-center text-semibold mb-4 text-xl">{dict.text}</p>
+          <p className="w-full text-center mb-4 "><a className="underline" href={docHref} target="_blank">{dict.instruction}</a></p>
 
           <div className="w-full flex-1 flex flex-col">
             <iframe style={{ maxWidth: '580pt' }} className="flex-1 w-full mx-auto" src={`${docHref}?embedded=true`} />

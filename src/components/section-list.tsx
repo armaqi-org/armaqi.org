@@ -1,20 +1,19 @@
 import classNames from "classnames";
-import { useTranslations } from "next-intl";
 import { FC } from "react";
 
 export const SectionList: FC<{
-    t: FC<{ t: ReturnType<typeof useTranslations>}>;
+    dictSection: Record<string, string>;
     len: number;
     tPrefix?: string;
     space?: string;
-}> = ({ len, space, t, tPrefix = 'item' }) => {
+}> = ({ dictSection, len, space, tPrefix = 'item' }) => {
     return (
       <ul className="list-disc text-xl mx-3 md:mx-0">
         {new Array(len).fill(0).map((_, indLow) => (
           // eslint-disable-next-line react/no-array-index-key
           <li key={indLow} className={classNames({ 'mt-8': indLow })}>
-            <span className="font-semibold">{t(`${tPrefix}${indLow}:title` as any)}</span>
-            <span className="font-light">{space ?? ''}{t(`${tPrefix}${indLow}:text` as any)}</span>
+            <span className="font-semibold">{dictSection[`${tPrefix}${indLow}:title`]}</span>
+            <span className="font-light">{space ?? ''}{dictSection[`${tPrefix}${indLow}:text`]}</span>
           </li>
         ))}
       </ul>

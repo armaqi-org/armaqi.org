@@ -1,28 +1,26 @@
 import classNames from "classnames";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
 import { Section } from "@/components/section";
 import { SectionList } from "@/components/section-list";
+import { FCTL } from "@/tools/types";
 
 const sections: [string, number][] = [
     ['smog', 5],
     ['fog_vs_smog', 4],
 ];
 
-export const LandingSmog = () => {
-  const t = useTranslations('LandingSmog');
-
+export const LandingSmog: FCTL = ({ dict }) => {
   return (
     <>
       {sections.map(([key, len], indHigh) => (
         <Section
           key={key}
           id={key}
-          title={t(`title${indHigh}`)}
+          title={(dict.LandingSmog as any)[`title${indHigh}`]}
           thin
         >
           <SectionList
-            t={t}
+            dictSection={dict.LandingSmog}
             tPrefix={`item${indHigh}`}
             len={len}
           />

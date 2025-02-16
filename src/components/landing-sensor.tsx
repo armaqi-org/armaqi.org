@@ -1,9 +1,9 @@
 import classNames from "classnames";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
 import { FC } from "react";
 import { OrderForm } from "@/components/landing-sensor-order";
 import { Section } from "@/components/section";
+import { FCTL } from "@/tools/types";
 
 const List: FC<{
     className?: string;
@@ -30,18 +30,19 @@ const List: FC<{
   </div>
 );
 
-export const LandingSensor = () => {
-  const t = useTranslations('LandingSensor');
+export const LandingSensor: FCTL = ({ dict }) => {
+  const d = dict.LandingSensor;
+  const t = (key: string) => (d as any)[key];
 
   return (
     <>
       <Section
         id="sensor"
-        title={t('title')}
+        title={d.title}
       >
         <div className="px-4 flex flex-col items-center">
           <p className="text-xl text-center max-w-lg font-light">
-            {t('description')}
+            {d.description}
           </p>
         </div>
 
@@ -51,12 +52,12 @@ export const LandingSensor = () => {
             <div className="">
               <div className="flex justify-between items-center mt-8">
                 <h3 className="text-2xl font-semibold">
-                  {t("standardTitle")}
+                  {d.standardTitle}
                 </h3>
                 <p className="font-semibold text-xl mt-2">35000 AMD</p>
               </div>
 
-              <p className="mt-6 text-base font-light">{t("standardDescription")}</p>
+              <p className="mt-6 text-base font-light">{d.standardDescription}</p>
             </div>
 
             <List className="mt-4" titleKey="needs" tPrefix="standardNeeds" len={2} t={t} />
@@ -65,8 +66,8 @@ export const LandingSensor = () => {
           <div className="">
             <Image className="mx-auto h-96 w-auto object-cover md:order-2 md:object-center" src="/sensor-diy.png" alt="sensor diy" width={560} height={340} />
             <div className="">
-              <h3 className="text-2xl font-semibold mt-8">{t("diyTitle")}</h3>
-              <p className="mt-6 text-base font-light">{t("diyDescription")}</p>
+              <h3 className="text-2xl font-semibold mt-8">{d.diyTitle}</h3>
+              <p className="mt-6 text-base font-light">{d.diyDescription}</p>
             </div>
 
             <List className="mt-4" title2="15000 AMD" titleKey="diyLite" tPrefix="diyLite" len={1} t={t} />
@@ -77,11 +78,11 @@ export const LandingSensor = () => {
  
       <Section id="order"
         className="mb-16"
-        title={t('order')}
+        title={d.order}
       >
         <div className="flex flex-col items-center">
           <p className="text-xl text-center max-w-screen-md font-light">
-            {t('orderDescription')}
+            {d.orderDescription}
           </p>
         </div>
 
@@ -89,27 +90,27 @@ export const LandingSensor = () => {
           <div className="space-y-4 px-2 md:px-8 py-10 max-w-screen-md">
             <OrderForm
               sensors={[
-                  ['standard', t("standardTitle")],
-                  ['diyLite', t("diyLite")],
-                  ['diyFull', t("diyFull")]
+                  ['standard', d.standardTitle],
+                  ['diyLite', d.diyLite],
+                  ['diyFull', d.diyFull]
               ]}
               t={{
-                    'email': t('orderFieldEmail'),
-                    'emailPlaceholder': t('orderFieldEmailPlaceholder'),
-                    'name': t('orderFieldName'),
-                    'namePlaceholder': t('orderFieldNamePlaceholder'),
-                    'contact': t('orderFieldContact'),
-                    'contactPlaceholder': t('orderFieldContactPlaceholder'),
-                    'district': t('orderFieldDistrict'),
-                    'districtPlaceholder': t('orderFieldDistrictPlaceholder'),
-                    'sensor': t('orderFieldSensor'),
-                    'sensorStandard': t('standardTitle'),
-                    'sensorDiy': t('diyTitle'),
-                    'submit': t('orderSubmit'),
-                    'terms': t('orderTerms'),
-                    'hint': t('orderHint'),
-                    'success': t('orderSuccess'),
-                    'error': t('orderError'),
+                    'email': d.orderFieldEmail,
+                    'emailPlaceholder': d.orderFieldEmailPlaceholder,
+                    'name': d.orderFieldName,
+                    'namePlaceholder': d.orderFieldNamePlaceholder,
+                    'contact': d.orderFieldContact,
+                    'contactPlaceholder': d.orderFieldContactPlaceholder,
+                    'district': d.orderFieldDistrict,
+                    'districtPlaceholder': d.orderFieldDistrictPlaceholder,
+                    'sensor': d.orderFieldSensor,
+                    'sensorStandard': d.standardTitle,
+                    'sensorDiy': d.diyTitle,
+                    'submit': d.orderSubmit,
+                    'terms': d.orderTerms,
+                    'hint': d.orderHint,
+                    'success': d.orderSuccess,
+                    'error': d.orderError,
               }}
             />
           </div>

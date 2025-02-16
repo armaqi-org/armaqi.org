@@ -1,22 +1,22 @@
 import { Languages } from "next/dist/lib/metadata/types/alternative-urls-types";
-import { Locale } from "@/const";
+import { Locale } from "@/i18n";
 
 export const localeLangs: Record<Locale, string> = {
-    [Locale.EN]: 'en-US',
-    [Locale.RU]: 'ru-RU',
-    [Locale.AM]: 'hy-AM',
+    en: 'en-US',
+    ru: 'ru-RU',
+    am: 'hy-AM',
 };
 
 export const localeUrls: Record<Locale, string> = {
-    [Locale.AM]: 'https://armaqi.org',
-    [Locale.EN]: "https://armaqi.org/en",
-    [Locale.RU]: "https://armaqi.org/ru",
+    am: 'https://armaqi.org',
+    en: "https://armaqi.org/en",
+    ru: "https://armaqi.org/ru",
 };
 
 export const localeLocales: Record<Locale, string> = {
-    [Locale.EN]: 'en_US',
-    [Locale.RU]: 'ru_RU',
-    [Locale.AM]: 'hy_AM',
+    en: 'en_US',
+    ru: 'ru_RU',
+    am: 'hy_AM',
 };
 
 const indexAlternates: Languages<string> = {

@@ -1,4 +1,5 @@
-import { useTranslations } from "next-intl";
 import { FC } from "react";
+import { getDictionary } from "@/dictionaries";
 
-export type FCTL = FC<{ t: ReturnType<typeof useTranslations<''>>}>;
+export type DictType = Awaited<ReturnType<typeof getDictionary>>
+export type FCTL = FC<{ dict: DictType }>;
