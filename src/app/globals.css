@@ -9,14 +9,6 @@
 body {
 }
 
-@layer utilities {
-  @variants responsive {
-    .bottom-unset {
-      bottom: unset;
-    }
-  }
-}
-
 .z-nav {
   z-index: 1001;
 }

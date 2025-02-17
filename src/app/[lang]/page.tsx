@@ -15,22 +15,24 @@ import { getDictionary, getDictionaryClient } from "@/dictionaries";
 import { Locale } from "@/i18n-config";
 import { MapModule } from "@/modules/map";
 import DictionaryProvider from "@/providers/dictionary-provider";
+import StationsProvider from "@/providers/stations-provider";
 
 export default async function IndexPage(props: {
     params: Promise<{ lang: Locale }>;
 }) {
     const { lang } = await props.params;
     const dict = (await getDictionary(lang));
-    const dictClient = (await getDictionaryClient(lang));
+    const dictClient = getDictionaryClient(dict);
 
-    // console.log('###2', lang);
     return (
       <>
         <Background />
         <Navigation locale={lang} links={['map', 'smog', 'sensor', 'about'].map(it => ({ href: `#${it}`, title: (dict.Landing as any)[`nav-${it}`] }))} />
 
         <DictionaryProvider dictionary={dictClient}>
-          <MapModule />
+          <StationsProvider stations={[]}>
+            <MapModule />
+          </StationsProvider>
         </DictionaryProvider>
 
         <LandingQuality dict={dict} />

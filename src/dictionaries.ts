@@ -9,14 +9,12 @@ const dictionaries = {
     ru: () => import("../messages/ru.json").then((module) => module.default),
 };
 
-const dictionariesClient = {
-    en: () => import("../messages-client/en.json").then((module) => module.default),
-    am: () => import("../messages-client/am.json").then((module) => module.default),
-    ru: () => import("../messages-client/ru.json").then((module) => module.default),
-};
-
 export const getDictionary = async (locale: Locale) =>
     dictionaries[locale]?.() ?? dictionaries.en();
 
-export const getDictionaryClient = async (locale: Locale) =>
-    dictionariesClient[locale]?.() ?? dictionariesClient.en();
+type DictType = Awaited<ReturnType<typeof getDictionary>>;
+type ClientDict = Pick<DictType, 'Map' | 'Scale'>;
+export const getDictionaryClient = (dict: DictType): ClientDict => ({
+    Map: dict.Map,
+    Scale: dict.Scale,
+});

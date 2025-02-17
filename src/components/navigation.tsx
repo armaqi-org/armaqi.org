@@ -1,8 +1,6 @@
 import classNames from "classnames";
-import BaseLink from "next/link";
 import { FC } from "react";
 import { Link } from "@/components/link";
-import { LinkLocale } from "@/components/link-locale";
 import { NavigationBurger } from "@/components/navigation-burger";
 import { Locale } from "@/i18n-config";
 import { CloudQualitySvg } from "@/images/cloud-quality";
@@ -41,10 +39,10 @@ export const Navigation: FC<{ locale: Locale, links: NavigationLink[] }> = ({ li
             )}
           >
             <div className="flex flex-row justify-between w-full md:w-auto">
-              <BaseLink href="/" className="flex flex-row space-x-3 rtl:space-x-reverse items-center py-2">
+              <Link href="/" locale={locale} className="flex flex-row space-x-3 rtl:space-x-reverse items-center py-2">
                 <CloudQualitySvg color="#77C2EB"  />
                 <p className="text-xs text-armaqi-base font-semibold leading-4">Armenia Air<br />Quality Index</p>
-              </BaseLink>
+              </Link>
 
               <div className="md:hidden mr-8 text-2xl text-gray-300 mt-4 cursor-pointer">x</div>
             </div>
@@ -60,7 +58,8 @@ export const Navigation: FC<{ locale: Locale, links: NavigationLink[] }> = ({ li
               >
                 {links.map(item => (
                   <li key={item.href}>
-                    <Link href={item.href}
+                    <Link
+                      href={item.href}
                       locale="ru"
                       className="block uppercase py-2 md:px-3 text-md md:text-sm text-armaqi-base rounded font-semibold md:bg-transparent md:p-0 md:text-center"
                       aria-current="page"
@@ -73,19 +72,19 @@ export const Navigation: FC<{ locale: Locale, links: NavigationLink[] }> = ({ li
 
             <div className="flex space-x-3 md:space-x-2 rtl:space-x-reverse py-8 md:p-0">
               {locale !== 'am' && (
-                <LinkLocale locale="am" className="ml-2 font-medium text-armaqi-base">
+                <Link href="/" locale="am" className="ml-2 font-medium text-armaqi-base">
                   Հայ
-                </LinkLocale>
+                </Link>
               )}
               {locale !== 'en' && (
-                <LinkLocale locale="en" className="ml-2 font-medium text-armaqi-base">
+                <Link href="/" locale="en" className="ml-2 font-medium text-armaqi-base">
                   ENG
-                </LinkLocale>
+                </Link>
               )}
               {locale !== 'ru' && (
-                <LinkLocale locale="ru" className="ml-2 font-medium text-armaqi-base">
+                <Link href="/" locale="ru" className="ml-2 font-medium text-armaqi-base">
                   РУС
-                </LinkLocale>
+                </Link>
               )}
             </div>
           </div>

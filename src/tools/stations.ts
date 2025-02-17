@@ -1,19 +1,20 @@
 import { useCallback, useEffect, useState } from "react";
-import { StationItem, StationInfo, stationsApi } from "@/tools/stations-api";
+import { StationItem, StationInfo, StationsApi } from "@/tools/stations-api";
 
 export type { StationItem, StationInfo };
 
-export const useStationsList = (): {
+export const useStationsList = (staticStations: StationItem[]): {
     loading: boolean;
     error: boolean;
     paused: boolean;
     stations: StationItem[];
     refresh(): void;
 } => {
-    const [stations, setStations] = useState<StationItem[]>([]);
+    const [stations, setStations] = useState<StationItem[]>(staticStations || []);
     const [loading, setLoading] = useState(true);
     const [paused, setPaused] = useState(false);
     const [tick, setTick] = useState(0);
+    const noRefresh = true;
 
     const refresh = useCallback(() => {
         setLoading(true);
@@ -22,18 +23,20 @@ export const useStationsList = (): {
     }, []);
 
     useEffect(() => {
-        const cb = (stations: StationItem[] | undefined) => {
-            setStations(stations ?? []);
+        if (!staticStations?.length) {
+            StationsApi.loadStations().then(
+                stations => {
+                    setStations(stations ?? []);
+                    setLoading(false);
+                }
+            );
+        } else {
             setLoading(false);
-        };
-
-        stationsApi.loadList(cb);
-
-        return () => stationsApi.unloadList(cb);
-    }, [tick]);
+        }
+    }, [tick, staticStations]);
 
     useEffect(() => {
-        if (paused) {
+        if (paused || noRefresh) {
             return;
         }
 
@@ -50,11 +53,11 @@ export const useStationsList = (): {
         }, 4 * 60000);
 
         return () => clearInterval(interval);
-    }, [refresh, paused]);
+    }, [refresh, paused, noRefresh]);
 
     useEffect(() => {
         const cb = () => {
-            if (paused) {
+            if (!noRefresh && paused) {
                 refresh();
             }
         };
@@ -64,7 +67,7 @@ export const useStationsList = (): {
         return () => {
             window.removeEventListener('focus', cb);
         };
-    }, [paused, refresh]);
+    }, [paused, refresh, noRefresh]);
 
     return {
         loading,

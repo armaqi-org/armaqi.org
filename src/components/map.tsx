@@ -11,6 +11,8 @@ import { SourceUnknown } from "@/components/sources/unknown";
 import { SourceYerevan } from "@/components/sources/yerevan";
 import { Spinner } from "@/components/spinner";
 import { useDictionary } from "@/providers/dictionary-provider";
+import { useStaticStations } from "@/providers/stations-provider";
+import { aqiScaleList, aqiScales } from "@/tools/aqi-scale";
 import { useStationsList, StationItem } from "@/tools/stations";
 import { StationSource } from "@/tools/stations-api";
 import { getTimeAgo } from "@/tools/time-ago";
@@ -143,13 +145,14 @@ const CustomMarker: FC<{ station: StationItem; dict: Record<string, string> }> =
 };
 
 export default function SensorMap () {
+    const staticStation = useStaticStations();
     const {
         loading,
         paused,
         refresh,
         stations,
-    } = useStationsList();
-    const dict = useDictionary().Map;
+    } = useStationsList(staticStation);
+    const dict = useDictionary();
 
     return (
       <div className="relative w-full h-full">
@@ -166,7 +169,7 @@ export default function SensorMap () {
           />
 
           {stations?.map(st => (
-            <CustomMarker key={st.id} station={st} dict={dict} />
+            <CustomMarker key={st.id} station={st} dict={dict.Map} />
         ))}
         </MapContainer>
 
@@ -193,7 +196,11 @@ export default function SensorMap () {
           </div>
         )}
 
-        <div className="absolute bottom-0 z-top left-auto right-auto">test</div>
+        <div className="absolute bottom-0 z-top left-0 right-0 flex flex-row justify-center text-white">
+          {aqiScaleList.map(scale => (
+            <div key={scale} className="inline-block text-xs px-2 py-1" style={{ backgroundColor: aqiScales[scale].bgColor }}>{dict.Scale?.[scale]}</div>
+          ))}
+        </div>
       </div>
     );
 };
