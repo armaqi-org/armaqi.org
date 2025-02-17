@@ -196,7 +196,7 @@ export default function SensorMap () {
           </div>
         )}
 
-        <div className="absolute bottom-0 z-top left-0 right-0 flex flex-row justify-center text-white">
+        <div className="hidden md:flex absolute bottom-0 z-top left-0 right-0 flex-row justify-center text-white">
           {aqiScaleList.map(scale => (
             <div key={scale} className="inline-block text-xs px-2 py-1" style={{ backgroundColor: aqiScales[scale].bgColor }}>{dict.Scale?.[scale]}</div>
           ))}
