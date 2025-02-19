@@ -30,6 +30,12 @@ const List: FC<{
   </div>
 );
 
+const prices = {
+    standard: '45000',
+    diyLite: '25000',
+    diyFull: '40000',
+};
+
 export const LandingSensor: FCTL = ({ dict }) => {
   const d = dict.LandingSensor;
   const t = (key: string) => (d as any)[key];
@@ -54,7 +60,7 @@ export const LandingSensor: FCTL = ({ dict }) => {
                 <h3 className="text-2xl font-semibold">
                   {d.standardTitle}
                 </h3>
-                <p className="font-semibold text-xl mt-2">35000 AMD</p>
+                <p className="font-semibold text-xl mt-2">{prices.standard} AMD</p>
               </div>
 
               <p className="mt-6 text-base font-light">{d.standardDescription}</p>
@@ -70,8 +76,8 @@ export const LandingSensor: FCTL = ({ dict }) => {
               <p className="mt-6 text-base font-light">{d.diyDescription}</p>
             </div>
 
-            <List className="mt-4" title2="15000 AMD" titleKey="diyLite" tPrefix="diyLite" len={1} t={t} />
-            <List className="mt-4" title2="30000 AMD" titleKey="diyFull" tPrefix="diyFull" len={1} t={t} />
+            <List className="mt-4" title2={`${prices.diyLite} AMD`} titleKey="diyLite" tPrefix="diyLite" len={1} t={t} />
+            <List className="mt-4" title2={`${prices.diyFull} AMD`} titleKey="diyFull" tPrefix="diyFull" len={1} t={t} />
           </div>
         </div>
       </Section>
