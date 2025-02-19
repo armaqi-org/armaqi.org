@@ -1,30 +1,41 @@
-import { useCallback, useEffect, useState } from "react";
-import { StationItem, StationInfo, StationsApi } from "@/tools/stations-api";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { StationItem, ApiService, StationSource } from "@/api";
+import { useStaticStations } from "@/providers/stations-provider";
 
-export type { StationItem, StationInfo };
-
-export const useStationsList = (staticStations: StationItem[]): {
+export const useStationsList = (): {
     loading: boolean;
     error: boolean;
     paused: boolean;
     stations: StationItem[];
+    sources: StationSource[];
+    toggleSource(source: StationSource): void;
     refresh(): void;
 } => {
+    const staticStations = useStaticStations();
     const [stations, setStations] = useState<StationItem[]>(staticStations || []);
     const [loading, setLoading] = useState(true);
     const [paused, setPaused] = useState(false);
     const [tick, setTick] = useState(0);
+    const [sources, setSources] = useState([StationSource.Armaqi, StationSource.Yerevan]);
     const noRefresh = true;
 
+    const filteredStations = useMemo(() => stations.filter(st => sources.includes(st.source)), [stations, sources]);
     const refresh = useCallback(() => {
         setLoading(true);
         setPaused(false);
         setTick(Date.now());
     }, []);
+    const toggleSource = useCallback((source: StationSource) => {
+        setSources(current =>
+            current.includes(source)
+                ? current.filter(c => c !== source)
+                : [...current, source]
+        );
+    }, []);
 
     useEffect(() => {
         if (!staticStations?.length) {
-            StationsApi.loadStations().then(
+            ApiService.loadStations().then(
                 stations => {
                     setStations(stations ?? []);
                     setLoading(false);
@@ -35,6 +46,7 @@ export const useStationsList = (staticStations: StationItem[]): {
         }
     }, [tick, staticStations]);
 
+    // TBD: auto-refresh functionality is disabled for now
     useEffect(() => {
         if (paused || noRefresh) {
             return;
@@ -73,7 +85,9 @@ export const useStationsList = (staticStations: StationItem[]): {
         loading,
         error: false,
         paused,
-        stations,
+        stations: filteredStations,
+        sources,
+        toggleSource,
         refresh,
     };
 };

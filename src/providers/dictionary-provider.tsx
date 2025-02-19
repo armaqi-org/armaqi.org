@@ -3,7 +3,7 @@
 
 import { createContext, ReactNode, useContext } from "react";
 
-type Dictionary = Record<string, Record<string, string>>
+type Dictionary = any;
 
 const DictionaryContext = createContext<Dictionary | null>(null);
 

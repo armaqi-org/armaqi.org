@@ -1,8 +1,7 @@
-// dictionary-provider.tsx
 'use client';
 
 import { createContext, ReactNode, useContext } from "react";
-import { StationItem } from "@/tools/stations-api";
+import { StationItem } from "@/api";
 
 const StationsContext = createContext<StationItem[]>([]);
 

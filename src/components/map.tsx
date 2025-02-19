@@ -5,20 +5,22 @@ import Image from "next/image";
 import { FC, ReactElement, useCallback, useMemo, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
+import { StationSource, StationItem, StationHistoryType } from "@/api";
 import { AqiCloud, getAqiCloudSvg } from "@/components/clouds/aqi-cloud";
-import { SourceArmaqi } from "@/components/sources/armaqi";
-import { SourceUnknown } from "@/components/sources/unknown";
-import { SourceYerevan } from "@/components/sources/yerevan";
+import { SourceArmaqi, SourceArmaqiLogo } from "@/components/sources/armaqi";
+import { SourceYerevan, SourceYerevanLogo } from "@/components/sources/yerevan";
 import { Spinner } from "@/components/spinner";
 import { useDictionary } from "@/providers/dictionary-provider";
-import { useStaticStations } from "@/providers/stations-provider";
 import { aqiScaleList, aqiScales } from "@/tools/aqi-scale";
-import { useStationsList, StationItem } from "@/tools/stations";
-import { StationSource } from "@/tools/stations-api";
+import { useStationsList } from "@/tools/stations";
 import { getTimeAgo } from "@/tools/time-ago";
 
 const sourceLogos: Record<StationSource, ReactElement<any>> = {
-    [StationSource.Unknown]: <SourceUnknown />,
+    [StationSource.Yerevan]: <SourceYerevanLogo />,
+    [StationSource.Armaqi]: <SourceArmaqiLogo />,
+};
+
+const sourceElements: Record<StationSource, ReactElement<any>> = {
     [StationSource.Yerevan]: <SourceYerevan />,
     [StationSource.Armaqi]: <SourceArmaqi />,
 };
@@ -38,6 +40,18 @@ const DataIcon: FC<{
       </div>
     );
 };
+
+const StationHistory: FC<{ id: number }> = ({ id }) => {
+    const [type, setType] = useState<StationHistoryType>('hour');
+    const [loading, setLoading] = useState(!!id);
+
+    return (loading || type || !!setType || !!setLoading) ? null : (
+      <div className="border border-armaqi-pink rounded">
+        qq
+      </div>
+    );
+};
+
 const CustomMarkerPopupContent: FC<{ station: StationItem; dict: Record<string, string> }> = ({ dict, station }) => {
     const [showId, setShowId] = useState(false);
     const getTimeAgoString = useCallback((dt: Date) => {
@@ -80,7 +94,7 @@ const CustomMarkerPopupContent: FC<{ station: StationItem; dict: Record<string, 
               )}
           </div>
           <div className="py-2">
-            {sourceLogos[station.source]}
+            {sourceElements[station.source]}
           </div>
         </div>
 
@@ -104,8 +118,7 @@ const CustomMarkerPopupContent: FC<{ station: StationItem; dict: Record<string, 
 
         </div>
 
-        <div className="mt-2 pb-0.5 text-xs" />
-        <div className="pb-0.5 text-xs" />
+        <StationHistory id={station.id} />
       </div>
     );
 };
@@ -125,15 +138,10 @@ const CustomMarker: FC<{ station: StationItem; dict: Record<string, string> }> =
         iconAnchor: [16, 16]
     }), [station.data.aqi]);
 
-    const position = useMemo(() => ({
-        lat: station.lat,
-        lng: station.lon
-    }), [station.lon, station.lat]);
-
     return (
       <Marker
         key={station.id}
-        position={position}
+        position={station.position}
         icon={svgIcon}
         eventHandlers={eventHandlers}
       >
@@ -144,14 +152,40 @@ const CustomMarker: FC<{ station: StationItem; dict: Record<string, string> }> =
     );
 };
 
+const StationSourceToggle: FC<{
+    active: boolean;
+    title: string;
+    logo: ReactElement;
+    onClick(): void;
+}> = ({ active, logo, onClick, title }) => (
+  <div
+    className="bg-white rounded-xl mb-2 shadow-xl cursor-pointer"
+    onClick={onClick}
+  >
+    <div className={classNames(
+          "flex flex-row  items-center bg-white px-3 py-1 border-2 rounded-xl",
+          "text-sm text-armaqi-base font-semibold uppercase",
+          {
+              'border-armaqi-base': active,
+              'border-white opacity-70': !active,
+          }
+    )}
+    >
+      <span className="mr-2 hidden md:inline-block">{title}</span>
+      {logo}
+    </div>
+  </div>
+);
+
 export default function SensorMap () {
-    const staticStation = useStaticStations();
     const {
         loading,
         paused,
         refresh,
+        sources,
         stations,
-    } = useStationsList(staticStation);
+        toggleSource
+    } = useStationsList();
     const dict = useDictionary();
 
     return (
@@ -196,6 +230,18 @@ export default function SensorMap () {
           </div>
         )}
 
+        <div className="flex flex-col absolute z-top right-3 bottom-3">
+          {[StationSource.Yerevan, StationSource.Armaqi].map(source => (
+            <StationSourceToggle
+              key={source}
+              title={(dict as any).Map?.source?.[source] ?? 'test'}
+              logo={sourceLogos[source]}
+              active={sources.includes(source)}
+              onClick={() => toggleSource(source)}
+            />
+          ))}
+
+        </div>
         <div className="hidden md:flex absolute bottom-0 z-top left-0 right-0 flex-row justify-center text-white">
           {aqiScaleList.map(scale => (
             <div key={scale} className="inline-block text-xs px-2 py-1" style={{ backgroundColor: aqiScales[scale].bgColor }}>{dict.Scale?.[scale]}</div>

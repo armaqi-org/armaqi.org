@@ -1,0 +1,228 @@
+openapi: 3.0.0
+info:
+  title: AQI API Gateway
+  description: API для получения данных о станциях и местах измерений качества воздуха
+  version: 1.0.0
+servers:
+  - url: /api/public
+paths:
+  /stations:
+    get:
+      summary: Получить список станций
+      description: Возвращает список станций с последними доступными данными.
+      parameters:
+        - name: place_id
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Фильтр по месту
+        - name: overlapped
+          in: query
+          required: false
+          schema:
+            type: boolean
+          description: Включить пересекающиеся станции
+      responses:
+        "200":
+          description: Успешный ответ со списком станций
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Station"
+        "400":
+          description: Некорректный запрос
+        "500":
+          description: Внутренняя ошибка сервера
+
+  /stations/{id}/history:
+    get:
+      summary: Получить историю станции
+      description: Возвращает историю измерений по станции.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: Идентификатор станции
+        - name: type
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [hour, day, week, month]
+            default: hour
+          description: Интервал усреднения данных
+      responses:
+        "200":
+          description: Исторические данные станции
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/StationData"
+        "400":
+          description: Некорректный запрос
+        "404":
+          description: Станция не найдена
+        "500":
+          description: Внутренняя ошибка сервера
+
+  /places:
+    get:
+      summary: Получить список мест
+      description: Возвращает список доступных мест измерений.
+      responses:
+        "200":
+          description: Успешный ответ со списком мест
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/StationPlace"
+        "500":
+          description: Внутренняя ошибка сервера
+
+  /places/{id}:
+    get:
+      summary: Получить данные по месту
+      description: Возвращает информацию и историю измерений для указанного места.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: Идентификатор места
+        - name: type
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [hour, day, week, month]
+            default: hour
+          description: Интервал усреднения данных
+      responses:
+        "200":
+          description: Исторические данные по месту
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/PlaceHistoryValue"
+        "400":
+          description: Некорректный запрос
+        "404":
+          description: Место не найдено
+        "500":
+          description: Внутренняя ошибка сервера
+
+components:
+  schemas:
+    Station:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        type:
+          type: string
+        lat:
+          type: number
+          format: float
+        lon:
+          type: number
+          format: float
+        place_id:
+          type: integer
+        data:
+          $ref: "#/components/schemas/StationData"
+
+    StationData:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        temperature:
+          type: number
+          format: float
+          nullable: true
+        pressure:
+          type: number
+          format: float
+          nullable: true
+        humidity:
+          type: number
+          format: float
+          nullable: true
+        pm2:
+          type: number
+          format: float
+          nullable: true
+        pm10:
+          type: number
+          format: float
+          nullable: true
+        aqi:
+          type: integer
+          nullable: true
+
+    StationPlace:
+      type: object
+      properties:
+        id:
+          type: integer
+        iso:
+          type: string
+        iso2lv:
+          type: string
+        name:
+          $ref: "#/components/schemas/StationPlaceNames"
+        map:
+          $ref: "#/components/schemas/PlaceMapInfo"
+
+    StationPlaceNames:
+      type: object
+      properties:
+        am:
+          type: string
+        en:
+          type: string
+        ru:
+          type: string
+
+    PlaceMapInfo:
+      type: object
+      properties:
+        x:
+          type: number
+        y:
+          type: number
+        zoom:
+          type: integer
+
+    PlaceHistoryValue:
+      type: object
+      properties:
+        period_start:
+          type: string
+          format: date-time
+        last_update:
+          type: string
+          format: date-time
+        aqi:
+          type: integer
+        pm25:
+          type: number
+          format: float
+        pm10:
+          type: number
+          format: float

@@ -10,7 +10,11 @@
     "ago_m": "{counter} րոպե առաջ",
     "ago_h": "{counter} ժամ առաջ",
     "ago_d": "{counter} օր առաջ",
-    "ago_o": "Ավելի քան 2 օր առաջ"
+    "ago_o": "Ավելի քան 2 օր առաջ",
+    "source": {
+      "yerevan": "Քաղաքապետարան",
+      "armaqi": "Armaqi"
+    }
   },
   "Scale": {
     "great":  "Լավ",

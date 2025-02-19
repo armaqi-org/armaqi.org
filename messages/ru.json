@@ -10,7 +10,11 @@
     "ago_m": "{counter} мин. назад",
     "ago_h": "{counter} ч. назад",
     "ago_d": "{counter} дн. назад",
-    "ago_o": "Более 2х дней назад"
+    "ago_o": "Более 2х дней назад",
+    "source": {
+      "yerevan": "Мэрия",
+      "armaqi": "Armaqi"
+    }
   },
   "Scale": {
     "great":  "Хороший",
