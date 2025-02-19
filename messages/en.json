@@ -207,5 +207,8 @@
     "text": "The page is in under construction! For now, please use the following instruction:",
     "instruction": "Open installation guide",
     "nav-main": "back to main"
+  },
+  "NotFound": {
+    "text": "Page not found"
   }
 }

@@ -10,7 +10,11 @@ export interface NavigationLink {
     title: string;
 }
 
-export const Navigation: FC<{ locale: Locale, links: NavigationLink[] }> = ({ links, locale }) => {
+export const Navigation: FC<{
+    locale: Locale;
+    links: NavigationLink[];
+    currentPath: string;
+}> = ({ currentPath, links, locale }) => {
     return (
       <>
         <NavigationBurger />
@@ -72,17 +76,17 @@ export const Navigation: FC<{ locale: Locale, links: NavigationLink[] }> = ({ li
 
             <div className="flex space-x-3 md:space-x-2 rtl:space-x-reverse py-8 md:p-0">
               {locale !== 'am' && (
-                <Link href="/" locale="am" className="ml-2 font-medium text-armaqi-base">
+                <Link href={currentPath} locale="am" className="ml-2 font-medium text-armaqi-base">
                   Հայ
                 </Link>
               )}
               {locale !== 'en' && (
-                <Link href="/" locale="en" className="ml-2 font-medium text-armaqi-base">
+                <Link href={currentPath} locale="en" className="ml-2 font-medium text-armaqi-base">
                   ENG
                 </Link>
               )}
               {locale !== 'ru' && (
-                <Link href="/" locale="ru" className="ml-2 font-medium text-armaqi-base">
+                <Link href={currentPath} locale="ru" className="ml-2 font-medium text-armaqi-base">
                   РУС
                 </Link>
               )}
