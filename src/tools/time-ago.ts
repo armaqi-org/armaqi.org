@@ -19,3 +19,9 @@ export const getTimeAgo = (from: Date, to: Date): [number, 'm' | 'h' | 'd' | 'o'
 
     return [1, 'o'];
 };
+
+export const getTimeAgoString = (dt: Date, dict: Record<string, string>) => {
+    const [counter, mode] = getTimeAgo(dt, new Date());
+
+    return (dict['ago_' + mode])?.replace('{counter}', counter.toString());
+};

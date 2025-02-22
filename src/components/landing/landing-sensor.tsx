@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import Image from "next/image";
 import { FC } from "react";
-import { OrderForm } from "@/components/landing-sensor-order";
+import { OrderForm } from "@/components/landing/landing-sensor-order";
 import { Section } from "@/components/section";
 import { FCTL } from "@/tools/types";
 

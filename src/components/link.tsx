@@ -18,6 +18,10 @@ export const Link: FC<{
             }
         });
 
+        if (href === '') {
+            href = '/';
+        }
+
         if (locale !== i18n.defaultLocale) {
             href = '/' + locale + href;
         }

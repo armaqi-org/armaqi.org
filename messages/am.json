@@ -17,12 +17,15 @@
     }
   },
   "Scale": {
-    "great":  "Լավ",
-    "good": "Միջին",
-    "neutral":  "Վնասակար է զգայուն խմբերի համար",
-    "poor":  "Վնասակար",
-    "bad":  "Շատ վնասակար",
-    "horrific": "Վտանգավոր"
+    "great":  { "title": "Լավ" },
+    "good": { "title": "Միջին" },
+    "neutral": { "title": "Վնասակար", "subtitle": "է զգայուն խմբերի համար" },
+    "poor": { "title": "Վնասակար" },
+    "bad": { "title": "Շատ վնասակար" },
+    "horrific": { "title": "Վտանգավոր" }
+  },
+  "Stat": {
+    "aqiDescription": "AQI US EPA"
   },
   "LandingQuality": {
     "title": "Օդի որակը Երևանում քարտեզի",

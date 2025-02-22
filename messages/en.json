@@ -12,17 +12,20 @@
     "ago_d": "{counter} d. ago",
     "ago_o": "More than 2 days ago",
     "source": {
-      "yerevan": "City Hall",
+      "yerevan": "Municipality",
       "armaqi": "Armaqi"
     }
   },
   "Scale": {
-    "great":  "Great",
-    "good": "Normal",
-    "neutral":  "Harmful to sensitive groups",
-    "poor":  "Harmful",
-    "bad":  "Very harmful",
-    "horrific": "Dangerous"
+    "great":  { "title": "Great" },
+    "good": { "title": "Normal" },
+    "neutral": { "title": "Harmful", "subtitle": "to sensitive groups" },
+    "poor": { "title": "Harmful" },
+    "bad": { "title": "Very harmful" },
+    "horrific": { "title": "Dangerous" }
+  },
+  "Stat": {
+    "aqiDescription": "AQI US EPA"
   },
   "LandingQuality": {
     "title": "Air quality in Yerevan on the map",

@@ -17,7 +17,6 @@ export const useStationsList = (): {
     const [paused, setPaused] = useState(false);
     const [tick, setTick] = useState(0);
     const [sources, setSources] = useState([StationSource.Armaqi, StationSource.Yerevan]);
-    const noRefresh = true;
 
     const filteredStations = useMemo(() => stations.filter(st => sources.includes(st.source)), [stations, sources]);
     const refresh = useCallback(() => {
@@ -46,9 +45,8 @@ export const useStationsList = (): {
         }
     }, [tick, staticStations]);
 
-    // TBD: auto-refresh functionality is disabled for now
     useEffect(() => {
-        if (paused || noRefresh) {
+        if (paused) {
             return;
         }
 
@@ -62,14 +60,14 @@ export const useStationsList = (): {
             } else {
                 refresh();
             }
-        }, 4 * 60000);
+        }, 60000);
 
         return () => clearInterval(interval);
-    }, [refresh, paused, noRefresh]);
+    }, [refresh, paused]);
 
     useEffect(() => {
         const cb = () => {
-            if (!noRefresh && paused) {
+            if (!paused) {
                 refresh();
             }
         };
@@ -79,7 +77,7 @@ export const useStationsList = (): {
         return () => {
             window.removeEventListener('focus', cb);
         };
-    }, [paused, refresh, noRefresh]);
+    }, [paused, refresh]);
 
     return {
         loading,

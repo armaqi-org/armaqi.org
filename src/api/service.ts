@@ -12,6 +12,12 @@ export class ApiService {
 
          return data?.map(mapStation).filter(Boolean).map(item => item!) ?? [];
     }
+    static async loadStation(id: number): Promise<StationItem | undefined> {
+        // ToDo: get station api
+        const stations = await ApiService.loadStations();
+
+        return stations.find(item => item.id === id);
+    }
 
     static async loadStationHistory(id: number, type: StationHistoryType): Promise<StationData[]> {
         const { data } = await client.GET("/stations/{id}/history", {

@@ -1,20 +1,20 @@
 import { notFound } from "next/navigation";
 import { Background } from "@/components/bg";
-import { LandingAbout } from "@/components/landing-about";
-import { LandingDilijan, LandingYerevan } from "@/components/landing-banners";
-import { LandingCommunity } from "@/components/landing-community";
-import { LandingConsequences } from "@/components/landing-consequences";
-import { LandingFooter } from "@/components/landing-footer";
-import { LandingHowItWorks } from "@/components/landing-how-it-works";
-import { LandingQuality } from "@/components/landing-quality";
-import { LandingSensor } from "@/components/landing-sensor";
-import { LandingSmog } from "@/components/landing-smog";
-import { LandingSolution } from "@/components/landing-solution";
-import { LandingWhyHappening } from "@/components/landing-why-happening";
+import { LandingAbout } from "@/components/landing/landing-about";
+import { LandingDilijan, LandingYerevan } from "@/components/landing/landing-banners";
+import { LandingCommunity } from "@/components/landing/landing-community";
+import { LandingConsequences } from "@/components/landing/landing-consequences";
+import { LandingFooter } from "@/components/landing/landing-footer";
+import { LandingHowItWorks } from "@/components/landing/landing-how-it-works";
+import { LandingQuality } from "@/components/landing/landing-quality";
+import { LandingSensor } from "@/components/landing/landing-sensor";
+import { LandingSmog } from "@/components/landing/landing-smog";
+import { LandingSolution } from "@/components/landing/landing-solution";
+import { LandingWhyHappening } from "@/components/landing/landing-why-happening";
 import { Navigation } from "@/components/navigation";
 import { getDictionary, getDictionaryClient } from "@/dictionaries";
 import { i18n, Locale } from "@/i18n-config";
-import { MapModule } from "@/modules/map";
+import { MapLandingModule } from "@/modules/map-landing";
 import DictionaryProvider from "@/providers/dictionary-provider";
 import StationsProvider from "@/providers/stations-provider";
 import { getCurrentPath } from "@/tools/path";
@@ -42,7 +42,7 @@ export default async function IndexPage(props: {
 
         <DictionaryProvider dictionary={dictClient}>
           <StationsProvider stations={[]}>
-            <MapModule />
+            <MapLandingModule />
           </StationsProvider>
         </DictionaryProvider>
 

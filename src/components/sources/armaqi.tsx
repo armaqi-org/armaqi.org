@@ -12,9 +12,9 @@ export const SourceArmaqiLogo: FC<{ size?: number }> = ({ size = 32 }) => {
     );
 };
 
-export const SourceArmaqi: FC<{ size?: number }> = ({ size }) => {
+export const SourceArmaqi: FC<{ size?: number; horizontal?: boolean }> = ({ horizontal, size }) => {
     return (
-      <div className="flex flex-col items-center">
+      <div className={horizontal ? "flex flex-row items-end gap-2" : "flex flex-col items-center"}>
         <SourceArmaqiLogo size={size} />
         <span className="text-armaqi-base text-xs">Armaqi</span>
       </div>

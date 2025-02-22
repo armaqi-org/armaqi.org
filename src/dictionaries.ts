@@ -13,8 +13,9 @@ export const getDictionary = async (locale: Locale) =>
     dictionaries[locale]?.() ?? dictionaries.en();
 
 type DictType = Awaited<ReturnType<typeof getDictionary>>;
-type ClientDict = Pick<DictType, 'Map' | 'Scale'>;
+type ClientDict = Pick<DictType, 'Map' | 'Scale' | 'Stat'>;
 export const getDictionaryClient = (dict: DictType): ClientDict => ({
     Map: dict.Map,
     Scale: dict.Scale,
+    Stat: dict.Stat,
 });

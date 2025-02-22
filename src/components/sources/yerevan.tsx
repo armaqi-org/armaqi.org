@@ -8,9 +8,9 @@ export const SourceYerevanLogo: FC<{ size?: number }> = ({ size = 32 }) => {
     );
 };
 
-export const SourceYerevan: FC<{ size?: number }> = ({ size }) => {
+export const SourceYerevan: FC<{ size?: number; horizontal?: boolean }> = ({ horizontal, size }) => {
     return (
-      <div className="flex flex-col items-center">
+      <div className={horizontal ? "flex flex-row items-end gap-2" : "flex flex-col items-center"}>
         <SourceYerevanLogo size={size} />
         <span className="text-armaqi-base text-xs">Yerevan.am</span>
       </div>
