@@ -35,6 +35,20 @@ export const aqiScales: Record<AqiScale, AqiScaleData> = {
     [AqiScale.Horrific]: { from: 300, to: 9999, bgColor: '#9E6879', borderColor: '#784051' },
 };
 
+export const aqiScalesData: AqiScaleDataKey[] = aqiScaleList
+    .map(key => ({ key, ...aqiScales[key] }));
+
+export const getScaleKey = (value: number): AqiScale => {
+    for (const key of Object.keys(aqiScales) as AqiScale[]) {
+        const data = aqiScales[key] ?? aqiScales[AqiScale.Horrific];
+
+        if (value >= data.from && value <= data.to) {
+            return key;
+        }
+    }
+
+    return AqiScale.Horrific;
+};
 
 export const getScaleData = (value: number): AqiScaleDataKey => {
     for (const key of Object.keys(aqiScales) as AqiScale[]) {

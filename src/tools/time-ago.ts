@@ -1,3 +1,5 @@
+import { TranslateMethod } from "@/tools/translate";
+
 export const getTimeAgo = (from: Date, to: Date): [number, 'm' | 'h' | 'd' | 'o'] => {
     const diff = Math.ceil((to.getTime() - from.getTime()) / (60000));
 
@@ -20,8 +22,8 @@ export const getTimeAgo = (from: Date, to: Date): [number, 'm' | 'h' | 'd' | 'o'
     return [1, 'o'];
 };
 
-export const getTimeAgoString = (dt: Date, dict: Record<string, string>) => {
+export const getTimeAgoString = (dt: Date, t: TranslateMethod) => {
     const [counter, mode] = getTimeAgo(dt, new Date());
 
-    return (dict['ago_' + mode])?.replace('{counter}', counter.toString());
+    return (t('Map.' + 'ago_' + mode))?.replace('{counter}', counter.toString());
 };

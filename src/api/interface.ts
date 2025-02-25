@@ -7,7 +7,7 @@ export enum StationSource {
     Armaqi = 'armaqi',
 }
 
-export interface StationData {
+export interface SensorData {
     timestamp: string;
     temperature: number | null;
     humidity: number | null;
@@ -25,5 +25,5 @@ export interface StationItem {
         lat: number;
         lng: number;
     },
-    data: StationData;
+    data: SensorData;
 }

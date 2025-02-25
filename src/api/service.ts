@@ -2,7 +2,8 @@ import { client } from "./client";
 import {
     StationItem,
     StationHistoryType,
-    StationSource, StationData,
+    StationSource,
+    SensorData,
 } from "./interface";
 import { components } from "./schema";
 
@@ -19,12 +20,20 @@ export class ApiService {
         return stations.find(item => item.id === id);
     }
 
-    static async loadStationHistory(id: number, type: StationHistoryType): Promise<StationData[]> {
+    static async loadStationHistory(id: number, type: StationHistoryType): Promise<SensorData[]> {
         const { data } = await client.GET("/stations/{id}/history", {
             params: { path: { id }, query: { type } },
         });
 
         return data?.map(mapStationData) ?? [];
+    }
+
+    static async loadPlaceHistory(id: number, type: StationHistoryType): Promise<SensorData[]> {
+        const { data } = await client.GET("/places/{id}", {
+            params: { path: { id }, query: { type } },
+        });
+
+        return data?.map(mapPlaceData) ?? [];
     }
 }
 
@@ -50,10 +59,9 @@ const mapStation = (item: components["schemas"]["Station"]): StationItem | undef
     };
 };
 
-const mapStationData = (data?: components["schemas"]["StationData"]): StationItem['data'] => {
+const mapStationData = (data?: components["schemas"]["StationData"]): SensorData => {
     const { humidity, pm2, pm10, temperature, timestamp } = data ?? {};
     const aqi = Math.floor(data?.aqi ?? 0);
-
 
     return {
         aqi,
@@ -62,6 +70,20 @@ const mapStationData = (data?: components["schemas"]["StationData"]): StationIte
         pm10: pm10 ?? null,
         humidity: humidity ?? null,
         temperature: temperature ?? null,
+    };
+};
+
+const mapPlaceData = (data?: components["schemas"]["PlaceHistoryValue"]): SensorData => {
+    const { last_update, pm10, pm25 } = data ?? {};
+    const aqi = Math.floor(data?.aqi ?? 0);
+
+    return {
+        aqi,
+        timestamp: last_update ?? '',
+        pm2: pm25 ?? null,
+        pm10: pm10 ?? null,
+        humidity: null,
+        temperature: null,
     };
 };
 

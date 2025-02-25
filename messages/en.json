@@ -25,16 +25,18 @@
     "horrific": { "title": "Dangerous" }
   },
   "Stat": {
-    "aqiDescription": "AQI US EPA"
+    "aqiDescription": "AQI US EPA",
+    "pollutants": "Pollutants",
+    "yerevan": "Yerevan: live air quality",
+    "period": {
+      "hour": "Hour",
+      "week": "Week",
+      "month": "Month",
+      "year": "Year"
+    }
   },
   "LandingQuality": {
     "title": "Air quality in Yerevan on the map",
-    "scale0": "Good",
-    "scale1": "Moderate",
-    "scale2": "Unhealthy:for sensitive groups",
-    "scale3": "Unhealthy",
-    "scale4": "Very unhealthy",
-    "scale5": "Hazardous",
     "hint": "The AQI scale used for real-time pollution indexing in the above map is based on the latest US EPA standard, using the Instant Cast formula.",
     "chartTitle": "Air quality year chart",
     "chartTitleYerevan": "Air quality - year - Yerevan",

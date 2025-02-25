@@ -5,7 +5,8 @@ const config: Config = {
   content: [
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/modules/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}'
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/charts/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
     extend: {
@@ -16,7 +17,8 @@ const config: Config = {
       },
       colors: {
         'armaqi-pink': '#77C2EB',
-        'armaqi-base': '#15428A'
+        'armaqi-base': '#15428A',
+        'armaqi-border': '#9BD6F6'
       }
     },
     fontSize: {

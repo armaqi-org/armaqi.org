@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { ReactElement } from "react";
 import { ApiService, StationSource } from "@/api";
-import { AqiCard } from "@/components/clouds/aqi-card";
+import PageStationInfo from "@/components/pages/page-station-info";
 import { SourceArmaqi } from "@/components/sources/armaqi";
 import { SourceYerevan } from "@/components/sources/yerevan";
 import { getDictionary } from "@/dictionaries";
@@ -64,10 +64,12 @@ export default async function StationPage(props: {
               <div className="col-start-1 row-start-1 md:col-start-2 md:row-start-2">
                 <MapStationModule />
               </div>
-              
-              <div className="col-start-1 row-start-3 md:col-start-1 md:row-start-2">
-                <AqiCard aqi={station.data.aqi} dict={dict} />
-              </div>
+
+              <PageStationInfo
+                className="col-start-1 row-start-3 md:col-start-1 md:row-start-2"
+                dict={dict}
+                station={station}
+              />
 
               <div className="md:col-span-2 row-start-4 md:row-start-3 border">stat</div>
             </div>

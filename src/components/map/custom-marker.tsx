@@ -4,15 +4,14 @@ import { Marker, Popup } from "react-leaflet";
 import { StationItem } from "@/api";
 import { getAqiCloudSvg } from "@/components/clouds/aqi-cloud";
 
-export type CustomMarkerPopupContentType = FC<{station: StationItem; dict: Record<string, string>;}>;
+export type CustomMarkerPopupContentType = FC<{station: StationItem}>;
 
 const empty = () => <span />;
 export const CustomMarker: FC<{
     station: StationItem;
-    dict: Record<string, string>;
     contentComponent?: CustomMarkerPopupContentType;
     size?: number;
-}> = ({ contentComponent, dict, size = 30, station }) => {
+}> = ({ contentComponent, size = 30, station }) => {
     const [key, setKey] = useState<string | undefined>(undefined);
     const hasPopup = !!contentComponent;
     const CustomMarkerPopupContent = contentComponent ?? empty;
@@ -37,7 +36,7 @@ export const CustomMarker: FC<{
         eventHandlers={eventHandlers}
       >
         <Popup>
-          {!!key && <CustomMarkerPopupContent key={key} dict={dict} station={station} />}
+          {!!key && <CustomMarkerPopupContent key={key} station={station} />}
         </Popup>
       </Marker>
     );

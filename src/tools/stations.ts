@@ -18,6 +18,12 @@ export const useStationsList = (): {
     const [tick, setTick] = useState(0);
     const [sources, setSources] = useState([StationSource.Armaqi, StationSource.Yerevan]);
 
+    let noRefresh = false;
+
+    if (process.env.NODE_ENV == "development"){
+        noRefresh = true;
+    }
+
     const filteredStations = useMemo(() => stations.filter(st => sources.includes(st.source)), [stations, sources]);
     const refresh = useCallback(() => {
         setLoading(true);
@@ -46,7 +52,7 @@ export const useStationsList = (): {
     }, [tick, staticStations]);
 
     useEffect(() => {
-        if (paused) {
+        if (paused || noRefresh) {
             return;
         }
 
@@ -63,11 +69,11 @@ export const useStationsList = (): {
         }, 60000);
 
         return () => clearInterval(interval);
-    }, [refresh, paused]);
+    }, [refresh, paused, noRefresh]);
 
     useEffect(() => {
         const cb = () => {
-            if (!paused) {
+            if (!paused || !noRefresh) {
                 refresh();
             }
         };
@@ -77,7 +83,7 @@ export const useStationsList = (): {
         return () => {
             window.removeEventListener('focus', cb);
         };
-    }, [paused, refresh]);
+    }, [paused, refresh, noRefresh]);
 
     return {
         loading,

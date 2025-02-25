@@ -7,7 +7,7 @@ import { SensorMap } from "@/components/map/map";
 import { StationInfoPopupContent } from "@/components/map/station-info-popup-content";
 import { stationSourceLogos } from "@/components/sources/components";
 import { Spinner } from "@/components/spinner";
-import { useDictionary } from "@/providers/dictionary-provider";
+import { useTranslate } from "@/providers/translate-provider";
 import { useStationsList } from "@/tools/stations";
 import "leaflet/dist/leaflet.css";
 
@@ -49,18 +49,17 @@ export function StationsListMap ({ className }: {
         stations,
         toggleSource
     } = useStationsList();
-    const dict = useDictionary();
+    const t = useTranslate();
 
     return (
       <SensorMap
-        dict={dict}
         center={center}
         className={className}
         markers={
           // eslint-disable-next-line react/jsx-no-useless-fragment
           <Fragment>
             {stations?.map(st => (
-              <CustomMarker key={st.id} station={st} dict={dict.Map} contentComponent={StationInfoPopupContent} />
+              <CustomMarker key={st.id} station={st} contentComponent={StationInfoPopupContent} />
             ))}
           </Fragment>
         }
@@ -85,14 +84,14 @@ export function StationsListMap ({ className }: {
                 />
               </svg>
             </button>
-                    )}
+          )}
         </div>
-            )}
+        )}
         <div className="flex flex-col absolute z-top right-3 bottom-3 items-stretch">
           {[StationSource.Yerevan, StationSource.Armaqi].map(source => (
             <StationSourceToggle
               key={source}
-              title={(dict as any).Map?.source?.[source] ?? 'test'}
+              title={t('Map.source.' + source)}
               logo={stationSourceLogos[source]}
               active={sources.includes(source)}
               onClick={() => toggleSource(source)}

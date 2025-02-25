@@ -1,9 +1,11 @@
 import Image from "next/image";
 import { FC, useMemo, useState } from "react";
 import { StationHistoryType, StationItem } from "@/api";
+import { PeriodHistoryStationChart } from "@/components/charts/period-history-station";
 import { AqiCloud } from "@/components/clouds/aqi-cloud";
 import { DataIcon } from "@/components/data/data-icon";
 import { stationSourceElements } from "@/components/sources/components";
+import { useTranslate } from "@/providers/translate-provider";
 import { formatHumidity, formatTemperature } from "@/tools/format";
 import { getTimeAgoString } from "@/tools/time-ago";
 
@@ -12,18 +14,18 @@ const StationHistory: FC<{ id: number }> = ({ id }) => {
     const [type, setType] = useState<StationHistoryType>('hour');
     const [loading, setLoading] = useState(!!id);
 
-    return (loading || type || !!setType || !!setLoading) ? null : (
-      <div className="border border-armaqi-pink rounded">
-        qq
+    return (
+      <div className="border border-armaqi-pink rounded mt-2">
+        <PeriodHistoryStationChart stationId={id} />
       </div>
     );
 };
 
 export const StationInfoPopupContent: FC<{
     station: StationItem;
-    dict: Record<string, string>;
-}> = ({ dict, station }) => {
+}> = ({ station }) => {
     const [showId, setShowId] = useState(false);
+    const t = useTranslate();
     const data = useMemo(() => ({
         title: station.title,
         loading: false,
@@ -31,8 +33,8 @@ export const StationInfoPopupContent: FC<{
         pm10: station.data.pm10 ? Math.ceil(station.data.pm10) : '',
         temperature: formatTemperature(station.data.temperature),
         humidity: formatHumidity(station.data.humidity),
-        updated: getTimeAgoString(new Date(station.data.timestamp), dict),
-    }), [station, dict]);
+        updated: getTimeAgoString(new Date(station.data.timestamp), t),
+    }), [station, t]);
 
     return (
       <div>
@@ -49,14 +51,14 @@ export const StationInfoPopupContent: FC<{
             <div className="flex flex-row justify-between mr-2">
               {!!data.updated && (
               <div className="pb-0.5 text-xs text-armaqi-base">
-                <span className="mr-2">{dict.lastUpdated}:</span>
+                <span className="mr-2">{t('Map.lastUpdated')}:</span>
                 <span className="decoration-dotted underline mr-2 font-bold">{data.updated}&nbsp;</span>
               </div>
-                            )}
+              )}
 
               {showId && <div className="text-neutral-500 text-xs">id: {station.id}</div>}
             </div>
-                    )}
+            )}
           </div>
           <div className="py-2">
             {stationSourceElements[station.source]}

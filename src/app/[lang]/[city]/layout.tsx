@@ -3,7 +3,7 @@ import { Background } from "@/components/bg";
 import { Navigation } from "@/components/navigation";
 import { getDictionary, getDictionaryClient } from "@/dictionaries";
 import { type Locale } from "@/i18n-config";
-import DictionaryProvider from "@/providers/dictionary-provider";
+import TranslateProvider from "@/providers/translate-provider";
 import { getCurrentPath } from "@/tools/path";
 
 export default async function CityStationLayout(props: {
@@ -16,7 +16,7 @@ export default async function CityStationLayout(props: {
   const currentPath = await getCurrentPath();
 
   return (
-    <DictionaryProvider dictionary={dictClient}>
+    <TranslateProvider dictionary={dictClient}>
       <Background />
       <Navigation
         locale={lang}
@@ -25,6 +25,6 @@ export default async function CityStationLayout(props: {
       />
 
       {props.children}
-    </DictionaryProvider>
+    </TranslateProvider>
   );
 }
