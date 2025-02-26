@@ -6,13 +6,12 @@ import TranslateProvider from "@/providers/translate-provider";
 import { getTranslation } from "@/tools/translate";
 import { FCTL } from "@/tools/types";
 
-
 export const LandingStat: FCTL<{ data: SensorData[] }> = ({ data, dict }) => {
     const t = getTranslation(dict);
   return (
     <div className={classNames(
         "max-md:container my-4 mx-auto px-4 py-2",
-        "md:absolute md:bg-white md:left-6 md:top-8 md:z-top md:w-[400px] md:rounded-xl md:border-armaqi-border md:border"
+        "md:absolute md:bg-white md:left-6 md:top-8 md:z-top md:py-3 md:w-[400px] md:rounded-xl md:border-armaqi-border md:border"
     )}
     >
       <h2 className="text-lg mb-3 font-bold align-middle">

@@ -29,9 +29,10 @@ export const PeriodHistoryChart: FC<{
         <BarChart
           layout="horizontal"
           data={data}
+          margin={{ right: -20, left: 20 }}
         >
-          <YAxis type="number" {...y} />
-          <XAxis dataKey="label" type="category" {...x} />
+          <YAxis type="number" fontSize="14px" {...y} />
+          <XAxis dataKey="label" type="category" fontSize="14px" {...x} />
           <Bar dataKey="value" stackId="a">
             {data.map((entry, index) => (
             // eslint-disable-next-line react/no-array-index-key
