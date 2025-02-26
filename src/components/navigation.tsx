@@ -76,17 +76,17 @@ export const Navigation: FC<{
 
             <div className="flex space-x-3 md:space-x-2 rtl:space-x-reverse py-8 md:p-0">
               {locale !== 'am' && (
-                <Link href={currentPath} locale="am" className="ml-2 font-medium text-armaqi-base">
+                <Link href={currentPath} locale="am" className="ml-2 font-medium text-armaqi-base" force>
                   Հայ
                 </Link>
               )}
               {locale !== 'en' && (
-                <Link href={currentPath} locale="en" className="ml-2 font-medium text-armaqi-base">
+                <Link href={currentPath} locale="en" className="ml-2 font-medium text-armaqi-base" force>
                   ENG
                 </Link>
               )}
               {locale !== 'ru' && (
-                <Link href={currentPath} locale="ru" className="ml-2 font-medium text-armaqi-base">
+                <Link href={currentPath} locale="ru" className="ml-2 font-medium text-armaqi-base" force>
                   РУС
                 </Link>
               )}

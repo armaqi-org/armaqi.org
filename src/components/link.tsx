@@ -7,8 +7,9 @@ export const Link: FC<{
     children: ReactNode;
     locale: Locale;
     className?: string;
+    force?: boolean;
     ['aria-current']?: 'page';
-}> = ({ href: initialHref, locale, ...props }) => {
+}> = ({ force, href: initialHref, locale, ...props }) => {
     let href = initialHref;
 
     if (href[0] === '/') {
@@ -27,5 +28,12 @@ export const Link: FC<{
         }
     }
 
+    if (href.length > 1 && href.endsWith('/')) {
+        href = href.substring(0, href.length - 1);
+    }
+
+    if (force) {
+        return <a href={href} {...props} />;
+    }
     return <BaseLink {...props} href={href} />;
 };
