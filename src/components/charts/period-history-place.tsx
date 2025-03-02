@@ -1,7 +1,7 @@
 'use client';
 
 import { FC, useMemo } from "react";
-import { PeriodHistoryChart } from "./period-history";
+import { ChartHourStat } from "./chart-stat-hour";
 import { SensorData } from "@/api";
 import { getScaleData } from "@/tools/aqi-scale";
 import { formatDayTime } from "@/tools/format";
@@ -23,8 +23,8 @@ export const PeriodHistoryPlaceChart: FC<{
         }).reverse();
     }, [data]);
     return (
-      <div className="h-[120px] flex flex-col justify-end items-end bg-white border-armaqi-border border rounded-lg shadow-sm">
-        <PeriodHistoryChart data={chartData} height={100} y={{ orientation: 'right' }} />
+      <div className="h-[120px] flex flex-row justify-end items-end bg-white border-armaqi-border border rounded-lg shadow-sm">
+        <ChartHourStat data={chartData} height={100} y={{ orientation: 'right' }} margin={{ left: 10, right: -20 }} />
       </div>
     );
 };

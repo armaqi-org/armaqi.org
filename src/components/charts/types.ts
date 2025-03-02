@@ -10,3 +10,10 @@ export interface ChartXAxis {
     orientation?: "top" | "bottom";
     fontSize?: number | string;
 }
+
+export interface ChartMargin {
+    left?: number;
+    right?: number;
+    top?: number;
+    bottom?: number;
+}

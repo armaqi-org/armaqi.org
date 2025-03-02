@@ -18,6 +18,7 @@ const config: Config = {
       colors: {
         'armaqi-pink': '#77C2EB',
         'armaqi-base': '#15428A',
+        'armaqi-light': '#5178B6',
         'armaqi-border': '#9BD6F6'
       }
     },

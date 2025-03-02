@@ -29,7 +29,7 @@
     "pollutants": "Pollutants",
     "yerevan": "Yerevan: live air quality",
     "period": {
-      "hour": "Hour",
+      "day": "24 hours",
       "week": "Week",
       "month": "Month",
       "year": "Year"

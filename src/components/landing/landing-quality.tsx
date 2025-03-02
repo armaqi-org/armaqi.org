@@ -20,7 +20,7 @@ export const LandingQuality: FCTL = ({ dict }) => {
                   return (
                     <div key={bgColor} className="mb-12 lg:mb-0 mx-4 ">
                       <CloudQualitySvg color={bgColor} />
-                      <div className="text-sm text-black">{from}{to ? `-${to}` : '+'}</div>
+                      <div className="text-sm text-black">{from}{to && to < 999 ? `-${to}` : '+'}</div>
                       <div className="font-bold text-sm text-black">{title}</div>
                       {!!subtitle && <div className="text-xs text-black">{subtitle}</div>}
                     </div>

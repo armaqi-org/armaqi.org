@@ -14,7 +14,7 @@
     "airtable": "^0.12.2",
     "classnames": "^2.3.2",
     "country-iso": "^2.0.5",
-    "dayjs": "^1.11.10",
+    "dayjs": "^1.11.13",
     "leaflet": "^1.9.4",
     "lodash.get": "^4.4.2",
     "next": "15.1.7",

@@ -10,6 +10,8 @@ export const formatScaleText = (t: TranslateMethod, scale: string) => {
 };
 
 export const formatDayTime = (dt: Date) => {
+    const dt2 = new Date(dt);
+    dt2.setMinutes(0);
     function z(n: number){return (n<10?'0':'')+n;}
-    return dt.getHours() + ':' + z(dt.getMinutes());
+    return dt2.getHours() + ':' + z(dt2.getMinutes());
 };
