@@ -16,10 +16,10 @@ const getLocale = (locale: string) => (localeLocales as any)[locale] ?? localeLo
 const getLang = (locale: string) => (localeLangs as any)[locale] ?? localeLangs.am;
 
 export async function generateMetadata(props: {
-  params: Promise<{ lang: Locale }>;
+  params: Promise<{ lang: string }>;
 }) {
   const { lang } = await props.params;
-  const dict = await getDictionary(lang);
+  const dict = await getDictionary(lang as any);
   const t = (key: keyof typeof dict.Metadata) => dict.Metadata[key];
 
   return {
@@ -47,7 +47,7 @@ export async function generateStaticParams() {
 
 export default async function Root(props: {
   children: ReactNode;
-  params: Promise<{ lang: Locale }>;
+  params: Promise<{ lang: string }>;
 }) {
   const params = await props.params;
   const font = params.lang === 'am' ? fontArmenian : fontNonArmenian;

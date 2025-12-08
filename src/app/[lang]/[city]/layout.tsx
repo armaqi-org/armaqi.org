@@ -8,10 +8,10 @@ import { getCurrentPath } from "@/tools/path";
 
 export default async function CityStationLayout(props: {
   children: ReactNode;
-  params: Promise<{ lang: Locale; city: string; station: string }>;
+  params: Promise<{ lang: string; city: string; station?: string }>;
 }) {
   const { lang } = await props.params;
-  const dict = (await getDictionary(lang));
+  const dict = (await getDictionary(lang as any));
   const dictClient = getDictionaryClient(dict);
   const currentPath = await getCurrentPath();
 
@@ -19,7 +19,7 @@ export default async function CityStationLayout(props: {
     <TranslateProvider dictionary={dictClient}>
       <Background />
       <Navigation
-        locale={lang}
+        locale={lang as any}
         links={[{ href: `/`, title: dict.Setup["nav-main"] }]}
         currentPath={currentPath}
       />
